@@ -59,6 +59,8 @@ export default function App() {
 
   return (
     <div>
+      <Overview />
+      <QA />
       <button onClick={postReview}>Post Review</button>
       <button onClick={getReviews}>Get Reviews</button>
       <button onClick={getProducts}>Get Products</button>
