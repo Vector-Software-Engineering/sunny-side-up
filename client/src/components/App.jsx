@@ -1,43 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
+import axios from 'axios';
 import axios from 'axios';
 
-import QA from "./QA.jsx"
+import QA from './QA.jsx';
 import Overview from './productdetails/Overview.jsx';
 import ReviewList from './reviews/ReviewList.jsx';
 
 export default function App() {
-
   const getProducts = () => {
     axios.get('/api/products/', {
 
     })
-    .then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    })
-  }
+      .then((response) => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+  };
 
   const getProduct = () => {
     axios.get('/api/products/40344', {
 
     })
-    .then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    })
-  }
+      .then((response) => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+  };
 
   const getReviews = () => {
     axios.get('/api/reviews?product_id=40344', {
 
     })
-    .then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    })
+      .then((response) => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
   };
 
   const postReview = () => {
@@ -50,13 +50,13 @@ export default function App() {
       name: 'james',
       email: 'bigballerjames@gmail.com',
       photos: [],
-      characteristics: {}
+      characteristics: {},
     })
-    .then(response => {
-      console.log(response.data);
-    }).catch(error => {
-      console.log(error);
-    })
+      .then((response) => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -71,5 +71,5 @@ export default function App() {
       <button onClick={getProducts}>Get Products</button>
       <button onClick={getProduct}>Get One Product</button>
     </div>
-  )
+  );
 }
