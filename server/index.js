@@ -13,11 +13,7 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.all('/api/*', (req, res) => {
   const method = req.method;
-  const url = req.path.replace('/api', '');
-
-  console.log('method: ' + method);
-  console.log('url: ' + url);
-  //console.log('req body', req.body)
+  const url = req.url.replace('/api', '');
 
   axios({
     method: method,
@@ -28,11 +24,10 @@ app.all('/api/*', (req, res) => {
     }
   })
     .then((response) => {
-      //console.log(response);
       res.status(200).send(response.data);
     })
     .catch(err => {
-      console.log(err);
+      console.log('error');
       res.status(400).send(err);
     })
 });
