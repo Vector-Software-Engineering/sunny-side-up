@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
+import axios from 'axios';
+
 import QA from "./QA.jsx"
 import Overview from './productdetails/Overview.jsx';
-import axios from 'axios';
+import ReviewList from './reviews/ReviewList.jsx';
 
 export default function App() {
 
@@ -61,6 +63,9 @@ export default function App() {
     <div>
       <Overview />
       <QA />
+      <hr />
+      <ReviewList />
+      <hr />
       <button onClick={postReview}>Post Review</button>
       <button onClick={getReviews}>Get Reviews</button>
       <button onClick={getProducts}>Get Products</button>
