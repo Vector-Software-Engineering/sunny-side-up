@@ -9,11 +9,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger);
-app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(express.static(path.join(__dirname, "../dist")));
 
-app.all('/*', (req, res) => {
+app.all('/api/*', (req, res) => {
   const method = req.method;
-  const url = req.path;
+  const url = req.path.replace('/api', '');
 
   console.log('method: ' + method);
   console.log('url: ' + url);
