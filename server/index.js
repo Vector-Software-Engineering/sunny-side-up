@@ -17,6 +17,7 @@ app.all('/api/*', (req, res) => {
 
   console.log('method: ' + method);
   console.log('url: ' + url);
+  console.log('req body', req.body)
 
   axios({
     method: method,
