@@ -9,7 +9,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger);
-app.use(express.static(path.join(__dirname, "../dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.all('/api/*', (req, res) => {
   const method = req.method;
@@ -17,7 +17,7 @@ app.all('/api/*', (req, res) => {
 
   console.log('method: ' + method);
   console.log('url: ' + url);
-  console.log('req body', req.body)
+  //console.log('req body', req.body)
 
   axios({
     method: method,
@@ -28,7 +28,7 @@ app.all('/api/*', (req, res) => {
     }
   })
     .then((response) => {
-      console.log(response);
+      //console.log(response);
       res.status(200).send(response.data);
     })
     .catch(err => {
@@ -37,4 +37,6 @@ app.all('/api/*', (req, res) => {
     })
 });
 
-app.listen(process.env.PORT, () => { console.log('listening on ' + process.env.PORT); });
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => { console.log('listening on ' + PORT); });
