@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import axios from 'axios';
 
 import QA from './QA.jsx';
 import Overview from './productdetails/Overview.jsx';
