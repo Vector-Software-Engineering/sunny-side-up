@@ -6,9 +6,6 @@ import ImageGallery from './ImageGallery.jsx';
 
 const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle }) => {
 
-  console.log('this is ProductStyles: ', allStyles);
-  console.log('this is currentStyle: ', currentStyle);
-
   return (
     <div>
       Overview Components

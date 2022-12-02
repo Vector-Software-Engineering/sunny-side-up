@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
+import CurrentStyleSelected from './CurrentStyleSelected.jsx';
 
 const StyleSelector = ({ allStyles, currentStyle, setCurrentStyle }) => {
-
-  const chooseStyle = (productId) => {
-    console.log('chooseStyle function clicked');
-
-  }
 
   return (
     <div>
       StyleSelector Component
+      <div>
+        Current Style is : {currentStyle.name}
+      </div>
       {allStyles.map((product, index) => {
-        return <img style_id={product.style_id} onClick={chooseStyle} key={index} src={product.photos[index].thumbnail_url} size={30}/>
+        return <CurrentStyleSelected key={index} index={index} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} product={product}/>
       })}
     </div>
   );
