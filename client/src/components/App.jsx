@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import QA from './QA.jsx';
+import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
 
 export default function App() {
@@ -60,10 +60,10 @@ export default function App() {
     <div>
       <Overview />
       <QA />
-      <button type="button" onClick={postReview}>Post Review</button>
+      {/* <button type="button" onClick={postReview}>Post Review</button>
       <button type="button" onClick={getReviews}>Get Reviews</button>
       <button type="button" onClick={getProducts}>Get Products</button>
-      <button type="button" onClick={getProduct}>Get One Product</button>
+      <button type="button" onClick={getProduct}>Get One Product</button> */}
     </div>
   );
 }
