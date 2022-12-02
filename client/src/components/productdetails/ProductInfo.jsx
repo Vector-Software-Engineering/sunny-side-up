@@ -1,4 +1,6 @@
 import React from 'react';
+import { FacebookShareButton, PinterestShareButton, TwitterShareButton} from "react-share";
+import { FacebookIcon, PinterestIcon, TwitterIcon } from "react-share";
 
 const ProductInfo = ({ testProduct, testReviews, numReviews }) => {
 
@@ -32,9 +34,21 @@ const ProductInfo = ({ testProduct, testReviews, numReviews }) => {
       </div>
       <div>
         <label><b>Share on Social Media</b></label>
-        <button type="button">Facebook</button>
-        <button type="button">Twitter</button>
-        <button type="button">Pinterest</button>
+        <div>
+          <FacebookShareButton url={'https://www.supremenewyork.com/'}>
+            <FacebookIcon size={20}/>
+          </FacebookShareButton>
+        </div>
+        <div>
+          <PinterestShareButton url={'https://www.supremenewyork.com/'} media={'https://en.wikipedia.org/wiki/Instagram_egg#/media/File:Instagram_egg.jpg'}>
+            <PinterestIcon size={20}/>
+          </PinterestShareButton>
+        </div>
+        <div>
+          <TwitterShareButton url={'https://www.supremenewyork.com/'}>
+            <TwitterIcon size={20}/>
+          </TwitterShareButton>
+        </div>
       </div>
     </div>
   );
