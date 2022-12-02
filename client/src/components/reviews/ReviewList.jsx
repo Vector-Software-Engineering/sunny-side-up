@@ -13,6 +13,7 @@ export default function () {
   useEffect(() => {
     axios.get('/api/reviews?product_id=40344')
         .then(response => {
+          console.log(response.data.results);
           setReviews(response.data.results);
         }).catch(error => {
           console.log(error);
