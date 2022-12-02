@@ -4,13 +4,14 @@ import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import ImageGallery from './ImageGallery.jsx';
 
-const Overview = () => {
+const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle }) => {
+
   return (
     <div>
-      Overview Component
-      <ProductInfo />
-      <StyleSelector />
-      <AddToCart />
+      Overview Components
+      <ProductInfo currentProduct={currentProduct} allReviews={allReviews} numReviews={numReviews}/>
+      <StyleSelector allStyles={allStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle}/>
+      <AddToCart currentStyle={currentStyle}/>
       <ImageGallery />
     </div>
   );
