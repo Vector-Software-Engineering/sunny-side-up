@@ -11,7 +11,7 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
       Overview Components
       <ProductInfo currentProduct={currentProduct} allReviews={allReviews} numReviews={numReviews}/>
       <StyleSelector allStyles={allStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle}/>
-      <AddToCart />
+      <AddToCart currentStyle={currentStyle}/>
       <ImageGallery />
     </div>
   );
