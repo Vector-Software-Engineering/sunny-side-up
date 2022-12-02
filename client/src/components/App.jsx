@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import QA from './QA.jsx';
+import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
 
 export default function App() {
