@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
+import ReviewList from './reviews/ReviewList.jsx';
 
 export default function App() {
 
@@ -11,6 +12,8 @@ export default function App() {
   const [numReviews, setNumReviews] = useState(0); //used in product details
   const [allStyles, setAllStyles] = useState ([]); //used in product details
   const [currentStyle, setCurrentStyle] = useState('');  //used in product details
+
+  const [tab, setTab] = useState('detail');
 
   useEffect(() => {
   	getProduct();
@@ -96,7 +99,7 @@ export default function App() {
       allStyles={allStyles}
       currentStyle={currentStyle}
       setCurrentStyle={setCurrentStyle}/>
-      <QA currentProduct={currentProduct}/>
+      <QA />
       <button type="button" onClick={postReview}>Post Review</button>
       <button type="button" onClick={getReviews}>Get Reviews</button>
       <button type="button" onClick={getProducts}>Get Products</button>
