@@ -98,7 +98,7 @@ export default function App() {
       { tab!=='reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
 
       {
-        tab==='detail' ? 
+        tab==='detail' ?
         <Overview
         currentProduct={currentProduct}
         allReviews={allReviews}
@@ -110,17 +110,17 @@ export default function App() {
       }
 
       {
-        tab==='qa' ? 
+        tab==='qa' ?
         <QA /> :
         null
       }
 
       {
-        tab==='reviews' ? 
+        tab==='reviews' ?
         <ReviewList /> :
         null
       }
-      
+
     </div>
   );
 }
