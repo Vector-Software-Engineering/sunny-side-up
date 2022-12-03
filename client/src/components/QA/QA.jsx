@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Listview from './Listview.jsx';
 import { Container } from './styles/Container.styled.js';
-import { Button } from './styles/Button.styled.js';
 import { Input } from './styles/Input.styled.js';
 import axios from 'axios';
 
@@ -58,15 +57,12 @@ const data = {
 
 export default function QA({ currentProduct }) {
 
-  const [QA, setQA] = useState({});
-
   return (
     <>
       <Container>
         <h4>Questions & Answers</h4>
         <Input placeholder ="SEARCH"></Input>
-        <Listview data={data}/>
-        <Button>MORE</Button><Button>ADD</Button>
+        <Listview currentProduct={currentProduct}/>
       </Container>
     </>
   )

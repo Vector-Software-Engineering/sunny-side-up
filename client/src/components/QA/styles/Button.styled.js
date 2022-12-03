@@ -7,7 +7,7 @@ export const Button = styled.button`
   font-weight: 700;
   background-color: white;
   color: black;
-  width: 45px;
+  width: fit-content;
 
 
   &: hover {
