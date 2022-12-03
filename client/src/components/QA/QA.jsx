@@ -3,6 +3,7 @@ import Listview from './Listview.jsx';
 import { Container } from './styles/Container.styled.js';
 import { Button } from './styles/Button.styled.js';
 import { Input } from './styles/Input.styled.js';
+import axios from 'axios';
 
 const data = {
   "product_id": "5",
@@ -55,9 +56,9 @@ const data = {
 }
 
 
-export default function QA() {
+export default function QA({ currentProduct }) {
 
-  const [QA, setQA] = useState(data)
+  const [QA, setQA] = useState({});
 
   return (
     <>

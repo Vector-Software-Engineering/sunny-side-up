@@ -96,7 +96,7 @@ export default function App() {
       allStyles={allStyles}
       currentStyle={currentStyle}
       setCurrentStyle={setCurrentStyle}/>
-      <QA />
+      <QA currentProduct={currentProduct}/>
       <button type="button" onClick={postReview}>Post Review</button>
       <button type="button" onClick={getReviews}>Get Reviews</button>
       <button type="button" onClick={getProducts}>Get Products</button>
