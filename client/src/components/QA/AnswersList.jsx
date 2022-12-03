@@ -29,6 +29,8 @@ export default function AnswersList({ entry }) {
       })
       : null}
 
+      {Object.keys(entry.answers).length > 2 && numOfAnswers === true ? <Button onClick={handleMoreClick}>MORE A</Button> : null}
+
       {numOfAnswers === false
       ?
       Object.keys(allAnswers).map((keyName, i) => {
@@ -43,7 +45,7 @@ export default function AnswersList({ entry }) {
       : null}
 
 
-      {Object.keys(entry.answers).length > 2 ? <Button onClick={handleMoreClick}>MORE A</Button> : null}
+      {Object.keys(entry.answers).length > 2 && numOfAnswers === false ? <Button onClick={handleMoreClick}>LESS A</Button> : null}
     </>
   )
 }
