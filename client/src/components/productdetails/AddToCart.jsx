@@ -6,6 +6,7 @@ const AddToCart = ({ currentStyle }) => {
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [styleSelected, setStyleSelected] = useState('');
   const [quantitySelected, setQuantitySelected] = useState(1);
+  const [notSelected, setNotSelected] = useState(false);
 
   console.log('current style inside of addToCart', currentStyle);
   let sizes = [];
@@ -24,6 +25,7 @@ const AddToCart = ({ currentStyle }) => {
 
   const grabStyleID = (e) => {
     setStyleSelected(e.value);
+    setNotSelected(false);
     console.log('e is this: ', e);
     let totalQuantity = currentStyle.skus[e.value].quantity;
     let newQuantityOptions = [...Array(Math.min(15, totalQuantity)).keys()];
@@ -45,12 +47,21 @@ const AddToCart = ({ currentStyle }) => {
     console.log('Selected: [product_id, style_id, quantity]', data);
   }
 
+  const chooseSize = () => {
+    setNotSelected(true);
+    console.log('inside chooseSize');
+  }
+
   return (
     <div>
-      AddToCart Component
+      { notSelected ? <div>~Please Select Size~</div> : null}
       {sizes.length > 0 ? <Select options={sizes} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'}/> : <Select placeholder='OUT OF STOCK' isDisabled={true}/>}
       {styleSelected !== '' ? <Select options={quantityOptions} onChange={(e) => grabQuantity(e)} defaultValue={1} placeholder={1}/> : <Select isDisabled={true} placeholder='-'/>}
-      <button onClick={() => addProduct([currentStyle.style_id, styleSelected, quantitySelected])}>Add To Cart</button>
+      {sizes.length < 1
+      ? null
+      : styleSelected !== ''
+      ? <button onClick={() => addProduct([currentStyle.style_id, styleSelected, quantitySelected])}>Add To Cart</button>
+      : <button onClick={chooseSize}>Add To Cart</button>}
     </div>
   );
 };
