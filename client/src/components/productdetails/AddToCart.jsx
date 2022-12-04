@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
+import { StyledAddToCart } from './styles/AddToCart.styled.js';
 
 const AddToCart = ({ currentStyle }) => {
 
@@ -53,7 +54,7 @@ const AddToCart = ({ currentStyle }) => {
   }
 
   return (
-    <div>
+    <StyledAddToCart>
       { notSelected ? <div>~Please Select Size~</div> : null}
       {sizes.length > 0 ? <Select options={sizes} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'}/> : <Select placeholder='OUT OF STOCK' isDisabled={true}/>}
       {styleSelected !== '' ? <Select options={quantityOptions} onChange={(e) => grabQuantity(e)} defaultValue={1} placeholder={1}/> : <Select isDisabled={true} placeholder='-'/>}
@@ -62,7 +63,7 @@ const AddToCart = ({ currentStyle }) => {
       : styleSelected !== ''
       ? <button onClick={() => addProduct([currentStyle.style_id, styleSelected, quantitySelected])}>Add To Cart</button>
       : <button onClick={chooseSize}>Add To Cart</button>}
-    </div>
+    </StyledAddToCart>
   );
 };
 

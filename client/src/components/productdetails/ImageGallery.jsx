@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from './Image.jsx';
+import { StyledImageGallery } from './styles/ImageGallery.styled.js';
 
 const ImageGallery = ({ currentProduct, currentStyle }) => {
 
@@ -7,12 +8,12 @@ const ImageGallery = ({ currentProduct, currentStyle }) => {
   //console.log('ImageGallery: currentStyle: ', currentStyle);
 
   return (
-    <div>
+    <StyledImageGallery>
       ImageGallery Component
       {currentStyle ? currentStyle.photos.map((photo, index) => {
         return <Image key={index} photo={photo}/>
       }) : null}
-    </div>
+    </StyledImageGallery>
   );
 };
 
