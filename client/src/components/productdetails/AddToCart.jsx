@@ -8,7 +8,7 @@ const AddToCart = ({ currentStyle }) => {
   const [quantitySelected, setQuantitySelected] = useState(1);
   const [notSelected, setNotSelected] = useState(false);
 
-  //console.log('current style inside of addToCart', currentStyle);
+  console.log('current style inside of addToCart', currentStyle);
   let sizes = [];
   let quantity = [];
   if (currentStyle.skus !== undefined) {

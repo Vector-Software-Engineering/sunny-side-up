@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
-import Image from './Image.jsx';
+import React from 'react';
 
-const ImageGallery = ({ currentProduct, currentStyle }) => {
-
-  //console.log('ImageGallery: current product: ', currentProduct);
-  //console.log('ImageGallery: currentStyle: ', currentStyle);
-
+const ImageGallery = () => {
   return (
     <div>
       ImageGallery Component
-      {currentStyle ? currentStyle.photos.map((photo, index) => {
-        return <Image key={index} photo={photo}/>
-      }) : null}
     </div>
   );
 };
