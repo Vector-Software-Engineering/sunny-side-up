@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CurrentStyleSelected = ({ currentStyle, product, setCurrentStyle }) => {
+const CurrentStyleSelected = ({ currentStyle, product, index, setCurrentStyle }) => {
 
   const chooseStyle = (product) => {
     setCurrentStyle(product);
