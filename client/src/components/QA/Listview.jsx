@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import ListviewEntry from './ListviewEntry.jsx';
 import axios from 'axios';
 import { Button } from './styles/Button.styled.js';
+import { Input } from './styles/Input.styled.js';
 
 export default function Listview({ data }) {
 
@@ -25,6 +26,22 @@ export default function Listview({ data }) {
     setFilteredQA(copy)
   }, [QA, numOfQuestions])
 
+  const handleSearchChange = (e) => {
+    if(e.target.value.length >= 3 || e.target.value.length === 0) {
+      var arr = []
+      for(var i = 0; i < QA.length; i++) {
+        if(QA[i].question_body.toLowerCase().includes(e.target.value)) {
+          arr.push(QA[i])
+        }
+      }
+      arr.length > 0 ? setFilteredQA(arr) : null
+      console.log("Test")
+    }
+    // console.log('query', query)
+    // console.log('tv', e.target.value)
+    // console.log('qa', QA)
+  }
+
   const handleMoreClick = (e) => {
     e.preventDefault()
     var newCount = numOfQuestions + 2;
@@ -33,6 +50,7 @@ export default function Listview({ data }) {
 
   return (
     <>
+      <Input onChange={handleSearchChange} placeholder ="SEARCH"></Input>
       {filteredQA.length ? filteredQA.map((entry, index) => <ListviewEntry key={index} entry={entry}/>): null}
       {numOfQuestions < QA.length ? <Button onClick={handleMoreClick}>MORE Q</Button> : null} <Button>ADD</Button>
     </>

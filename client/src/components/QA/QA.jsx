@@ -57,40 +57,10 @@ const data = {
 
 export default function QA({ currentProduct }) {
 
-  const [QA, setQA] = useState([]);
-  const [filteredQA, setFilteredQA] = useState([]);
-
-  useEffect(() => {
-    //get all questions
-    axios.get('/api/qa/questions?product_id=40347')
-    .then((response) => {
-      setQA(response.data.results);
-    }).catch((error) => {
-      console.log(error);
-    });
-  }, []);
-
-  const handleSearchChange = (e) => {
-    if(e.target.value.length >= 3) {
-      var arr = []
-      for(var i = 0; i < QA.length; i++) {
-        if(QA[i].question_body.toLowerCase().includes(e.target.value)) {
-          arr.push(QA[i])
-        }
-      }
-      arr.length > 0 ? setFilteredQA(arr) : null
-      console.log("Test")
-    }
-    // console.log('query', query)
-    // console.log('tv', e.target.value)
-    // console.log('qa', QA)
-  }
-
   return (
     <>
       <Container>
         <h4>Questions & Answers</h4>
-        <Input onChange={handleSearchChange} placeholder ="SEARCH"></Input>
         <Listview currentProduct={currentProduct}/>
       </Container>
     </>
