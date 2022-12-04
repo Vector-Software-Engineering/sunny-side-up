@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
-import ReviewList from './reviews/ReviewList.jsx';
 
 export default function App() {
 
@@ -12,8 +11,6 @@ export default function App() {
   const [numReviews, setNumReviews] = useState(0); //used in product details
   const [allStyles, setAllStyles] = useState ([]); //used in product details
   const [currentStyle, setCurrentStyle] = useState('');  //used in product details
-
-  const [tab, setTab] = useState('detail');
 
   useEffect(() => {
   	getProduct();
@@ -92,35 +89,19 @@ export default function App() {
 
   return (
     <div>
-      <h1>Product Name</h1>
-      { tab!=='detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
-      { tab!=='qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
-      { tab!=='reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
-
-      {
-        tab==='detail' ?
-        <Overview
-        currentProduct={currentProduct}
-        allReviews={allReviews}
-        numReviews={numReviews}
-        allStyles={allStyles}
-        currentStyle={currentStyle}
-        setCurrentStyle={setCurrentStyle}/> :
-        null
-      }
-
-      {
-        tab==='qa' ?
-        <QA /> :
-        null
-      }
-
-      {
-        tab==='reviews' ?
-        <ReviewList /> :
-        null
-      }
-
+      <Overview
+      currentProduct={currentProduct}
+      allReviews={allReviews}
+      numReviews={numReviews}
+      allStyles={allStyles}
+      currentStyle={currentStyle}
+      setCurrentStyle={setCurrentStyle}/>
+      <QA />
+      <button type="button" onClick={postReview}>Post Review</button>
+      <button type="button" onClick={getReviews}>Get Reviews</button>
+      <button type="button" onClick={getProducts}>Get Products</button>
+      <button type="button" onClick={getProduct}>Get One Product</button>
+      <button type="button" onClick={getProductStyles}>Get Product Styles</button>
     </div>
   );
 }

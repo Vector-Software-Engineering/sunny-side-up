@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
@@ -12,7 +12,7 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
       <ProductInfo currentProduct={currentProduct} allReviews={allReviews} numReviews={numReviews}/>
       <StyleSelector allStyles={allStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle}/>
       <AddToCart currentStyle={currentStyle}/>
-      <ImageGallery />
+      <ImageGallery currentProduct={currentProduct} currentStyle={currentStyle} />
     </div>
   );
 };
