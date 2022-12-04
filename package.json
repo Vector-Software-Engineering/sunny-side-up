@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx webpack",
     "build-dev": "npx webpack --watch",
-    "server-dev": "npx nodemon --watch server server/index.js"
+    "server-dev": "npx nodemon --watch server server/index.js",
+    "all-dev": "npx nodemon --watch server server/index.js & npx webpack --watch"
   },
   "repository": {
     "type": "git",
