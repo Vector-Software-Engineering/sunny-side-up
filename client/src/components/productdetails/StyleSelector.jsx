@@ -6,9 +6,8 @@ const StyleSelector = ({ allStyles, currentStyle, setCurrentStyle }) => {
 
   return (
     <StyledStyleSelector>
-      StyleSelector Component
       <div>
-        Current Style is : {currentStyle.name}
+        <b>Style:</b> {currentStyle.name}
       </div>
       <span>
         {allStyles.map((product, index) => {

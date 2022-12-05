@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledImage } from './styles/Image.styled.js';
 
 const Image = ({ photo }) => {
 
@@ -9,9 +10,11 @@ const Image = ({ photo }) => {
   }
 
   return (
-    <div>
-      <img onClick={doSomething} src={photo.thumbnail_url}/>
-    </div>
+    <StyledImage>
+      <div>
+        <img onClick={doSomething} src={photo.thumbnail_url}/>
+      </div>
+    </StyledImage>
   );
 };
 

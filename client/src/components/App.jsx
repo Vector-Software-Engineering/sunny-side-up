@@ -3,15 +3,14 @@ import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
 import ReviewList from './reviews/ReviewList.jsx';
+import { StyledApp, StyledFooter } from '../components/styles/App.styled.js';
 
 export default function App() {
-
-
-  const [currentProduct, setCurrentProduct] = useState({}); //used in product details
-  const [allReviews, setAllReviews] = useState(0); //used in product details
-  const [numReviews, setNumReviews] = useState(0); //used in product details
-  const [allStyles, setAllStyles] = useState ([]); //used in product details
-  const [currentStyle, setCurrentStyle] = useState('');  //used in product details
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [allReviews, setAllReviews] = useState(0);
+  const [numReviews, setNumReviews] = useState(0);
+  const [allStyles, setAllStyles] = useState ([]);
+  const [currentStyle, setCurrentStyle] = useState('');
 
   const [tab, setTab] = useState('detail');
 
@@ -63,10 +62,10 @@ export default function App() {
 
   const postReview = () => {
     axios.post('/api/reviews/', {
-      product_id: 40344,
-      rating: 3,
-      summary: 'looks great, NOT',
-      body: 'random text jake is cook',
+      product_id: 40346,
+      rating: 2,
+      summary: 'looks great, NOT, go to SUNNY SIDE UP to get some real DRIP',
+      body: 'random text jake is cool fr, but also chefs it up it the kitchen',
       recommend: false,
       name: 'james',
       email: 'bigballerjames@gmail.com',
@@ -91,7 +90,7 @@ export default function App() {
   }
 
   return (
-    <div>
+    <StyledApp>
       { tab!=='detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
       { tab!=='qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
       { tab!=='reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
@@ -119,7 +118,7 @@ export default function App() {
         <ReviewList /> :
         null
       }
-
-    </div>
+      <StyledFooter/>
+    </StyledApp>
   );
 }
