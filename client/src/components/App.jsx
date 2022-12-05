@@ -13,7 +13,7 @@ export default function App() {
   const [allStyles, setAllStyles] = useState ([]); //used in product details
   const [currentStyle, setCurrentStyle] = useState('');  //used in product details
 
-  const [tab, setTab] = useState('detail');
+  const [tab, setTab] = useState('qa');
 
   useEffect(() => {
   	getProduct();
@@ -111,7 +111,7 @@ export default function App() {
 
       {
         tab==='qa' ?
-        <QA /> :
+        <QA currentProduct={currentProduct}/> :
         null
       }
 

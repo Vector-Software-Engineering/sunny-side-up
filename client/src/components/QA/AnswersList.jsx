@@ -19,8 +19,6 @@ export default function AnswersList({ entry }) {
 
   return (
     <>
-
-      {console.log('entry', entry)}
       {numOfAnswers === true
       ?
       Object.keys(allAnswers).slice(0, 2).map((keyName, i) => {

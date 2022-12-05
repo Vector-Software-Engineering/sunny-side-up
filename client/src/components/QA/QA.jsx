@@ -56,7 +56,6 @@ const data = {
 
 
 export default function QA({ currentProduct }) {
-
   return (
     <>
       <Container>
