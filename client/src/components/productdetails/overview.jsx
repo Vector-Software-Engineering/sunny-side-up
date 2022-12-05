@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
@@ -7,6 +7,11 @@ import { StyledOverviewHeader, StyledSidebar, StyledOverview, MainImageBox, Info
 import logo from './logo.jpg';
 
 const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle }) => {
+
+  //console.log('the current Style is', currentStyle);
+
+  const [mainImage, setMainImage] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
     <StyledOverview>
@@ -24,11 +29,11 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
       </StyledSidebar>
       <article>
         <MainImageBox>
-          <ImageGallery currentProduct={currentProduct} currentStyle={currentStyle}/>
+          <ImageGallery currentProduct={currentProduct} currentStyle={currentStyle} mainImage={mainImage} setMainImage={setMainImage} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}/>
         </MainImageBox>
         <InformationBox>
           <ProductInfo currentProduct={currentProduct} allReviews={allReviews} numReviews={numReviews}/>
-          <StyleSelector allStyles={allStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle}/>
+          <StyleSelector allStyles={allStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setMainImage={setMainImage}/>
           <AddToCart currentStyle={currentStyle}/>
         </InformationBox>
       </article>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CurrentStyleSelected from './CurrentStyleSelected.jsx';
 import { StyledStyleSelector } from './styles/StyleSelector.styled.js'
 
-const StyleSelector = ({ allStyles, currentStyle, setCurrentStyle }) => {
+const StyleSelector = ({ allStyles, currentStyle, setCurrentStyle, setMainImage }) => {
 
   return (
     <StyledStyleSelector>
@@ -11,7 +11,7 @@ const StyleSelector = ({ allStyles, currentStyle, setCurrentStyle }) => {
       </div>
       <span>
         {allStyles.map((product, index) => {
-          return <CurrentStyleSelected key={index} index={index} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} product={product}/>
+          return <CurrentStyleSelected key={index} index={index} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} product={product} setMainImage={setMainImage}/>
         })}
       </span>
     </StyledStyleSelector>
