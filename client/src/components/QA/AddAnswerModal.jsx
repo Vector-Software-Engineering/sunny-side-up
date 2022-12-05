@@ -68,7 +68,7 @@ export default function AddAnswerModal({ currentProduct, currentQuestion, toggle
               <label>Nickname*</label><br></br>
               <input name='name' style={{width: '22.3em', maxLength: '10'}} placeholder='jack543!' required></input><br></br>
               <label>Email*</label><br></br>
-              <input name='email' style={{width: '22.3em'}} placeholder='jack@email.com' required></input><br></br>
+              <input name='email' type='email' style={{width: '22.3em'}} placeholder='jack@email.com' required></input><br></br>
               <label>Photos</label><br></br>
               <input type='file' id='photos' accept="image/*" onChange={onChangeFiles}style={{width: '22.3em'}} multiple></input><br></br>
               <Button type='submit'>Submit</Button>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { parseISO } from "date-fns";
-import { WordIncrement } from "./styles/WordIncrement.styled.js"
 import { Button } from './styles/Button.styled.js';
+import AnswerEntry from './AnswerEntry.jsx'
 
 export default function AnswersList({ entry }) {
 
@@ -11,6 +10,8 @@ export default function AnswersList({ entry }) {
   useEffect(() => {
     setAllAnswers(entry.answers)
   })
+
+
 
   const handleMoreClick = (e) => {
     e.preventDefault()
@@ -23,11 +24,8 @@ export default function AnswersList({ entry }) {
       ?
       Object.keys(allAnswers).slice(0, 2).map((keyName, i) => {
         return(
-          <div key={i}>
-            <div style={{fontSize: '10px'}}><b>A: </b>{allAnswers[keyName].body}</div>
-            {/* DATE IS ONE DAY BEHIND */}
-            <div style={{fontSize: '7px', color: "grey"}}> by {allAnswers[keyName].answerer_name}, {parseISO(allAnswers[keyName].date).toString().slice(4, 15)} | Helpful? <WordIncrement><u>Yes</u></WordIncrement> ({allAnswers[keyName].helpfulness})</div>
-          </div>
+          <AnswerEntry key={i} entry={allAnswers[keyName] }/>
+
         )
       })
       : null}
@@ -38,11 +36,7 @@ export default function AnswersList({ entry }) {
       ?
       Object.keys(allAnswers).map((keyName, i) => {
         return(
-          <div key={i}>
-            <div style={{fontSize: '10px'}}><b>A: </b>{allAnswers[keyName].body}</div>
-            {/* DATE IS ONE DAY BEHIND */}
-            <div style={{fontSize: '7px', color: "grey"}}> by {allAnswers[keyName].answerer_name}, {parseISO(allAnswers[keyName].date).toString().slice(4, 15)} | Helpful? <WordIncrement><u>Yes</u></WordIncrement> ({allAnswers[keyName].helpfulness})</div>
-          </div>
+          <AnswerEntry key={i} entry={allAnswers[keyName] }/>
         )
       })
       : null}

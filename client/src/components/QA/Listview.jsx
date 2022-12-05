@@ -6,8 +6,6 @@ import { Input } from './styles/Input.styled.js';
 import AddQuestionModal from './AddQuestionModal.jsx';
 
 export default function Listview({ currentProduct }) {
-
-  console.log('cp', currentProduct)
   const [QA, setQA] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [handleQuestionNum, setHandleQuestionNum] = useState([])
@@ -37,13 +35,6 @@ export default function Listview({ currentProduct }) {
     setHandleQuestionNum(copy)
   }, [filteredQuestions, numOfQuestions])
 
-  // const searchNumSync = (arr) => {
-  //   var copy = [...arr]
-  //   copy = copy.slice(0, numOfQuestions)
-  //   setHandleQuestionNum(arr)
-  //   setFilteredQuestions(copy)
-  // }
-
   const handleSearchChange = (e) => {
     if(e.target.value.length >= 3) {
       var arr = []
@@ -53,7 +44,6 @@ export default function Listview({ currentProduct }) {
         }
       }
       arr.length > 0 && setFilteredQuestions(arr)
-      //searchNumSync(arr)
     }
     if(e.target.value.length === 0) {
       setFilteredQuestions(QA)

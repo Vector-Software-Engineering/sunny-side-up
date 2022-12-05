@@ -51,7 +51,7 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
               <label>Nickname*</label><br></br>
               <input name='name' style={{width: '22.3em', maxLength: '10'}} placeholder='jackson11!' required></input><br></br>
               <label>Email*</label><br></br>
-              <input name='email' style={{width: '22.3em'}} placeholder='example@domain.com' required></input><br></br>
+              <input name='email' type='email' style={{width: '22.3em'}} placeholder='example@domain.com' required></input><br></br>
               <Button type='submit'>Submit</Button>
             </form>
           </ModalContent>
