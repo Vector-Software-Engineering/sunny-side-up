@@ -8,3 +8,9 @@ export const StyledStyleSelector = styled.div`
     justify-content: space-around;
   }
 `
+
+export const StyledGrid = styled.div`
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-gap: 2px;
+`
