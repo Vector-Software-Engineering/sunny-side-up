@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
-import ReviewList from './reviews/ReviewList.jsx';
+import ReviewList from './reviews/RatingsAndReviews.jsx';
+import { AppDiv } from './App.styled.js';
 
 export default function App() {
-
 
   const [currentProduct, setCurrentProduct] = useState({}); //used in product details
   const [allReviews, setAllReviews] = useState(0); //used in product details
@@ -91,11 +91,11 @@ export default function App() {
   }
 
   return (
-    <div>
+    <AppDiv>
       <h1>Product Name</h1>
-      { tab!=='detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
-      { tab!=='qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
-      { tab!=='reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
+      <span style={ tab==='detail' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('detail')} }>detail - </span>
+      <span style={ tab==='qa' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('qa')} }>qa - </span>
+      <span style={ tab==='reviews' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('reviews')} }>reviews</span>
 
       {
         tab==='detail' ?
@@ -121,6 +121,6 @@ export default function App() {
         null
       }
 
-    </div>
+    </AppDiv>
   );
 }
