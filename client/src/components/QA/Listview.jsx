@@ -36,7 +36,7 @@ export default function Listview({ currentProduct }) {
           arr.push(QA[i])
         }
       }
-      arr.length > 0 ? setFilteredQuestions(arr) : null
+      arr.length > 0 && setFilteredQuestions(arr)
     }
   }
 
@@ -58,7 +58,7 @@ export default function Listview({ currentProduct }) {
   return (
     <>
       <Input onChange={handleSearchChange} placeholder ="SEARCH"></Input>
-      {filteredQuestions.length && filteredQuestions.map((entry, index) => <ListviewEntry key={index} entry={entry} currentProduct={currentProduct}/>)}
+      {filteredQuestions.length && filteredQuestions.map((entry, index) => <ListviewEntry key={index} entry={entry}/>)}
       {numOfQuestions < QA.length && <Button onClick={handleMoreClick}>MORE Q</Button>} <Button onClick={addQuestions}>ADD</Button>
       {showQModal && <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal}/>}
     </>

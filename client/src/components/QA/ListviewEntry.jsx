@@ -5,7 +5,6 @@ import AddAnswerModal from './AddAnswerModal.jsx'
 
 
 export default function ListviewEntry({ entry }) {
-
   const [showAModal, setShowAModal] = useState(false)
 
   const handleAnswerSubmit = (e) => {
@@ -21,7 +20,7 @@ export default function ListviewEntry({ entry }) {
     <>
       <div>Q: {entry.question_body} <span style={{fontSize: '7px', color: "grey"}}>Helpful? <WordIncrement><u>Yes</u></WordIncrement> ({entry.question_helpfulness}) | <WordIncrement><u onClick={handleAnswerSubmit}>Add Answer</u></WordIncrement></span></div>
       <AnswersList entry={entry}/>
-      {/* {showAModal && <AddAnswerModal entry={entry} toggleModal={toggleModal}/>} */}
+      {showAModal && <AddAnswerModal currentProduct={entry} toggleModal={toggleModal}/>}
     </>
   )
 }
