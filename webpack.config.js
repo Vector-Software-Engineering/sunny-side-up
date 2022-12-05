@@ -15,6 +15,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(gif|svg|jpg|png)$/,
+        loader: "file-loader",
+      },
     ],
   },
   mode: 'development',

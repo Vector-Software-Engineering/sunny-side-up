@@ -92,7 +92,6 @@ export default function App() {
 
   return (
     <div>
-      <h1>Product Name</h1>
       { tab!=='detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
       { tab!=='qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
       { tab!=='reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }

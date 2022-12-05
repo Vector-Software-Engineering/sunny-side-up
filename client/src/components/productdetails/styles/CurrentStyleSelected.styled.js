@@ -21,4 +21,5 @@ export const CheckMarkOverlay = styled.div`
   position: relative;
   top: 50px;
   left: 90px;
+  z-index: 1;
 `
