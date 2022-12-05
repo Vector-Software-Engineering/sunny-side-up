@@ -5,8 +5,12 @@ import { Button } from './styles/Button.styled.js';
 
 export default function AnswersList({ entry }) {
 
-  const [allAnswers, setAllAnswers] = useState(entry.answers);
+  const [allAnswers, setAllAnswers] = useState({});
   const [numOfAnswers, setNumOfAnswers] = useState(true)
+
+  useEffect(() => {
+    setAllAnswers(entry.answers)
+  })
 
   const handleMoreClick = (e) => {
     e.preventDefault()
@@ -16,6 +20,7 @@ export default function AnswersList({ entry }) {
   return (
     <>
 
+      {console.log('entry', entry)}
       {numOfAnswers === true
       ?
       Object.keys(allAnswers).slice(0, 2).map((keyName, i) => {

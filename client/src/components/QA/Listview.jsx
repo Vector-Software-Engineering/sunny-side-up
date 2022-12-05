@@ -7,7 +7,7 @@ import { Input } from './styles/Input.styled.js';
 export default function Listview({ data }) {
 
   const [QA, setQA] = useState([]);
-  const [filteredQA, setFilteredQA] = useState([]);
+  const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [numOfQuestions, setNumOfQuestion] = useState(2)
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Listview({ data }) {
   useEffect(() => {
     var copy = [...QA]
     copy = copy.slice(0, numOfQuestions)
-    setFilteredQA(copy)
+    setFilteredQuestions(copy)
   }, [QA, numOfQuestions])
 
   const handleSearchChange = (e) => {
@@ -34,8 +34,7 @@ export default function Listview({ data }) {
           arr.push(QA[i])
         }
       }
-      arr.length > 0 ? setFilteredQA(arr) : null
-      console.log("Test")
+      arr.length > 0 ? setFilteredQuestions(arr) : null
     }
     // console.log('query', query)
     // console.log('tv', e.target.value)
@@ -51,8 +50,8 @@ export default function Listview({ data }) {
   return (
     <>
       <Input onChange={handleSearchChange} placeholder ="SEARCH"></Input>
-      {filteredQA.length ? filteredQA.map((entry, index) => <ListviewEntry key={index} entry={entry}/>): null}
-      {numOfQuestions < QA.length ? <Button onClick={handleMoreClick}>MORE Q</Button> : null} <Button>ADD</Button>
+      {filteredQuestions.length ? filteredQuestions.map((entry, index) => <ListviewEntry key={index} entry={entry}/>): null}
+      {numOfQuestions < filteredQuestions.length ? <Button onClick={handleMoreClick}>MORE Q</Button> : null} <Button>ADD</Button>
     </>
   )
 }
