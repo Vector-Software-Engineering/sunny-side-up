@@ -7,8 +7,10 @@ import AddQuestionModal from './AddQuestionModal.jsx';
 
 export default function Listview({ currentProduct }) {
 
+  console.log('cp', currentProduct)
   const [QA, setQA] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([]);
+  const [handleQuestionNum, setHandleQuestionNum] = useState([])
   const [numOfQuestions, setNumOfQuestion] = useState(2)
   const [showQModal, setShowQModal] = useState(false)
 
@@ -24,12 +26,26 @@ export default function Listview({ currentProduct }) {
 
   useEffect(() => {
     var copy = [...QA]
-    copy = copy.slice(0, numOfQuestions)
     setFilteredQuestions(copy)
-  }, [QA, numOfQuestions])
+    copy = copy.slice(0, numOfQuestions)
+    setHandleQuestionNum(copy)
+  }, [QA])
+
+  useEffect(() => {
+    var copy = [...filteredQuestions]
+    copy = copy.slice(0, numOfQuestions)
+    setHandleQuestionNum(copy)
+  }, [filteredQuestions, numOfQuestions])
+
+  // const searchNumSync = (arr) => {
+  //   var copy = [...arr]
+  //   copy = copy.slice(0, numOfQuestions)
+  //   setHandleQuestionNum(arr)
+  //   setFilteredQuestions(copy)
+  // }
 
   const handleSearchChange = (e) => {
-    if(e.target.value.length >= 3 || e.target.value.length === 0) {
+    if(e.target.value.length >= 3) {
       var arr = []
       for(var i = 0; i < QA.length; i++) {
         if(QA[i].question_body.toLowerCase().includes(e.target.value)) {
@@ -37,6 +53,11 @@ export default function Listview({ currentProduct }) {
         }
       }
       arr.length > 0 && setFilteredQuestions(arr)
+      //searchNumSync(arr)
+    }
+    if(e.target.value.length === 0) {
+      setFilteredQuestions(QA)
+      setNumOfQuestion(2)
     }
   }
 
@@ -58,8 +79,8 @@ export default function Listview({ currentProduct }) {
   return (
     <>
       <Input onChange={handleSearchChange} placeholder ="SEARCH"></Input>
-      {filteredQuestions.length && filteredQuestions.map((entry, index) => <ListviewEntry key={index} entry={entry}/>)}
-      {numOfQuestions < QA.length && <Button onClick={handleMoreClick}>MORE Q</Button>} <Button onClick={addQuestions}>ADD</Button>
+      {handleQuestionNum.length && handleQuestionNum.map((entry, index) => <ListviewEntry currentProduct={currentProduct} key={index} entry={entry}/>)}
+      {numOfQuestions < filteredQuestions.length && <Button onClick={handleMoreClick}>MORE Q</Button>} <Button onClick={addQuestions}>ADD</Button>
       {showQModal && <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal}/>}
     </>
   )
