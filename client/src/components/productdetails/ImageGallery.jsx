@@ -4,8 +4,6 @@ import { StyledImageGallery, StyledThumbnails } from './styles/ImageGallery.styl
 
 const ImageGallery = ({ currentProduct, currentStyle, mainImage, setMainImage, setCurrentIndex, currentIndex }) => {
 
-  console.log(currentStyle);
-
   return (
     <StyledImageGallery>
       {!currentStyle ? null : mainImage === '' ? <img src={currentStyle.photos[0].thumbnail_url}/> : <img src={mainImage.photos[currentIndex].thumbnail_url}/>}

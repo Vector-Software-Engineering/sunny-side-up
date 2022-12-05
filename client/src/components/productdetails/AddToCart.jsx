@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Select from 'react-select';
 import { StyledAddToCart } from './styles/AddToCart.styled.js';
 
@@ -8,6 +8,8 @@ const AddToCart = ({ currentStyle }) => {
   const [styleSelected, setStyleSelected] = useState('');
   const [quantitySelected, setQuantitySelected] = useState(1);
   const [notSelected, setNotSelected] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const styleSelectedRef = useRef();
 
   //console.log('current style inside of addToCart', currentStyle);
   let sizes = [];
@@ -42,21 +44,24 @@ const AddToCart = ({ currentStyle }) => {
   const grabQuantity = (e) => {
     setQuantitySelected(e.value);
     console.log('grabbing the quantity: ', e);
-  }
+  };
 
   const addProduct = (data) => {
     console.log('Selected: [product_id, style_id, quantity]', data);
-  }
+    //this data would be sent to cart
+  };
 
   const chooseSize = () => {
     setNotSelected(true);
-    console.log('inside chooseSize');
-  }
+    if (styleSelectedRef.current) {
+      styleSelectedRef.current.focus();
+    }
+  };
 
   return (
     <StyledAddToCart>
       { notSelected ? <div>~Please Select Size~</div> : null}
-      {sizes.length > 0 ? <Select options={sizes} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'}/> : <Select placeholder='OUT OF STOCK' isDisabled={true}/>}
+      {sizes.length > 0 ? <Select options={sizes} ref={styleSelectedRef} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'} openMenuOnFocus={true}/> : <Select placeholder='OUT OF STOCK' isDisabled={true}/>}
       {styleSelected !== '' ? <Select options={quantityOptions} onChange={(e) => grabQuantity(e)} defaultValue={1} placeholder={1}/> : <Select isDisabled={true} placeholder='-'/>}
       {sizes.length < 1
       ? null
