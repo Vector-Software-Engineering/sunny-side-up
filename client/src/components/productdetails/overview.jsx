@@ -3,7 +3,7 @@ import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import ImageGallery from './ImageGallery.jsx';
-import { StyledOverviewHeader, StyledSidebar, StyledOverview, MainImageBox, InformationBox } from './styles/Overview.styled.js';
+import { StyledOverviewHeader, StyledSidebar, StyledOverview, MainImageBox, InformationBox, StyledFooter } from './styles/Overview.styled.js';
 import logo from './logo.jpg';
 
 const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle }) => {
@@ -37,6 +37,7 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
           <AddToCart currentStyle={currentStyle}/>
         </InformationBox>
       </article>
+      <StyledFooter/>
     </StyledOverview>
   );
 };

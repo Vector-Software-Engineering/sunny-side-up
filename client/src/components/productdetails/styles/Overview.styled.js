@@ -43,3 +43,9 @@ export const InformationBox = styled.div`
   display: inline-block;
   width: 400px;
 `
+export const StyledFooter = styled.div`
+  display: block;
+  height: 200px;
+  width: 100%;
+  bottom: 0px;
+`
