@@ -33,9 +33,9 @@ export default function () {
     <ReviewList>
       <h3>Reviews</h3>
       <span>Sort reviews by</span>
-      <span onClick={ () => setSortBy('helpful') }> - helpful - </span>
-      <span onClick={ () => setSortBy('newest') }>newest - </span>
-      <span onClick={ () => setSortBy('relevance') }>relevance</span>
+      <span style={ sortBy==='helpful' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('helpful') }> - helpful - </span>
+      <span style={ sortBy==='newest' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('newest') }>newest - </span>
+      <span style={ sortBy==='relevance' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('relevance') }>relevance</span>
       {
         visReviews.map((review, index) => {
           console.log(review);
