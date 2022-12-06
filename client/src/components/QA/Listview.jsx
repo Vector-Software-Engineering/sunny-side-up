@@ -45,6 +45,7 @@ export default function Listview({ currentProduct }) {
         }
       }
       arr.length > 0 && setFilteredQuestions(arr)
+      arr.length === 0 && setFilteredQuestions([])
     }
     if(e.target.value.length === 0) {
       setFilteredQuestions(QA)
@@ -72,7 +73,7 @@ export default function Listview({ currentProduct }) {
       <Input onChange={handleSearchChange} placeholder ="SEARCH"></Input>
       <div style={{  display: "flex", justifyContent: "center"}}>
         <Overflow>
-          {handleQuestionNum.length && handleQuestionNum.map((entry, index) => <ListviewEntry currentProduct={currentProduct} key={index} entry={entry}/>)}
+          {handleQuestionNum.length > 0 && handleQuestionNum.map((entry, index) => <ListviewEntry currentProduct={currentProduct} key={index} entry={entry}/>)}
         </Overflow>
       </div>
       {numOfQuestions < filteredQuestions.length && <Button onClick={handleMoreClick}>MORE Q</Button>} <Button onClick={addQuestions}>ADD</Button>
