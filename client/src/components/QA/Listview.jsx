@@ -3,6 +3,7 @@ import ListviewEntry from './ListviewEntry.jsx';
 import axios from 'axios';
 import { Button } from './styles/Button.styled.js';
 import { Input } from './styles/Input.styled.js';
+import { Overflow } from './styles/Overflow.styled.js'
 import AddQuestionModal from './AddQuestionModal.jsx';
 
 export default function Listview({ currentProduct }) {
@@ -69,9 +70,13 @@ export default function Listview({ currentProduct }) {
   return (
     <>
       <Input onChange={handleSearchChange} placeholder ="SEARCH"></Input>
-      {handleQuestionNum.length && handleQuestionNum.map((entry, index) => <ListviewEntry currentProduct={currentProduct} key={index} entry={entry}/>)}
+      <div style={{  display: "flex", justifyContent: "center"}}>
+        <Overflow>
+          {handleQuestionNum.length && handleQuestionNum.map((entry, index) => <ListviewEntry currentProduct={currentProduct} key={index} entry={entry}/>)}
+        </Overflow>
+      </div>
       {numOfQuestions < filteredQuestions.length && <Button onClick={handleMoreClick}>MORE Q</Button>} <Button onClick={addQuestions}>ADD</Button>
-      {showQModal && <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal}/>}
+        {showQModal && <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal}/>}
     </>
   )
 }

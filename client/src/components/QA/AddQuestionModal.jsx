@@ -1,6 +1,6 @@
 import React from "react"
 import axios from 'axios'
-import { ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput } from './styles/Modal.styled.js'
+import { ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput } from './styles/Modal.styled.js'
 import { Button } from './styles/Button.styled.js'
 
 export default function AddQuestionModal({ currentProduct, toggleModal }) {
@@ -47,11 +47,12 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
           <ModalContent>
             <form id='add-question' onSubmit={handleFormSubmit}>
               <label>Question*</label><br></br>
-              <BiggerInput name='body' placeholder='Why did you like the product or not?' required></BiggerInput><br></br>
+              <BiggerInput name='body' maxlength='1000' placeholder='Why did you like the product or not?' required></BiggerInput><br></br>
               <label>Nickname*</label><br></br>
-              <input name='name' style={{width: '22.3em', maxLength: '10'}} placeholder='jackson11!' required></input><br></br>
+              <SmallerInput name='name' maxlength='60' placeholder='jackson11!' required></SmallerInput><h6>For privacy reasons, do not use your full name or email address</h6>
               <label>Email*</label><br></br>
-              <input name='email' type='email' style={{width: '22.3em'}} placeholder='example@domain.com' required></input><br></br>
+              <SmallerInput name='email' type='email' maxlength='60' placeholder='example@domain.com' required></SmallerInput><br></br>
+              <h6>For authentication reasons, you will not be emailed</h6>
               <Button type='submit'>Submit</Button>
             </form>
           </ModalContent>

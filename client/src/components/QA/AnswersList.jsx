@@ -43,6 +43,8 @@ export default function AnswersList({ entry }) {
 
 
       {Object.keys(entry.answers).length > 2 && numOfAnswers === false ? <Button onClick={handleMoreClick}>LESS A</Button> : null}
+
+      <br></br>
     </>
   )
 }

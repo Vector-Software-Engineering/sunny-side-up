@@ -8,6 +8,7 @@ export default function AnswerEntry({ entry }) {
 
   const [clickHelpful, setClickHelpful] = useState(false)
 
+  //format date
   const { date } = entry
   const formatDate = format(new Date(date), 'MMMM d, yyyy')
 
@@ -38,7 +39,6 @@ export default function AnswerEntry({ entry }) {
   return (
     <>
       <div style={{fontSize: '10px'}}><b>A: </b>{entry.body}</div>
-      {/* DATE IS ONE DAY BEHIND */}
       <div style={{fontSize: '7px', color: "grey"}}> by {entry.answerer_name} | {formatDate} | Helpful? <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.id)}><u>Yes</u></WordIncrement> ({clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}) | <WordIncrement onClick={(e) => handleAnswerReport(e, entry.id)}><u>Report</u></WordIncrement></div>
     </>
   )

@@ -19,11 +19,9 @@ background-color: white;
 `
 
 const ModalHeader = styled.header`
-padding: 1.5rem;
+padding: 1rem;
 position: relative;
 `
-// display: flex;
-// justify-content: space-between;
 
 const ModalContent = styled.header`
 padding: 1.5rem;
@@ -41,12 +39,14 @@ right: 1rem;
 `
 
 const BiggerInput = styled.textarea`
-width: 22.3em;
+width: 70%;
 
 &: focus {
   height: 10em;
-  width: 22.3em;
 }
+`
+const SmallerInput = styled.input`
+width: 50%;
 `
 
 export {
@@ -55,5 +55,6 @@ export {
   ModalHeader,
   ModalContent,
   Exit,
-  BiggerInput
+  BiggerInput,
+  SmallerInput
 }
