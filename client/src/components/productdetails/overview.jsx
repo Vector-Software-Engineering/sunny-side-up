@@ -11,6 +11,7 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
   //console.log('the current Style is', currentStyle);
 
   const [mainImage, setMainImage] = useState('');
+  const [extendedView, setExtendedView] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (

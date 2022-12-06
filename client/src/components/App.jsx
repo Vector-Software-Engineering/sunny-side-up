@@ -62,7 +62,7 @@ export default function App() {
 
   const postReview = () => {
     axios.post('/api/reviews/', {
-      product_id: 40346,
+      product_id: 40344,
       rating: 2,
       summary: 'looks great, NOT, go to SUNNY SIDE UP to get some real DRIP',
       body: 'random text jake is cool fr, but also chefs it up it the kitchen',

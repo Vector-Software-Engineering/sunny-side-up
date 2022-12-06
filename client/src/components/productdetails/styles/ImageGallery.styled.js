@@ -5,8 +5,30 @@ export const StyledImageGallery = styled.div`
   top: 20px;
 `
 
+export const StyledMainImage = styled.img`
+  cursor: zoom-in;
+`
+
 export const StyledThumbnails = styled.div`
   display: flex;
-  align-content: flex-start;
+  position: relative;
+  align-content: center;
+  top: -80px;
   justify-content: space-around;
+  cursor: default;
+`
+
+export const StyleLeftButton = styled.button`
+  border: none;
+  background-color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
+`
+export const StyleRightButton = styled.button`
+  border: none;
+  background-color: inherit;
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-block;
 `
