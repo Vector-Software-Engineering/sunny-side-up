@@ -7,9 +7,8 @@ import axios from 'axios'
 export default function AnswerEntry({ entry }) {
 
   const [clickHelpful, setClickHelpful] = useState(false)
-  const [clickReport, setClickReport] = useState(false)
 
-  //formats date
+  //format date
   const { date } = entry
   const formatDate = format(new Date(date), 'MMMM d, yyyy')
 
@@ -28,23 +27,19 @@ export default function AnswerEntry({ entry }) {
   }
 
   const handleAnswerReport = (e, id) => {
-    if(!clickReport) {
-      e.preventDefault();
-      axios.put(`/api/qa/answers/${id}/report`)
-      .then((response) => {
-        console.log(response);
-      }).catch((error) => {
-        console.log(error);
-      });
-
-      setClickReport(true)
-    }
+    e.preventDefault();
+    axios.put(`/api/qa/answers/${id}/report`)
+    .then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   return (
     <>
       <div style={{fontSize: '14px'}}><b>A: </b>{entry.body}</div>
-      <div style={{fontSize: '12px', color: "grey"}}> by {entry.answerer_name} | {formatDate} | Helpful? <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.id)}><u>Yes</u></WordIncrement> ({clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}) | <WordIncrement onClick={(e) => handleAnswerReport(e, entry.answer_id)}><u>{clickReport ? "Reported" : "Report"}</u></WordIncrement></div>
+      <div style={{fontSize: '12px', color: "grey"}}> by {entry.answerer_name} | {formatDate} | Helpful? <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.id)}><u>Yes</u></WordIncrement> ({clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}) | <WordIncrement onClick={(e) => handleAnswerReport(e, entry.id)}><u>Report</u></WordIncrement></div>
     </>
   )
 }
