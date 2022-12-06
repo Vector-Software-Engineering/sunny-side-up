@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const WordIncrement = styled.span`
-  font-size: 7px;
+  font-size: 12px;
   color: grey;
 
   &: hover {

@@ -31,7 +31,6 @@ export default function AddAnswerModal({ currentProduct, currentQuestion, toggle
       results[key] = value
     }
     results['photos'] = photos
-    console.log('should be formatted', results)
     postAnswer(results)
     toggleModal()
   }

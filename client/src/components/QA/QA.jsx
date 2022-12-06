@@ -9,7 +9,7 @@ import axios from 'axios';
 export default function QA({ currentProduct }) {
   return (
     <>
-    <h4 style={{display:"flex", justifyContent:"center"}}>Questions & Answers</h4>
+    <h2 style={{display:"flex", justifyContent:"center"}}>Questions & Answers</h2>
       <Container>
         <Listview currentProduct={currentProduct}/>
       </Container>
