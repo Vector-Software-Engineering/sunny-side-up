@@ -9,7 +9,7 @@ export default function AnswersList({ entry }) {
   const [numOfAnswers, setNumOfAnswers] = useState(true)
 
   useEffect(() => {
-    axios.get(`/api/qa/questions/${entry.question_id}/answers`)
+    axios.get(`/api/qa/questions/${entry.question_id}/answers?count=100`)
     .then((response) => {
       setAllAnswers(response.data.results);
     }).catch((error) => {
