@@ -32,21 +32,25 @@ export default function () {
   return (
     <ReviewList>
       <h3>Reviews</h3>
-      <span>Sort reviews by</span>
-      <span style={ sortBy==='helpful' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('helpful') }> - helpful - </span>
-      <span style={ sortBy==='newest' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('newest') }>newest - </span>
-      <span style={ sortBy==='relevance' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('relevance') }>relevance</span>
+      <div className='helper'>
+        <span>Sort reviews by</span>
+        <span style={ sortBy==='helpful' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('helpful') }> - helpful - </span>
+        <span style={ sortBy==='newest' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('newest') }>newest - </span>
+        <span style={ sortBy==='relevance' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('relevance') }>relevance</span>
+      </div>
       {
         visReviews.map((review, index) => {
           console.log(review);
           return <ReviewTile key={ review.review_id } review={ review } />
         })
       }
-      {
-        numReviews < reviews.length ? 
-        <div onClick={() => { setNumReviews(numReviews + 2); }}>Load more reviews</div> : 
-        <div onClick={() => { setNumReviews(2); }}>Show less reviews</div>
-      }
+      <div className='helper pointer'>
+        {
+          numReviews < reviews.length ? 
+          <div onClick={() => { setNumReviews(numReviews + 2); }}>Load more reviews</div> : 
+          <div onClick={() => { setNumReviews(2); }}>Show fewer reviews</div>
+        }
+      </div>
     </ReviewList>
   )
 }

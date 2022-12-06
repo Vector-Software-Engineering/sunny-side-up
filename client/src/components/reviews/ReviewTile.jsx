@@ -1,8 +1,9 @@
-import React from "react"
+import React from "react";
+import { ReviewTile } from './styles/ReviewTile.styled.js';
 
 export default function ({ review }) {
   return (
-    <div className='review'>
+    <ReviewTile>
       <h3>{review.summary}</h3>
       <p>{'name: ' + review.reviewer_name}</p>
       <p>{'body: ' + review.body}</p>
@@ -11,6 +12,6 @@ export default function ({ review }) {
       <p>{review.response ? ('Response from seller: ' +  review.response) : null }</p>
       <p>{'helpfulness: ' + review.helpfulness}</p>
       {/* <h1>{review.photos}</h1> */}
-    </div>
+    </ReviewTile>
   )
 }
