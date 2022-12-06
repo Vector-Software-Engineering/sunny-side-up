@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Button } from './styles/Button.styled.js';
 import AnswerEntry from './AnswerEntry.jsx'
 import axios from 'axios'
+import { AnswerOverflow } from './styles/AnswerOverflow.styled.js';
+
 export default function AnswersList({ entry }) {
 
   const [allAnswers, setAllAnswers] = useState({});
@@ -27,13 +29,13 @@ export default function AnswersList({ entry }) {
   }
 
   return (
-    <>
+    <AnswerOverflow>
       {numOfAnswers === true
       ?
+
       Object.keys(allAnswers).slice(0, 2).map((keyName, i) => {
         return(
           <AnswerEntry key={i} entry={allAnswers[keyName] }/>
-
         )
       })
       : null}
@@ -53,6 +55,6 @@ export default function AnswersList({ entry }) {
       {Object.keys(entry.answers).length > 2 && numOfAnswers === false ? <Button onClick={handleMoreClick}>LESS A</Button> : null}
 
       <br></br>
-    </>
+    </AnswerOverflow>
   )
 }

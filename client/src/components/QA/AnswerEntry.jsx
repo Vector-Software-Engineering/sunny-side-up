@@ -38,8 +38,8 @@ export default function AnswerEntry({ entry }) {
 
   return (
     <>
-      <div style={{fontSize: '14px'}}><b>A: </b>{entry.body}</div>
-      <div style={{fontSize: '12px', color: "grey"}}> by {entry.answerer_name} | {formatDate} | Helpful? <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.id)}><u>Yes</u></WordIncrement> ({clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}) | <WordIncrement onClick={(e) => handleAnswerReport(e, entry.id)}><u>Report</u></WordIncrement></div>
+      <div style={{fontSize: '20px', paddingTop: "15px"}}><b>A: </b>{entry.body}</div>
+      <div style={{fontSize: '14px', color: "grey"}}> by {entry.answerer_name} | {formatDate} | Helpful? <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.id)}><u>Yes</u></WordIncrement> ({clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}) | <WordIncrement onClick={(e) => handleAnswerReport(e, entry.id)}><u>Report</u></WordIncrement></div>
     </>
   )
 }
