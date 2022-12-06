@@ -4,10 +4,11 @@ export const Container = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
   text-align: left;
   font-family: 'Courier Prime', monospace;
+  font-size: 12px;
 
   .main {
     display: grid;
-    grid-template-columns: 10% 1fr 3fr 10%;  
+    grid-template-columns: 20% 1fr 3fr 20%;  
   }
 
   h4 {
@@ -15,5 +16,9 @@ export const Container = styled.div`
     color: black;
     font size: 1.15em;
     margin: 0;
+  }
+
+  .pointer {
+    cursor: pointer;
   }
 `
