@@ -13,11 +13,11 @@ export const Container = styled.div`
   h4 {
     background: white;
     color: black;
-    font size: 1.15em;
+    font-size: 1.15em;
     margin: 0;
   }
 
   img {
-    max-widgth: 100%;
+    max-width: 100%;
   }
 `
