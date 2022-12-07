@@ -38,14 +38,27 @@ export const MainImageBox = styled.div`
   display: flex;
   top-margin: -100px;
   width: 330px;
-`
+`;
+
 export const InformationBox = styled.div`
   display: inline-block;
   width: 400px;
-`
+`;
 export const StyledFooter = styled.div`
   display: block;
   height: 200px;
   width: 100%;
   bottom: 0px;
-`
+`;
+
+export const StyledExtendedView = styled.img`
+  height: 100%;
+  position: absolute:
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-inded: 2;
+`;

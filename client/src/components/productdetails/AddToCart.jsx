@@ -3,7 +3,6 @@ import Select from 'react-select';
 import { StyledAddToCart } from './styles/AddToCart.styled.js';
 
 const AddToCart = ({ currentStyle }) => {
-
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [styleSelected, setStyleSelected] = useState('');
   const [quantitySelected, setQuantitySelected] = useState(1);
@@ -11,7 +10,6 @@ const AddToCart = ({ currentStyle }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const styleSelectedRef = useRef();
 
-  //console.log('current style inside of addToCart', currentStyle);
   let sizes = [];
   let quantity = [];
   if (currentStyle.skus !== undefined) {
@@ -23,8 +21,8 @@ const AddToCart = ({ currentStyle }) => {
     }
   }
 
-  //console.log('sizes are: ', sizes);
-  //console.log('quantites are: ', quantity);
+  // console.log('sizes are: ', sizes);
+  // console.log('quantites are: ', quantity);
 
   const grabStyleID = (e) => {
     setStyleSelected(e.value);
@@ -37,8 +35,6 @@ const AddToCart = ({ currentStyle }) => {
       finalQuantityOptions.push({label: i, value: i})
     }
     setQuantityOptions(finalQuantityOptions);
-    //console.log('quantity options after setting new vals: ', finalQuantityOptions)
-    //console.log('the state of quantity options is', quantityOptions[0].value);
   };
 
   const grabQuantity = (e) => {
@@ -48,7 +44,6 @@ const AddToCart = ({ currentStyle }) => {
 
   const addProduct = (data) => {
     console.log('Selected: [product_id, style_id, quantity]', data);
-    //this data would be sent to cart
   };
 
   const chooseSize = () => {
@@ -61,7 +56,7 @@ const AddToCart = ({ currentStyle }) => {
   return (
     <StyledAddToCart>
       { notSelected ? <div>~Please Select Size~</div> : null}
-      {sizes.length > 0 ? <Select options={sizes} ref={styleSelectedRef} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'} openMenuOnFocus={true}/> : <Select placeholder='OUT OF STOCK' isDisabled={true}/>}
+      {sizes.length > 0 ? <Select options={sizes} ref={styleSelectedRef} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'} openMenuOnFocus={true}/> : <Select placeholder="OUT OF STOCK" isDisabled={true}/>}
       {styleSelected !== '' ? <Select options={quantityOptions} onChange={(e) => grabQuantity(e)} defaultValue={1} placeholder={1}/> : <Select isDisabled={true} placeholder='-'/>}
       {sizes.length < 1
       ? null

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const StyledCurrentStyleSelected = styled.div`
 
   div {
@@ -14,11 +13,11 @@ export const StyledCurrentStyleSelected = styled.div`
     padding: 5px;
     width: 30px;
   }
-`
+`;
 
 export const CheckMarkOverlay = styled.div`
   position: relative;
   top: 20px;
   left: 30px;
   z-index: 1;
-`
+`;

@@ -30,9 +30,9 @@ export default function App() {
   };
 
   const getProductStyles = () => {
-    axios.get('/api/products/40344/styles', {})
+    axios.get('/api/products/40344/styles', {}) //jacket is 403444, shoes are 40348
       .then((response) => {
-        //console.log(response.data);
+        console.log(response.data);
         setAllStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
       }).catch((error) => {

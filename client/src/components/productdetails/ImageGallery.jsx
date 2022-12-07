@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Image from './Image.jsx';
 import { StyledImageGallery, StyledThumbnails, StyleLeftButton, StyleRightButton, StyledMainImage } from './styles/ImageGallery.styled.js';
 
-const ImageGallery = ({ currentProduct, currentStyle, mainImage, setMainImage, setCurrentIndex, currentIndex }) => {
+const ImageGallery = ({ currentProduct, currentStyle, mainImage, setMainImage, setCurrentIndex, currentIndex, goToExtendedView }) => {
 
   const leftButton = () => {
     if (currentIndex !== 0) {
@@ -18,7 +18,7 @@ const ImageGallery = ({ currentProduct, currentStyle, mainImage, setMainImage, s
 
   return (
     <StyledImageGallery>
-      {!currentStyle ? null : mainImage === '' ? <StyledMainImage src={currentStyle.photos[0].thumbnail_url}/> : <StyledMainImage src={mainImage.photos[currentIndex].thumbnail_url}/>}
+      {!currentStyle ? null : mainImage === '' ? <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[0].thumbnail_url}/> : <StyledMainImage onClick={goToExtendedView} src={mainImage.photos[currentIndex].thumbnail_url}/>}
       {currentIndex === 0 ? null : <StyleLeftButton onClick={leftButton}> ⬅️ </StyleLeftButton>}
       <StyledThumbnails>
         {currentStyle ? currentStyle.photos.map((photo, index) => {
