@@ -2,16 +2,15 @@ import React from "react"
 import RatingSummary from "./RatingSummary.jsx";
 import { RatingBreakdown } from './styles/RatingBreakdown.styled.js';
 
-export default function ({ reviews }) {
+export default function ({ reviews, filterRating, ratingFilter }) {
   return (
     <RatingBreakdown>
-      <h3>Ratings</h3>
-      <RatingSummary />
-      <a>5 Star Reviews - 10</a><br />
-      <a>4 Star Reviews - 10</a><br />
-      <a>3 Star Reviews - 10</a><br />
-      <a>2 Star Reviews - 10</a><br />
-      <a>1 Star Reviews - 10</a><br />
+      <RatingSummary reviews={reviews}/>
+      <a className={'pointer' + (ratingFilter===5 ? ' pointer-on' : '') } onClick={ () => filterRating(5) }>{ '★★★★★ : ' + reviews.filter(review => review.rating===5).length }</a><br />
+      <a className={'pointer' + (ratingFilter===4 ? ' pointer-on' : '') } onClick={ () => filterRating(4) }>{ '★★★★☆ : ' + reviews.filter(review => review.rating===4).length }</a><br />
+      <a className={'pointer' + (ratingFilter===3 ? ' pointer-on' : '') } onClick={ () => filterRating(3) }>{ '★★★☆☆ : ' + reviews.filter(review => review.rating===3).length }</a><br />
+      <a className={'pointer' + (ratingFilter===2 ? ' pointer-on' : '') } onClick={ () => filterRating(2) }>{ '★★☆☆☆ : ' + reviews.filter(review => review.rating===2).length }</a><br />
+      <a className={'pointer' + (ratingFilter===1 ? ' pointer-on' : '') } onClick={ () => filterRating(1) }>{ '★☆☆☆☆ : ' + reviews.filter(review => review.rating===1).length }</a><br />
     </RatingBreakdown>
   )
 }

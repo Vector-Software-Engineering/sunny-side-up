@@ -17,8 +17,4 @@ export const Container = styled.div`
     font size: 1.15em;
     margin: 0;
   }
-
-  .pointer {
-    cursor: pointer;
-  }
 `

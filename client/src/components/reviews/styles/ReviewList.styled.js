@@ -6,6 +6,7 @@ export const ReviewList = styled.div`
 
   h3 {
     font-size: 16px;
+    margin-top: 0;
   }
 
   .helper {
