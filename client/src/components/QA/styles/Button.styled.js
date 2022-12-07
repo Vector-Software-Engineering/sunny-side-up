@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Button = styled.button`
   border: none;
@@ -16,4 +16,4 @@ export const Button = styled.button`
     transform: scale(0.98);
     background-color: #cfb32b
   }
-`
+`;

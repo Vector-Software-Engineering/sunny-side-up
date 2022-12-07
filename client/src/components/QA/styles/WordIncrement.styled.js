@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const WordIncrement = styled.span`
   font-size: 14px;
@@ -7,4 +7,4 @@ export const WordIncrement = styled.span`
   &: hover {
     cursor: pointer;
   }
-`
+`;

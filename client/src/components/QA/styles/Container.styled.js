@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
@@ -20,4 +20,4 @@ export const Container = styled.div`
   img {
     max-width: 100%;
   }
-`
+`;

@@ -12,11 +12,17 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: [
     'react',
   ],
   rules: {
     'no-console': 0,
+    'import/extensions': 0,
+    'react/prop-types': 0,
   },
 };
