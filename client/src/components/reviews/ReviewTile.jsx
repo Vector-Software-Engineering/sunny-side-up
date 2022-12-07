@@ -15,7 +15,7 @@ export default function ({ review }) {
       <p>{review.body}</p>
       {
         review.recommend ?
-        <p>I recommend this product</p> : 
+        <p>✓ I recommend this product</p> : 
         null
       }      
       <p>{review.response ? ('Response from seller: ' +  review.response) : null }</p>
