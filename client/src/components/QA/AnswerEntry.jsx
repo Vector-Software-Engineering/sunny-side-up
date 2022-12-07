@@ -57,7 +57,7 @@ export default function AnswerEntry({ entry }) {
         {' '}
         | Helpful?
         {' '}
-        <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.id)}><u>Yes</u></WordIncrement>
+        <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.answer_id)}><u>Yes</u></WordIncrement>
         {' '}
         (
         {clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}

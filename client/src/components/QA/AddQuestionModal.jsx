@@ -44,7 +44,7 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
           <h2 className="modal-title">Ask Your Question</h2>
           <h5>
             About the
-            {currentProduct.name}
+            {' ' + currentProduct.name}
           </h5>
         </ModalHeader>
         <ModalContent>
