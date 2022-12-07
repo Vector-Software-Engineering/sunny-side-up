@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
-import ReviewList from './reviews/ReviewList.jsx';
-import { StyledApp, StyledFooter } from '../components/styles/App.styled.js';
+import ReviewList from './reviews/RatingsAndReviews.jsx';
+import { AppDiv, StyledApp, StyledFooter } from './App.styled.js';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
@@ -12,7 +12,7 @@ export default function App() {
   const [allStyles, setAllStyles] = useState ([]);
   const [currentStyle, setCurrentStyle] = useState('');
 
-  const [tab, setTab] = useState('detail');
+  const [tab, setTab] = useState('qa');
 
   useEffect(() => {
   	getProduct();
@@ -90,7 +90,8 @@ export default function App() {
   }
 
   return (
-    <StyledApp>
+    <div>
+      <h1>Product Name</h1>
       { tab!=='detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
       { tab!=='qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
       { tab!=='reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
@@ -109,7 +110,7 @@ export default function App() {
 
       {
         tab==='qa' ?
-        <QA /> :
+        <QA currentProduct={currentProduct}/> :
         null
       }
 
@@ -118,7 +119,7 @@ export default function App() {
         <ReviewList /> :
         null
       }
-      <StyledFooter/>
-    </StyledApp>
+
+    </div>
   );
 }
