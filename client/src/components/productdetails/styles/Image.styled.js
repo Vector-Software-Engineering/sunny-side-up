@@ -13,4 +13,4 @@ export const StyledImage = styled.div`
     width: 3px;
     overflow: hidden:
   }
-`
+`;

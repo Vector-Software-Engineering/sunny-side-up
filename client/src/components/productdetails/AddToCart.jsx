@@ -7,7 +7,6 @@ const AddToCart = ({ currentStyle }) => {
   const [styleSelected, setStyleSelected] = useState('');
   const [quantitySelected, setQuantitySelected] = useState(1);
   const [notSelected, setNotSelected] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const styleSelectedRef = useRef();
 
   let sizes = [];

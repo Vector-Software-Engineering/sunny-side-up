@@ -9,7 +9,7 @@ export const StyledOverview = styled.div`
     align-items: center;
     margin-top: -30px;
   }
-`
+`;
 
 export const StyledOverviewHeader = styled.header`
   display: block;
@@ -20,7 +20,7 @@ export const StyledOverviewHeader = styled.header`
   text-align: center;
   width: 100%;
   text-align: center;
-`
+`;
 
 export const StyledSidebar = styled.div`
   height: 100%;
@@ -32,7 +32,7 @@ export const StyledSidebar = styled.div`
   background-color: #FFF;
   overflow-x: hidden;
   padding-top: 20px;
-`
+`;
 
 export const MainImageBox = styled.div`
   display: flex;

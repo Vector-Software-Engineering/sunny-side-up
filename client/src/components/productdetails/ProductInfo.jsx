@@ -1,9 +1,11 @@
 import React from 'react';
 import { FacebookShareButton, PinterestShareButton, TwitterShareButton, FacebookIcon, PinterestIcon, TwitterIcon } from 'react-share';
-import { StyledSalePrice, StyledOriginalPrice, StyledName, StyleShare } from './styles/ProductInfo.styled.js';
+
+import {
+  StyledSalePrice, StyledOriginalPrice, StyledName, StyleShare,
+} from './styles/ProductInfo.styled.js';
 
 const ProductInfo = ({ currentProduct, allReviews, numReviews, currentStyle }) => {
-
   console.log(currentStyle, ' inside of product info');
 
   let goToReviews = () => {
@@ -39,17 +41,17 @@ const ProductInfo = ({ currentProduct, allReviews, numReviews, currentStyle }) =
       <div>
         <StyleShare>
           <FacebookShareButton url={'https://www.supremenewyork.com/'}>
-            <FacebookIcon size={20}/>
+            <FacebookIcon size={20} />
           </FacebookShareButton>
         </StyleShare>
         <StyleShare>
           <PinterestShareButton url={'https://www.supremenewyork.com/'} media={'https://en.wikipedia.org/wiki/Instagram_egg#/media/File:Instagram_egg.jpg'}>
-            <PinterestIcon size={20}/>
+            <PinterestIcon size={20} />
           </PinterestShareButton>
         </StyleShare>
         <StyleShare>
-          <TwitterShareButton url={'https://www.supremenewyork.com/'}>
-            <TwitterIcon size={20}/>
+          <TwitterShareButton url="https://www.supremenewyork.com/">
+            <TwitterIcon size={20} />
           </TwitterShareButton>
         </StyleShare>
       </div>
