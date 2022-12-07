@@ -20,5 +20,16 @@ export const Container = styled.div`
 
   .pointer {
     cursor: pointer;
+    padding: 2px 2px 2px 0;
+    display: inline-block;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  .pointer-on {
+    background-color: black;
+    color: white;
   }
 `

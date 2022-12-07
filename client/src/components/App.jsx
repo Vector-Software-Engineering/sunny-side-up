@@ -93,9 +93,13 @@ export default function App() {
   return (
     <AppDiv>
       <h1>Product Name</h1>
-      <span style={ tab==='detail' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('detail')} }>detail - </span>
-      <span style={ tab==='qa' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('qa')} }>qa - </span>
-      <span style={ tab==='reviews' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('reviews')} }>reviews</span>
+      <div className='center-bar'>
+        <span className='pointer' style={ tab==='detail' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('detail')} }>detail</span>
+        <span> - </span>
+        <span className='pointer' style={ tab==='qa' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('qa')} }>qa</span>
+        <span> - </span>
+        <span className='pointer' style={ tab==='reviews' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('reviews')} }>reviews</span>
+      </div>
 
       {
         tab==='detail' ?

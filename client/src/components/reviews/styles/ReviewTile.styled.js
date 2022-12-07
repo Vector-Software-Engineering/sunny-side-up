@@ -7,4 +7,15 @@ export const ReviewTile = styled.div`
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
+
+  h3 {
+    margin: 0 20px 5px 0;
+    display: inline-block
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: 35% 25% 25% 15%; 
+  }
+
 `

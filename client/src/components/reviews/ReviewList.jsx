@@ -1,42 +1,20 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios";
+import React from "react"
+
 import ReviewTile from "./ReviewTile.jsx";
 import { ReviewList } from './styles/ReviewList.styled.js';
 
-export default function () {
-  // get reviews
-  const [reviews, setReviews] = useState ([]);
-  const [visReviews, setVisReviews] = useState([]);
-  const [numReviews, setNumReviews] = useState(2);
-  const [sortBy, setSortBy] = useState('relevance');
-
-  useEffect(() => {
-    axios.get('/api/reviews?product_id=40344')
-        .then(response => {
-          console.log(response.data.results);
-          setReviews(response.data.results);
-        }).catch(error => {
-          console.log(error);
-        })
-  }, [])
-
-  useEffect(() => {
-    updateVisReviews();
-  }, [reviews, numReviews, sortBy])
- 
-  const updateVisReviews = () => {
-    // add sorting
-    setVisReviews(reviews.slice(0, numReviews));
-  }
+export default function ({ reviews, visReviews, numReviews, sortBy, setSortBy, setNumReviews }) {
 
   return (
     <ReviewList>
       <h3>Reviews</h3>
       <div className='helper'>
-        <span>Sort reviews by</span>
-        <span style={ sortBy==='helpful' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('helpful') }> - helpful - </span>
-        <span style={ sortBy==='newest' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('newest') }>newest - </span>
-        <span style={ sortBy==='relevance' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('relevance') }>relevance</span>
+        <span>Sort reviews by - </span>
+        <span className='pointer' style={ sortBy==='helpful' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('helpful') }> helpful </span>
+        <span> - </span> 
+        <span className='pointer'  style={ sortBy==='newest' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('newest') }>newest </span>
+        <span> - </span>
+        <span className='pointer'  style={ sortBy==='relevance' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('relevance') }>relevance</span>
       </div>
       {
         visReviews.map((review, index) => {
