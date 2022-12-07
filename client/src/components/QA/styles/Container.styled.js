@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
@@ -10,7 +10,7 @@ export const Container = styled.div`
     font-family: 'Courier Prime', monospace;
   }
 
-  h4 {
+  h2 {
     background: white;
     color: black;
     font-size: 1.15em;
@@ -20,4 +20,4 @@ export const Container = styled.div`
   img {
     max-width: 100%;
   }
-`
+`;
