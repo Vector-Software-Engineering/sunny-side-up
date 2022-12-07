@@ -17,19 +17,4 @@ export const Container = styled.div`
     font size: 1.15em;
     margin: 0;
   }
-
-  .pointer {
-    cursor: pointer;
-    padding: 2px 2px 2px 0;
-    display: inline-block;
-    &:hover {
-      background-color: black;
-      color: white;
-    }
-  }
-
-  .pointer-on {
-    background-color: black;
-    color: white;
-  }
 `

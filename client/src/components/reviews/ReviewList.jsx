@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 
 import ReviewTile from "./ReviewTile.jsx";
+import AddReviewModal from "./AddReviewModal.jsx";
 import { ReviewList } from './styles/ReviewList.styled.js';
 
-export default function ({ reviews, visReviews, numReviews, sortBy, setSortBy, setNumReviews }) {
+export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setSortBy, setNumReviews }) {
+
+  const [showModal, setShowModal] = useState(true);
 
   return (
     <ReviewList>
@@ -29,6 +32,8 @@ export default function ({ reviews, visReviews, numReviews, sortBy, setSortBy, s
           <div onClick={() => { setNumReviews(2); }}>Show fewer reviews</div>
         }
       </div>
+
+      {showModal && <AddReviewModal prodID={prodID} setShowModal={setShowModal}/>}
     </ReviewList>
   )
 }

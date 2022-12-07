@@ -7,6 +7,8 @@ import { Container } from './styles/Container.styled.js';
 
 export default function () {
 
+    const [prodID, setProdID] = useState(40344);
+
     // get reviews
     const [reviews, setReviews] = useState ([]);
     const [visReviews, setVisReviews] = useState([]);
@@ -15,7 +17,7 @@ export default function () {
     const [ratingFilter, setRatingFilter] = useState(6);
   
     useEffect(() => {
-      axios.get('/api/reviews?product_id=40344')
+      axios.get('/api/reviews?product_id=' + prodID)
           .then(response => {
             setReviews(response.data.results);
           }).catch(error => {
@@ -61,7 +63,7 @@ export default function () {
     <Container>
       <div className='main'>
         <RatingBreakdown reviews={reviews} filterRating={filterRating} ratingFilter={ratingFilter} />
-        <ReviewList reviews={reviews} visReviews={visReviews} numReviews={numReviews} sortBy={sortBy} setSortBy={setSortBy} setNumReviews={setNumReviews} />
+        <ReviewList prodID={prodID} reviews={reviews} visReviews={visReviews} numReviews={numReviews} sortBy={sortBy} setSortBy={setSortBy} setNumReviews={setNumReviews} />
       </div>
     </Container>
   )
