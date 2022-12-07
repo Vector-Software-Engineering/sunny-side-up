@@ -4,6 +4,7 @@ export const AppDiv = styled.div`
 
   @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
   font-family: 'Courier Prime', monospace;
+  margin-left: 140px;
 
   h1 {
     text-align: center;
@@ -34,5 +35,4 @@ export const AppDiv = styled.div`
     background-color: black;
     color: white;
   }
-
-`
+`;

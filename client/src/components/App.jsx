@@ -3,22 +3,16 @@ import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
 import ReviewList from './reviews/RatingsAndReviews.jsx';
-import { AppDiv, StyledApp, StyledFooter } from './App.styled.js';
+import { AppDiv, StyledApp} from './App.styled.js';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
   const [allReviews, setAllReviews] = useState(0);
   const [numReviews, setNumReviews] = useState(0);
-  const [allStyles, setAllStyles] = useState ([]);
+  const [allStyles, setAllStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
 
-  const [tab, setTab] = useState('qa');
-
-  useEffect(() => {
-  	getProduct();
-    getReviews();
-    getProductStyles();
-  }, []);
+  const [tab, setTab] = useState('detail');
 
   const getProducts = () => {
     axios.get('/api/products/', {})
@@ -30,7 +24,7 @@ export default function App() {
   };
 
   const getProductStyles = () => {
-    axios.get('/api/products/40344/styles', {}) //jacket is 403444, shoes are 40348
+    axios.get('/api/products/40344/styles', {}) // jacket is 403444, shoes are 40348
       .then((response) => {
         console.log(response.data);
         setAllStyles(response.data.results);
@@ -43,17 +37,27 @@ export default function App() {
   const getProduct = () => {
     axios.get('/api/products/40344', {})
       .then((response) => {
-        //console.log(response.data);
+        // console.log(response.data);
         setCurrentProduct(response.data);
       }).catch((error) => {
         console.log(error);
       });
   };
 
+  const getAverageReviews = (reviewData) => {
+    const ratings = reviewData.results;
+    setNumReviews(ratings.length);
+    let result = 0;
+    for (let i = 0; i < ratings.length; i += 1) {
+      result += ratings[i].rating;
+    }
+    return result / ratings.length;
+  };
+
   const getReviews = () => {
     axios.get('/api/reviews?product_id=40344', {})
       .then((response) => {
-        //console.log(response.data);
+        // console.log(response.data);
         setAllReviews(getAverageReviews(response.data));
       }).catch((error) => {
         console.log(error);
@@ -79,25 +83,21 @@ export default function App() {
       });
   };
 
-  const getAverageReviews = (reviewData) => { //used in product details
-    let ratings = reviewData.results;
-    setNumReviews(ratings.length);
-    let result = 0;
-    for (let i = 0; i < ratings.length; i++) {
-      result += ratings[i].rating;
-    }
-    return result / ratings.length;
-  }
+  useEffect(() => {
+    getProduct();
+    getReviews();
+    getProductStyles();
+  }, []);
 
   return (
-    <div>
+    <AppDiv>
       <h1>Product Name</h1>
-      { tab!=='detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
-      { tab!=='qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
-      { tab!=='reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
+      { tab !== 'detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
+      { tab !== 'qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
+      { tab !== 'reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
 
       {
-        tab==='detail' ?
+        tab === 'detail' ?
         <Overview
         currentProduct={currentProduct}
         allReviews={allReviews}
@@ -110,16 +110,15 @@ export default function App() {
 
       {
         tab==='qa' ?
-        <QA currentProduct={currentProduct}/> :
+          <QA currentProduct={currentProduct}/> :
         null
       }
 
       {
-        tab==='reviews' ?
-        <ReviewList /> :
+        tab === 'reviews' ?
+          <ReviewList /> :
         null
       }
-
-    </div>
+    </AppDiv>
   );
 }

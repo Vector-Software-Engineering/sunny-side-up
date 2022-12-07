@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import ImageGallery from './ImageGallery.jsx';
-import { StyledOverviewHeader, StyledSidebar, StyledOverview, MainImageBox, InformationBox, StyledFooter, StyledExtendedView } from './styles/Overview.styled.js';
+import {
+  StyledOverviewHeader, StyledSidebar, StyledOverview,
+  MainImageBox, InformationBox, StyledFooter, StyledExtendedView,
+} from './styles/Overview.styled.js';
 import logo from './logo.jpg';
 
 const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle }) => {
-
   const [mainImage, setMainImage] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [extendedView, setExtendedView] = useState('');
@@ -30,19 +32,36 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
           </time>
         </hgroup>
       </StyledOverviewHeader>
-      <StyledSidebar>
-      </StyledSidebar>
+      <StyledSidebar />
       <article>
         <MainImageBox>
-          <ImageGallery currentProduct={currentProduct} currentStyle={currentStyle} mainImage={mainImage} setMainImage={setMainImage} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} goToExtendedView={goToExtendedView}/>
+          <ImageGallery
+            currentProduct={currentProduct}
+            currentStyle={currentStyle}
+            mainImage={mainImage}
+            setMainImage={setMainImage}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+            goToExtendedView={goToExtendedView}
+          />
         </MainImageBox>
         <InformationBox>
-          <ProductInfo currentProduct={currentProduct} allReviews={allReviews} numReviews={numReviews} currentStyle={currentStyle}/>
-          <StyleSelector allStyles={allStyles} currentStyle={currentStyle} setCurrentStyle={setCurrentStyle} setMainImage={setMainImage}/>
-          <AddToCart currentStyle={currentStyle}/>
+          <ProductInfo
+            currentProduct={currentProduct}
+            allReviews={allReviews}
+            numReviews={numReviews}
+            currentStyle={currentStyle}
+          />
+          <StyleSelector
+            allStyles={allStyles}
+            currentStyle={currentStyle}
+            setCurrentStyle={setCurrentStyle}
+            setMainImage={setMainImage}
+          />
+          <AddToCart currentStyle={currentStyle} />
         </InformationBox>
       </article>
-      <StyledFooter/>
+      <StyledFooter />
     </StyledOverview>
   );
 };
