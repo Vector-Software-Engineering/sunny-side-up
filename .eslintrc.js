@@ -19,7 +19,4 @@ module.exports = {
   rules: {
     'no-console': 0,
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
 };
