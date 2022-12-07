@@ -10,7 +10,7 @@ export const Container = styled.div`
     font-family: 'Courier Prime', monospace;
   }
 
-  h4 {
+  h2 {
     background: white;
     color: black;
     font-size: 1.15em;

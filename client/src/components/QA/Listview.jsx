@@ -15,7 +15,7 @@ export default function Listview({ currentProduct }) {
 
   useEffect(() => {
     //get all questions
-    axios.get('/api/qa/questions?product_id=40347&count=100')
+    axios.get('/api/qa/questions?product_id=40344&count=100')
     .then((response) => {
       setQA(response.data.results);
     }).catch((error) => {
@@ -70,7 +70,7 @@ export default function Listview({ currentProduct }) {
 
   return (
     <>
-      <Input onChange={handleSearchChange} placeholder ="SEARCH"></Input>
+      <Input onChange={handleSearchChange} placeholder ="Have a question? Search for answers…"></Input>
       <div style={{  display: "flex", justifyContent: "center"}}>
         <Overflow>
           {handleQuestionNum.length > 0 && handleQuestionNum.map((entry, index) => <ListviewEntry currentProduct={currentProduct} key={index} entry={entry}/>)}

@@ -6,22 +6,18 @@ import { AnswerOverflow } from './styles/AnswerOverflow.styled.js';
 
 export default function AnswersList({ entry }) {
 
-  const [allAnswers, setAllAnswers] = useState({});
+  const [allAnswers, setAllAnswers] = useState([]);
   const [numOfAnswers, setNumOfAnswers] = useState(true)
 
   //adding get data breaks the question to answer sync
   useEffect(() => {
-  //   axios.get(`/api/qa/questions/${entry.question_id}/answers?count=100`)
-  //   .then((response) => {
-  //     setAllAnswers(response.data.results);
-  //   }).catch((error) => {
-  //     console.log(error);
-  //   });
-  // }, [])
-    setAllAnswers(entry.answers)
-  })
-
-
+    axios.get(`/api/qa/questions/${entry.question_id}/answers?count=100`)
+    .then((response) => {
+      setAllAnswers(response.data.results);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }, [entry])
 
   const handleMoreClick = (e) => {
     e.preventDefault()
@@ -29,32 +25,162 @@ export default function AnswersList({ entry }) {
   }
 
   return (
-    <AnswerOverflow>
-      {numOfAnswers === true
-      ?
+    <>
+      <AnswerOverflow>
+        {numOfAnswers === true
+        ?
 
-      Object.keys(allAnswers).slice(0, 2).map((keyName, i) => {
-        return(
-          <AnswerEntry key={i} entry={allAnswers[keyName] }/>
-        )
-      })
-      : null}
-
-      {Object.keys(entry.answers).length > 2 && numOfAnswers === true ? <Button onClick={handleMoreClick}>MORE A</Button> : null}
-
-      {numOfAnswers === false
-      ?
-      Object.keys(allAnswers).map((keyName, i) => {
-        return(
-          <AnswerEntry key={i} entry={allAnswers[keyName] }/>
-        )
-      })
-      : null}
+        allAnswers.slice(0, 2).map((entry, i) => {
+          return(
+            <AnswerEntry key={i} entry={entry}/>
+            )
+          })
+          : null}
 
 
-      {Object.keys(entry.answers).length > 2 && numOfAnswers === false ? <Button onClick={handleMoreClick}>LESS A</Button> : null}
 
-      <br></br>
-    </AnswerOverflow>
+        {numOfAnswers === false
+        ?
+        allAnswers.map((entry, i) => {
+          return(
+            <AnswerEntry key={i} entry={entry}/>
+            )
+          })
+          : null}
+        <br></br>
+      </AnswerOverflow>
+      {Object.keys(entry.answers).length > 2 && numOfAnswers === false ? <Button onClick={handleMoreClick}>COLLAPSE ANSWERS</Button> : null}
+      {Object.keys(entry.answers).length > 2 && numOfAnswers === true ? <Button onClick={handleMoreClick}>SEE MORE ANSWERS</Button> : null}
+    </>
   )
 }
+
+
+
+
+
+
+//What I thought would work
+
+
+// import React, { useState, useEffect } from "react";
+// import { Button } from './styles/Button.styled.js';
+// import AnswerEntry from './AnswerEntry.jsx'
+// import axios from 'axios'
+// import { AnswerOverflow } from './styles/AnswerOverflow.styled.js';
+
+// export default function AnswersList({ entry }) {
+
+//   const [allAnswers, setAllAnswers] = useState([]);
+//   const [numOfAnswers, setNumOfAnswers] = useState(true)
+
+//   //adding get data breaks the question to answer sync
+//   useEffect(() => {
+//     axios.get(`/api/qa/questions/${entry.question_id}/answers?count=100`)
+//     .then((response) => {
+//       setAllAnswers(response.data.results);
+//     }).catch((error) => {
+//       console.log(error);
+//     });
+//   }, [])
+
+//   const handleMoreClick = (e) => {
+//     e.preventDefault()
+//     setNumOfAnswers(!numOfAnswers)
+//   }
+
+//   return (
+//     <AnswerOverflow>
+//       {numOfAnswers === true
+//       ?
+
+//       allAnswers.slice(0, 2).map((entry, i) => {
+//         return(
+//           <AnswerEntry key={i} entry={entry}/>
+//         )
+//       })
+//       : null}
+
+//       {Object.keys(entry.answers).length > 2 && numOfAnswers === true ? <Button onClick={handleMoreClick}>MORE A</Button> : null}
+
+//       {numOfAnswers === false
+//       ?
+//       allAnswers.map((entry, i) => {
+//         return(
+//           <AnswerEntry key={i} entry={entry}/>
+//         )
+//       })
+//       : null}
+
+
+//       {Object.keys(entry.answers).length > 2 && numOfAnswers === false ? <Button onClick={handleMoreClick}>LESS A</Button> : null}
+
+//       <br></br>
+//     </AnswerOverflow>
+//   )
+// }
+
+
+//What works but not sorted by helpfulness
+
+// import React, { useState, useEffect } from "react";
+// import { Button } from './styles/Button.styled.js';
+// import AnswerEntry from './AnswerEntry.jsx'
+// import axios from 'axios'
+// import { AnswerOverflow } from './styles/AnswerOverflow.styled.js';
+
+// export default function AnswersList({ entry }) {
+
+//   const [allAnswers, setAllAnswers] = useState({});
+//   const [numOfAnswers, setNumOfAnswers] = useState(true)
+
+//   //adding get data breaks the question to answer sync
+//   useEffect(() => {
+//   //   axios.get(`/api/qa/questions/${entry.question_id}/answers?count=100`)
+//   //   .then((response) => {
+//   //     setAllAnswers(response.data.results);
+//   //   }).catch((error) => {
+//   //     console.log(error);
+//   //   });
+//   // }, [])
+//     setAllAnswers(entry.answers)
+//   })
+
+
+
+//   const handleMoreClick = (e) => {
+//     e.preventDefault()
+//     setNumOfAnswers(!numOfAnswers)
+//   }
+
+//   return (
+//     <AnswerOverflow>
+//       {numOfAnswers === true
+//       ?
+
+//       Object.keys(allAnswers).slice(0, 2).map((keyName, i) => {
+//         return(
+//           <AnswerEntry key={i} entry={allAnswers[keyName] }/>
+//         )
+//       })
+//       : null}
+
+//       {Object.keys(entry.answers).length > 2 && numOfAnswers === true ? <Button onClick={handleMoreClick}>MORE A</Button> : null}
+
+//       {numOfAnswers === false
+//       ?
+//       Object.keys(allAnswers).map((keyName, i) => {
+//         return(
+//           <AnswerEntry key={i} entry={allAnswers[keyName] }/>
+//         )
+//       })
+//       : null}
+
+
+//       {Object.keys(entry.answers).length > 2 && numOfAnswers === false ? <Button onClick={handleMoreClick}>LESS A</Button> : null}
+
+//       <br></br>
+//     </AnswerOverflow>
+//   )
+// }
+

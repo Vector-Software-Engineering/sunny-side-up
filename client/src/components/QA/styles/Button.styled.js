@@ -8,6 +8,7 @@ export const Button = styled.button`
   background-color: white;
   color: black;
   width: fit-content;
+  margin-top: 10px;
 
 
   &: hover {

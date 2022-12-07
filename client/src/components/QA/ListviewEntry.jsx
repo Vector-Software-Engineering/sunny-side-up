@@ -6,6 +6,7 @@ import axios from 'axios'
 
 
 export default function ListviewEntry({ currentProduct, entry }) {
+
   const [showAModal, setShowAModal] = useState(false)
   const [clickHelpful, setClickHelpful] = useState(false)
 

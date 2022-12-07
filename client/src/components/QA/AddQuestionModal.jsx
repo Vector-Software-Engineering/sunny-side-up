@@ -51,7 +51,7 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
               <label>Nickname*</label><br></br>
               <SmallerInput name='name' maxlength='60' placeholder='jackson11!' required></SmallerInput><h6>For privacy reasons, do not use your full name or email address</h6>
               <label>Email*</label><br></br>
-              <SmallerInput name='email' type='email' maxlength='60' placeholder='example@domain.com' required></SmallerInput><br></br>
+              <SmallerInput name='email' type='email' maxlength='60' placeholder='jack@email.com' required></SmallerInput><br></br>
               <h6>For authentication reasons, you will not be emailed</h6>
               <Button type='submit'>Submit</Button>
             </form>
