@@ -6,7 +6,6 @@ import {
 } from './styles/ProductInfo.styled.js';
 
 const ProductInfo = ({ currentProduct, allReviews, numReviews, currentStyle }) => {
-  console.log(currentStyle, ' inside of product info');
 
   const goToReviews = () => {
     console.log('This link will change View to James Review Component');

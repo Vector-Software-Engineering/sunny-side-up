@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    jest: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -22,9 +23,7 @@ module.exports = {
   ],
   rules: {
     'no-console': 0,
-    'import/extensions': 'off',
-    'react/function-component-definition': 'off',
+    'import/extensions': 0,
     'react/prop-types': 0,
-    'jsx-a11y/click-events-have-key-events': 0,
   },
 };

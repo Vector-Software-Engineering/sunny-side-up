@@ -11,11 +11,10 @@ export const StyledMainImage = styled.img`
 
 export const StyledThumbnails = styled.div`
   display: flex;
-  position: absolute;
+  position: relative;
   align-content: center;
-  top: 0px;
+  justify-content: space-around;
   left: -40px;
-  flex-direction: column;
   cursor: default;
 `;
 
@@ -25,9 +24,6 @@ export const StyleLeftButton = styled.button`
   font-size: 20px;
   cursor: pointer;
   display: inline-block;
-  position: absolute;
-  top: 455px;
-  right: 180px;
 `;
 
 export const StyleRightButton = styled.button`
@@ -36,7 +32,4 @@ export const StyleRightButton = styled.button`
   font-size: 20px;
   cursor: pointer;
   display: inline-block;
-  position: absolute;
-  top: 455px;
-  right: 120px;
 `;
