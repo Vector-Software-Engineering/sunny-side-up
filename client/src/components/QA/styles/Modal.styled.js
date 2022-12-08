@@ -9,16 +9,22 @@ left: 0;
 z-index: 1000;
 background-color: rgba(0,0,0,0.75);
 display: flex;
+font-size: 20px;
 `;
 
 const Modal = styled.section`
 margin: auto;
-width: 90%;
+width: 60%;
+max-height: 72%;
 max-width: 40rem;
 background-color: white;
+overflow-y: auto;
+display: inline-block;
 `;
 
 const ModalHeader = styled.header`
+border-stlye: solid;
+border-size: 1px;
 padding: 1rem;
 position: relative;
 `;
