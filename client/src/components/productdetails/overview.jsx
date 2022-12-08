@@ -7,22 +7,26 @@ import {
   StyledOverviewHeader, StyledSidebar, StyledOverview, GridContainer,
   MainImageBox, InformationBox, StyledFooter, StyledExtendedView, StyledProductInfo,
 } from './styles/Overview.styled.js';
-// import logo from './logo.jpg';
+import ViewModal from './ViewModal.jsx';
 
 const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle }) => {
   const [mainImage, setMainImage] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [extendedView, setExtendedView] = useState('');
+  const [firstIndex, setFirstIndex] = useState(0);
+  const [extendedView, setExtendedView] = useState(false);
 
   const goToExtendedView = () => {
     console.log('we are going to extended view');
-    setExtendedView('true');
+    setExtendedView(!extendedView);
   };
 
   // <img src={logo} height={70}/>
+  // {!currentStyle || extendedView === false ? null : mainImage === '' ? <StyledExtendedView src={currentStyle.photos[0].thumbnail_url}/> : <StyledExtendedView  src={mainImage.photos[currentIndex].thumbnail_url}/>}
+
+
   return (
     <StyledOverview>
-      {!currentStyle || extendedView === '' ? null : mainImage === '' ? <StyledExtendedView src={currentStyle.photos[0].thumbnail_url}/> : <StyledExtendedView  src={mainImage.photos[currentIndex].thumbnail_url}/>}
+      {!currentStyle || extendedView === false ? null : mainImage === '' ? <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} /> : <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} />}
       <StyledOverviewHeader>
         <hgroup>
           <h1>Sunny Side Up</h1>
@@ -43,6 +47,8 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
               currentIndex={currentIndex}
               setCurrentIndex={setCurrentIndex}
               goToExtendedView={goToExtendedView}
+              firstIndex={firstIndex}
+              setFirstIndex={setFirstIndex}
             />
           </MainImageBox>
           <StyledProductInfo>

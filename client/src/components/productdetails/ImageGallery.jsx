@@ -5,17 +5,27 @@ import { StyledImageGallery, StyledThumbnails, StyleLeftButton, StyleRightButton
 
 const ImageGallery = ({
   currentProduct, currentStyle, mainImage, setMainImage,
-  setCurrentIndex, currentIndex, goToExtendedView,
+  setCurrentIndex, currentIndex, goToExtendedView, firstIndex, setFirstIndex,
 }) => {
   const [shortenedThumbnails, setShortenedThumbnails] = useState([]);
 
-  if (currentStyle && shortenedThumbnails === []) {
-    let tempArray = [];
-    for (let i = 0; i < 7; i += 1) {
-      tempArray.push(currentStyle.photos[i]);
+  const setThumbnails = () => {
+    console.log('the firstIndex is:, ', firstIndex);
+    if (currentStyle && shortenedThumbnails.length === 0) {
+      let tempArray = [];
+      let counter = 0;
+      for (let i = firstIndex; i < currentStyle.photos.length; i += 1) {
+        if (counter > 6) {
+          break;
+        }
+        tempArray.push(currentStyle.photos[i]);
+        counter++;
+      }
+      counter = 0;
+      setShortenedThumbnails(tempArray);
     }
-    setShortenedThumbnails(tempArray);
-  }
+  };
+  setThumbnails();
 
   const leftButton = () => {
     if (currentIndex !== 0) {
@@ -26,6 +36,11 @@ const ImageGallery = ({
   const rightButton = () => {
     if (currentIndex !== currentStyle.photos.length - 1) {
       setCurrentIndex(currentIndex + 1);
+      if (currentIndex > 6) {
+        setFirstIndex(7);
+        setThumbnails();
+      }
+      console.log('inside rightButton the currentIndex is: ', currentIndex, firstIndex, shortenedThumbnails);
     }
   };
 
@@ -41,8 +56,8 @@ const ImageGallery = ({
         : <StyleLeftButton onClick={leftButton}> ⬅️ </StyleLeftButton
       >}
       <StyledThumbnails>
-        {currentStyle
-          ? currentStyle.photos.map((photo, index) => {
+        {shortenedThumbnails.length !== 0
+          ? shortenedThumbnails.map((photo, index) => {
             return <Image key={index} index={index} photo={photo} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} currentStyle={currentStyle} />
           }) : null}
       </StyledThumbnails>

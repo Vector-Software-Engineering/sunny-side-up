@@ -3,7 +3,7 @@ import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/overview.jsx';
 import ReviewList from './reviews/RatingsAndReviews.jsx';
-import { AppDiv, StyledApp} from './App.styled.js';
+import { AppDiv } from './App.styled.js';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
@@ -24,7 +24,7 @@ export default function App() {
   };
 
   const getProductStyles = () => {
-    axios.get('/api/products/40344/styles', {}) // jacket is 403444, shoes are 40348
+    axios.get('/api/products/40348/styles', {}) // jacket is 403444, shoes are 40348
       .then((response) => {
         // console.log(response.data);
         setAllStyles(response.data.results);
