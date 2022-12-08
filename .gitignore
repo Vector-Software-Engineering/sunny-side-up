@@ -67,7 +67,7 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+client/dist/bundle.js
 
 
 # Stores VSCode versions used for testing VSCode extensions
