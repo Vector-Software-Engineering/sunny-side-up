@@ -4,8 +4,8 @@ import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import {
-  StyledOverviewHeader, StyledSidebar, StyledOverview,
-  MainImageBox, InformationBox, StyledFooter, StyledExtendedView,
+  StyledOverviewHeader, StyledSidebar, StyledOverview, GridContainer,
+  MainImageBox, InformationBox, StyledFooter, StyledExtendedView, StyledProductInfo,
 } from './styles/Overview.styled.js';
 // import logo from './logo.jpg';
 
@@ -25,7 +25,6 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
       {!currentStyle || extendedView === '' ? null : mainImage === '' ? <StyledExtendedView src={currentStyle.photos[0].thumbnail_url}/> : <StyledExtendedView  src={mainImage.photos[currentIndex].thumbnail_url}/>}
       <StyledOverviewHeader>
         <hgroup>
-
           <h1>Sunny Side Up</h1>
           <time>
             <b>12/04/2022 07:46pm </b>
@@ -34,35 +33,37 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
         </hgroup>
       </StyledOverviewHeader>
       <StyledSidebar />
-      <article>
+      <GridContainer>
         <MainImageBox>
-          <ImageGallery
-            currentProduct={currentProduct}
-            currentStyle={currentStyle}
-            mainImage={mainImage}
-            setMainImage={setMainImage}
-            currentIndex={currentIndex}
-            setCurrentIndex={setCurrentIndex}
-            goToExtendedView={goToExtendedView}
-          />
-        </MainImageBox>
-        <InformationBox>
-          <ProductInfo
-            currentProduct={currentProduct}
-            allReviews={allReviews}
-            numReviews={numReviews}
-            currentStyle={currentStyle}
-          />
-          <StyleSelector
-            allStyles={allStyles}
-            currentStyle={currentStyle}
-            setCurrentStyle={setCurrentStyle}
-            setMainImage={setMainImage}
-          />
-          <AddToCart currentStyle={currentStyle} />
-        </InformationBox>
-      </article>
-      <StyledFooter />
+            <ImageGallery
+              currentProduct={currentProduct}
+              currentStyle={currentStyle}
+              mainImage={mainImage}
+              setMainImage={setMainImage}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+              goToExtendedView={goToExtendedView}
+            />
+          </MainImageBox>
+          <StyledProductInfo>
+            <ProductInfo
+              currentProduct={currentProduct}
+              allReviews={allReviews}
+              numReviews={numReviews}
+              currentStyle={currentStyle}
+            />
+            <InformationBox>
+              <StyleSelector
+                allStyles={allStyles}
+                currentStyle={currentStyle}
+                setCurrentStyle={setCurrentStyle}
+                setMainImage={setMainImage}
+              />
+              <AddToCart currentStyle={currentStyle} />
+            </InformationBox>
+          </StyledProductInfo>
+
+      </GridContainer>
     </StyledOverview>
   );
 };

@@ -34,21 +34,30 @@ export const StyledSidebar = styled.div`
   padding-top: 20px;
 `;
 
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: minmax(300px, 1000px) 2fr minmax(200px, 200px) 1fr;
+  grid-template-rows: minmax(800px, 800px) 4fr 1fr;
+  border: 2px outset pink;
+`;
+
 export const MainImageBox = styled.div`
-  display: absolute;
-  top-margin: -100px;
-  width: 330px;
+  grid-column: 0;
+  grid-row: 0;
+  height: 500;
+  width: auto;
+  border: 2px outset blue;
+  overflow: hidden;
+`;
+
+export const StyledProductInfo = styled.div`
+  grid-column: auto;
+  grid-row: auto;
+  border: 2px outset blue;
 `;
 
 export const InformationBox = styled.div`
-  display: inline-block;
-  width: 400px;
-`;
-export const StyledFooter = styled.div`
-  display: block;
-  height: 200px;
-  width: 100%;
-  bottom: 0px;
+  border: 2px outset blue;
 `;
 
 export const StyledExtendedView = styled.img`

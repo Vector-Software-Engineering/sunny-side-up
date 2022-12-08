@@ -7,6 +7,8 @@ export const StyledImageGallery = styled.div`
 
 export const StyledMainImage = styled.img`
   cursor: zoom-in;
+  height: 100%;
+  width: 100%;
 `;
 
 export const StyledThumbnails = styled.div`
@@ -15,6 +17,8 @@ export const StyledThumbnails = styled.div`
   align-content: center;
   justify-content: space-around;
   left: -40px;
+  top: -50px;
+  background-color: green;
   cursor: default;
 `;
 
