@@ -1,17 +1,18 @@
 import React from 'react';
+import { StyledImage } from './styles/Image.styled.js';
 
-const Image = ({ photo }) => {
-
-  //console.log('photo: ', photo);
-
-  const doSomething = () => {
-    console.log('hi');
-  }
+const Image = ({ photo, setMainImage, index, setCurrentIndex, currentStyle }) => {
+  const setIndexAndMain = () => {
+    setMainImage(currentStyle);
+    setCurrentIndex(index);
+  };
 
   return (
-    <div>
-      <img onClick={doSomething} src={photo.thumbnail_url}/>
-    </div>
+    <StyledImage>
+      <div>
+        <img onClick={() => setIndexAndMain(photo, index)} src={photo.thumbnail_url} alt="style" />
+      </div>
+    </StyledImage>
   );
 };
 
