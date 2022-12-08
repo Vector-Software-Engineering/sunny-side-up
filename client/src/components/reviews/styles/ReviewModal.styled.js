@@ -9,6 +9,16 @@ left: 0;
 z-index: 1000;
 background-color: rgba(0,0,0,0.75);
 display: flex;
+margin: 0;
+
+.modal-title {
+  margin: 0;
+}
+
+.rating span {
+  font-size: 24px;
+}
+
 `
 
 const Modal = styled.section`
@@ -19,8 +29,8 @@ background-color: white;
 `
 
 const ModalHeader = styled.header`
-padding: 1rem;
-position: relative;
+  position: relative;
+  margin: 16px 0 0 16px;
 `
 
 const ModalContent = styled.header`
@@ -30,6 +40,7 @@ padding: 1.5rem;
 const Exit = styled.p`
 padding: 0;
 position: absolute;
+font-size: 20px;
 top: 0;
 right: 1rem;
 
@@ -47,6 +58,7 @@ width: 70%;
 `
 const SmallerInput = styled.input`
 width: 50%;
+margin: 10px 0;
 `
 
 export {
