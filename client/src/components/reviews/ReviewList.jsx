@@ -6,11 +6,12 @@ import { ReviewList } from './styles/ReviewList.styled.js';
 
 export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setSortBy, setNumReviews }) {
 
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <ReviewList>
       <h3>Reviews</h3>
+      <p className='pointer write-review' onClick={() => {setShowModal(true)}}>Write a review</p>
       <div className='helper'>
         <span>Sort reviews by - </span>
         <span className='pointer' style={ sortBy==='helpful' ? {'fontWeight' : 'bold'} : null } onClick={ () => setSortBy('helpful') }> helpful </span>
