@@ -26,7 +26,7 @@ const Overview = ({ currentProduct, allReviews, numReviews, allStyles, currentSt
       <StyledOverviewHeader>
         <hgroup>
 
-          <h1>Sunny dont forget the bev neva neva neva Up</h1>
+          <h1>Sunny Side Up</h1>
           <time>
             <b>12/04/2022 07:46pm </b>
             <span>Philadelphia</span>
