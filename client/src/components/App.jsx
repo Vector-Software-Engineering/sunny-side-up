@@ -3,23 +3,16 @@ import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/Overview.jsx';
 import ReviewList from './reviews/RatingsAndReviews.jsx';
-import { AppDiv } from './App.styled.js';
+import { AppDiv, StyledApp} from './App.styled.js';
 
 export default function App() {
+  const [currentProduct, setCurrentProduct] = useState({});
+  const [allReviews, setAllReviews] = useState(0);
+  const [numReviews, setNumReviews] = useState(0);
+  const [allStyles, setAllStyles] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState('');
 
-  const [currentProduct, setCurrentProduct] = useState({}); //used in product details
-  const [allReviews, setAllReviews] = useState(0); //used in product details
-  const [numReviews, setNumReviews] = useState(0); //used in product details
-  const [allStyles, setAllStyles] = useState ([]); //used in product details
-  const [currentStyle, setCurrentStyle] = useState('');  //used in product details
-
-  const [tab, setTab] = useState('qa');
-
-  useEffect(() => {
-  	getProduct();
-    getReviews();
-    getProductStyles();
-  }, []);
+  const [tab, setTab] = useState('detail');
 
   const getProducts = () => {
     axios.get('/api/products/', {})
@@ -31,9 +24,9 @@ export default function App() {
   };
 
   const getProductStyles = () => {
-    axios.get('/api/products/40344/styles', {})
+    axios.get('/api/products/40344/styles', {}) // jacket is 403444, shoes are 40348
       .then((response) => {
-        //console.log(response.data);
+        // console.log(response.data);
         setAllStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
       }).catch((error) => {
@@ -44,17 +37,27 @@ export default function App() {
   const getProduct = () => {
     axios.get('/api/products/40344', {})
       .then((response) => {
-        //console.log(response.data);
+        // console.log(response.data);
         setCurrentProduct(response.data);
       }).catch((error) => {
         console.log(error);
       });
   };
 
+  const getAverageReviews = (reviewData) => {
+    const ratings = reviewData.results;
+    setNumReviews(ratings.length);
+    let result = 0;
+    for (let i = 0; i < ratings.length; i += 1) {
+      result += ratings[i].rating;
+    }
+    return result / ratings.length;
+  };
+
   const getReviews = () => {
     axios.get('/api/reviews?product_id=40344', {})
       .then((response) => {
-        //console.log(response.data);
+        // console.log(response.data);
         setAllReviews(getAverageReviews(response.data));
       }).catch((error) => {
         console.log(error);
@@ -64,9 +67,9 @@ export default function App() {
   const postReview = () => {
     axios.post('/api/reviews/', {
       product_id: 40344,
-      rating: 3,
-      summary: 'looks great, NOT',
-      body: 'random text jake is cook',
+      rating: 2,
+      summary: 'looks great, NOT, go to SUNNY SIDE UP to get some real DRIP',
+      body: 'random text jake is cool fr, but also chefs it up it the kitchen',
       recommend: false,
       name: 'james',
       email: 'bigballerjames@gmail.com',
@@ -80,29 +83,21 @@ export default function App() {
       });
   };
 
-  const getAverageReviews = (reviewData) => { //used in product details
-    let ratings = reviewData.results;
-    setNumReviews(ratings.length);
-    let result = 0;
-    for (let i = 0; i < ratings.length; i++) {
-      result += ratings[i].rating;
-    }
-    return result / ratings.length;
-  }
+  useEffect(() => {
+    getProduct();
+    getReviews();
+    getProductStyles();
+  }, []);
 
   return (
     <AppDiv>
       <h1>Product Name</h1>
-      <div className='center-bar'>
-        <span className='pointer' style={ tab==='detail' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('detail')} }>detail</span>
-        <span> - </span>
-        <span className='pointer' style={ tab==='qa' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('qa')} }>qa</span>
-        <span> - </span>
-        <span className='pointer' style={ tab==='reviews' ? { 'fontWeight': 'bold' } : null} onClick={ () => {setTab('reviews')} }>reviews</span>
-      </div>
+      { tab !== 'detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
+      { tab !== 'qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
+      { tab !== 'reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
 
       {
-        tab==='detail' ?
+        tab === 'detail' ?
         <Overview
         currentProduct={currentProduct}
         allReviews={allReviews}
@@ -115,16 +110,15 @@ export default function App() {
 
       {
         tab==='qa' ?
-        <QA currentProduct={currentProduct}/> :
+          <QA currentProduct={currentProduct}/> :
         null
       }
 
       {
-        tab==='reviews' ?
-        <ReviewList /> :
+        tab === 'reviews' ?
+          <ReviewList /> :
         null
       }
-
     </AppDiv>
   );
 }

@@ -16,6 +16,13 @@ module.exports = {
         },
       },
       {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      },
+      {
+        test: /\.(gif|svg|jpg|png)$/,
+        loader: 'file-loader',
+      },
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
