@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    jest: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -12,14 +13,17 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: [
     'react',
   ],
   rules: {
     'no-console': 0,
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'],
+    'import/extensions': 0,
+    'react/prop-types': 0,
   },
 };
