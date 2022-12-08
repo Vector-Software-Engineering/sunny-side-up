@@ -8,14 +8,14 @@ import {
 const ProductInfo = ({ currentProduct, allReviews, numReviews, currentStyle }) => {
   console.log(currentStyle, ' inside of product info');
 
-  let goToReviews = () => {
+  const goToReviews = () => {
     console.log('This link will change View to James Review Component');
-  }
+  };
 
   return (
     <div>
       <div>
-        <label><b>Rating: </b></label>
+        <b>Rating: </b>
         {allReviews}
         <a href="#" onClick={goToReviews}> Read all [{numReviews}] reviews</a>
       </div>
@@ -35,17 +35,18 @@ const ProductInfo = ({ currentProduct, allReviews, numReviews, currentStyle }) =
         ? <div>${currentStyle.original_price.slice(0, -3)}</div> : null}
       </div>
       <div>
-        <label><b>Description </b></label> <br/>
+        <b>Description </b>
+        <br />
         {currentProduct.description}
       </div>
       <div>
         <StyleShare>
-          <FacebookShareButton url={'https://www.supremenewyork.com/'}>
+          <FacebookShareButton url="https://www.supremenewyork.com/">
             <FacebookIcon size={20} />
           </FacebookShareButton>
         </StyleShare>
         <StyleShare>
-          <PinterestShareButton url={'https://www.supremenewyork.com/'} media={'https://en.wikipedia.org/wiki/Instagram_egg#/media/File:Instagram_egg.jpg'}>
+          <PinterestShareButton url="https://www.supremenewyork.com/" media="https://en.wikipedia.org/wiki/Instagram_egg#/media/File:Instagram_egg.jpg">
             <PinterestIcon size={20} />
           </PinterestShareButton>
         </StyleShare>

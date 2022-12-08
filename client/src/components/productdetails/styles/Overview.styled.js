@@ -35,7 +35,7 @@ export const StyledSidebar = styled.div`
 `;
 
 export const MainImageBox = styled.div`
-  display: flex;
+  display: absolute;
   top-margin: -100px;
   width: 330px;
 `;

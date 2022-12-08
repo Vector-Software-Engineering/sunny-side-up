@@ -9,7 +9,7 @@ export const StyledImage = styled.div`
   }
 
   div {
-    height: 3px;
+    height: 70px;
     width: 3px;
     overflow: hidden:
   }
