@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import QA from './QA/QA.jsx';
-import Overview from './productdetails/Overview.jsx';
+import Overview from './productdetails/overview.jsx';
 import ReviewList from './reviews/RatingsAndReviews.jsx';
 import { AppDiv, StyledApp} from './App.styled.js';
 
