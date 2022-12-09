@@ -36,9 +36,9 @@ export const StyledSidebar = styled.div`
 
 export const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: minmax(500px, 1000px) 2fr minmax(200px, 200px) 1fr;
-  grid-template-rows: minmax(800px, 800px) 4fr 1fr;
-  border: 2px outset pink;
+  grid-template-columns: minmax(500px, 1000px) 2fr 1fr;
+  grid-template-rows: 4fr 2fr;
+  border: 2px white;
 `;
 
 export const MainImageBox = styled.div`
@@ -46,16 +46,17 @@ export const MainImageBox = styled.div`
   grid-row: 0;
   height: 500;
   width: auto;
-  border: 2px outset blue;
+  border: 2px white;
   overflow: hidden;
 `;
 
 export const StyledProductInfo = styled.div`
   grid-column: auto;
   grid-row: auto;
-  border: 2px outset blue;
+  border: 2px white;
+  margin-left: 20px;
 `;
 
 export const InformationBox = styled.div`
-  border: 2px outset blue;
+  border: 2px white;
 `;

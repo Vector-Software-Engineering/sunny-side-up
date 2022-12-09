@@ -17,23 +17,29 @@ export const StyledThumbnails = styled.div`
   align-content: center;
   justify-content: center;
   left: auto;
-  background-color: green;
   width: 100%;
   cursor: default;
 `;
 
 export const StyleLeftButton = styled.button`
   border: none;
-  background-color: blue;
-  font-size: 20px;
+  font-size: 40px;
   cursor: pointer;
-  display: absolute;
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  background-color: white;
+  align-content: center;
 `;
 
 export const StyleRightButton = styled.button`
   border: none;
-  background-color: blue;
-  font-size: 20px;
+  font-size: 40px;
+  top: 10px;
   cursor: pointer;
-  display: relative;
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  background-color: white;
+  align-content: center;
 `;
