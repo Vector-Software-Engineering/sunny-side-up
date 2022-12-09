@@ -25,23 +25,25 @@ export default function AnswersList({ entry }) {
   return (
     <>
       <div>
-      <AnswerOverflow>
-        {numOfAnswers === true
-          ? allAnswers.slice(0, 2).map((answer, i) => (
-            <AnswerEntry key={i} entry={answer} />
+        <AnswerOverflow>
+          {numOfAnswers === true
+            ? allAnswers.slice(0, 2).map((answer, i) => (
+              <AnswerEntry key={`${entry.id + i}`} entry={answer} />
             ))
             : null}
 
-        {numOfAnswers === false
-          ? allAnswers.map((answer, i) => (
-            <AnswerEntry key={i} entry={answer} />
+          {numOfAnswers === false
+            ? allAnswers.map((answer, i) => (
+              <AnswerEntry key={`${entry.id + i}`} entry={answer} />
             ))
             : null}
-        <br />
-      </AnswerOverflow>
+          <br />
+        </AnswerOverflow>
       </div>
-      {Object.keys(entry.answers).length > 2 && numOfAnswers === false ? <Button onClick={handleMoreClick}>COLLAPSE ANSWERS</Button> : null}
-      {Object.keys(entry.answers).length > 2 && numOfAnswers === true ? <Button onClick={handleMoreClick}>SEE MORE ANSWERS</Button> : null}
+      {Object.keys(entry.answers).length > 2 && numOfAnswers === false
+        ? <Button onClick={handleMoreClick}>COLLAPSE ANSWERS</Button> : null}
+      {Object.keys(entry.answers).length > 2 && numOfAnswers === true
+        ? <Button onClick={handleMoreClick}>SEE MORE ANSWERS</Button> : null}
     </>
   );
 }

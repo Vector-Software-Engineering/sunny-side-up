@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
+// /  margin-left: 140px;
 export const StyledOverview = styled.div`
-  margin-left: 140px;
 
   article {
     display: flex;
@@ -15,7 +15,7 @@ export const StyledOverviewHeader = styled.header`
   display: block;
   background: transparent;
   height: 50%;
-  margin: 225px auto 45px;
+  margin: 100px auto 100px;
   position: relative;
   text-align: center;
   width: 100%;

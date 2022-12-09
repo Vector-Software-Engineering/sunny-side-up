@@ -1,9 +1,9 @@
-import React, { useState, useEffect} from "react";
-import ListviewEntry from './ListviewEntry.jsx';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ListviewEntry from './ListviewEntry.jsx';
 import { Button } from './styles/Button.styled.js';
 import { Input } from './styles/Input.styled.js';
-import { Overflow } from './styles/Overflow.styled.js'
+import { Overflow } from './styles/Overflow.styled.js';
 import AddQuestionModal from './AddQuestionModal.jsx';
 
 export default function Listview({ currentProduct }) {
@@ -14,8 +14,7 @@ export default function Listview({ currentProduct }) {
   const [showQModal, setShowQModal] = useState(false);
 
   useEffect(() => {
-    //get all questions
-    axios.get('/api/qa/questions?product_id=40344&count=100')
+    axios.get(`/api/qa/questions?product_id=${currentProduct.id}&count=100`)
       .then((response) => {
         setQA(response.data.results);
       }).catch((error) => {
@@ -31,21 +30,24 @@ export default function Listview({ currentProduct }) {
   }, [QA]);
 
   useEffect(() => {
-    var copy = [...filteredQuestions];
+    let copy = [...filteredQuestions];
     copy = copy.slice(0, numOfQuestions);
     setHandleQuestionNum(copy);
   }, [filteredQuestions, numOfQuestions]);
 
   const handleSearchChange = (e) => {
     if (e.target.value.length >= 3) {
-      let arr = [];
-      for (let i = 0; i < QA.length; i++) {
+      const arr = [];
+      for (let i = 0; i < QA.length; i += 1) {
         if (QA[i].question_body.toLowerCase().includes(e.target.value)) {
           arr.push(QA[i]);
         }
       }
-      arr.length > 0 && setFilteredQuestions(arr);
-      arr.length === 0 && setFilteredQuestions([]);
+      if (arr.length > 0) {
+        setFilteredQuestions(arr);
+      } else if (arr.length === 0) {
+        setFilteredQuestions([]);
+      }
     }
     if (e.target.value.length === 0) {
       setFilteredQuestions(QA);
@@ -70,14 +72,19 @@ export default function Listview({ currentProduct }) {
 
   return (
     <>
-      <Input onChange={handleSearchChange} placeholder ='Have a question? Search for answers…'></Input>
-      <div style={{display: 'flex', justifyContent: 'center' }}>
+      <Input onChange={handleSearchChange} placeholder="Have a question? Search for answers…" />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Overflow>
-          {handleQuestionNum.length > 0 && handleQuestionNum.map((entry, index) => <ListviewEntry currentProduct={currentProduct} key={index} entry={entry}/>)}
+          {handleQuestionNum.length > 0 && (
+            handleQuestionNum.map((entry, i) => (
+              <ListviewEntry currentProduct={currentProduct} key={`${entry.question_body + i}`} entry={entry} />)))}
         </Overflow>
       </div>
-      {numOfQuestions < filteredQuestions.length && <Button onClick={handleMoreClick}>SEE MORE QUESTIONS</Button>} <Button onClick={addQuestions}>ADD QUESTION</Button>
-        {showQModal && <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal}/>}
+      {numOfQuestions < filteredQuestions.length && (
+        <Button onClick={handleMoreClick}>SEE MORE QUESTIONS</Button>
+      )}
+      <Button onClick={addQuestions}>ADD QUESTION</Button>
+      {showQModal && <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal} />}
     </>
-  )
+  );
 }

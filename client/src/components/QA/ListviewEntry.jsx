@@ -34,9 +34,11 @@ export default function ListviewEntry({ currentProduct, entry }) {
 
   return (
     <>
-      <div style={{paddingTop: '30px', fontSize: '30px'}}>Q: {entry.question_body} <span style={{fontSize: '14px', color: "grey"}}>Helpful? <WordIncrement onClick={handleQuestionHelful}><u>Yes</u></WordIncrement> ({clickHelpful ? entry.question_helpfulness + 1 : entry.question_helpfulness}) | <WordIncrement><u onClick={handleAnswerSubmit}>Add Answer</u></WordIncrement></span></div>
-      <AnswersList entry={entry}/>
-      {showAModal && <AddAnswerModal currentProduct={currentProduct} currentQuestion={entry} toggleModal={toggleModal}/>}
+      <div style={{ paddingTop: '30px', fontSize: '30px' }}>
+        Q:&nbsp;
+        {entry.question_body} <span style={{fontSize: '14px', color: "grey"}}>Helpful? <WordIncrement onClick={handleQuestionHelful}><u>Yes</u></WordIncrement> ({clickHelpful ? entry.question_helpfulness + 1 : entry.question_helpfulness}) | <WordIncrement><u onClick={handleAnswerSubmit}>Add Answer</u></WordIncrement></span></div>
+      <AnswersList entry={entry} />
+      {showAModal && <AddAnswerModal currentProduct={currentProduct} currentQuestion={entry} toggleModal={toggleModal} />}
     </>
-  )
+  );
 }
