@@ -10,6 +10,12 @@ export default function AddReviewModal({ prodID, setShowModal }) {
   const [recommend, setRecommend] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [size, setSize] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [comfort, setComfort] = useState(0);
+  const [quality, setQuality] = useState(0);
+  const [length, setLength] = useState(0);
+  const [fit, setFit] = useState(0);
 
   const handleFormSubmit = () => {
     const obj = {
@@ -33,7 +39,14 @@ export default function AddReviewModal({ prodID, setShowModal }) {
       recommend,
       name,
       email,
-      characteristics: {},
+      characteristics: {
+        size,
+        width,
+        comfort,
+        quality,
+        length,
+        fit
+      },
     });
   };
 
