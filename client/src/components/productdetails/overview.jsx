@@ -16,10 +16,35 @@ function Overview({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [firstIndex, setFirstIndex] = useState(0);
   const [extendedView, setExtendedView] = useState(false);
+  const [shortenedThumbnails, setShortenedThumbnails] = useState(undefined);
+  const [seed, setSeed] = useState(1);
+
+  const reset = () => {
+    setSeed(Math.random());
+  };
 
   const goToExtendedView = () => {
     console.log('we are going to extended view');
     setExtendedView(!extendedView);
+  };
+
+  const setThumbnails = () => {
+    console.log('the firstIndex is:, ', firstIndex);
+    // eslint-disable-next-line max-len
+    if (currentStyle && (shortenedThumbnails !== undefined || firstIndex === 7 || firstIndex === 0)) {
+      const tempArray = [];
+      let counter = 0;
+      for (let i = firstIndex; i < currentStyle.photos.length; i += 1) {
+        if (counter > 6) {
+          break;
+        }
+        tempArray.push(currentStyle.photos[i]);
+        counter += 1;
+      }
+      counter = 0;
+      setShortenedThumbnails(tempArray);
+    }
+    reset();
   };
 
   return (
@@ -50,6 +75,8 @@ function Overview({
             goToExtendedView={goToExtendedView}
             firstIndex={firstIndex}
             setFirstIndex={setFirstIndex}
+            shortenedThumbnails={shortenedThumbnails}
+            setThumbnails={setThumbnails}
           />
         </MainImageBox>
         <StyledProductInfo>
@@ -65,6 +92,7 @@ function Overview({
               currentStyle={currentStyle}
               setCurrentStyle={setCurrentStyle}
               setMainImage={setMainImage}
+              setThumbnails={setThumbnails}
             />
             <AddToCart currentStyle={currentStyle} />
           </InformationBox>

@@ -2,33 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import Image from './Image.jsx';
 import {
-  StyledImageGallery, StyledThumbnails, StyleLeftButton, StyleRightButton, StyledMainImage
+  StyledImageGallery, StyledThumbnails, StyleLeftButton, StyleRightButton, StyledMainImage,
 } from './styles/ImageGallery.styled.js';
 
 function ImageGallery({
   currentProduct, currentStyle, mainImage, setMainImage,
   setCurrentIndex, currentIndex, goToExtendedView, firstIndex, setFirstIndex,
+  shortenedThumbnails, setThumbnails,
 }) {
-  const [shortenedThumbnails, setShortenedThumbnails] = useState(undefined);
-
-  const setThumbnails = () => {
-    console.log('the firstIndex is:, ', firstIndex);
-    // eslint-disable-next-line max-len
-    if (currentStyle && (shortenedThumbnails !== undefined || firstIndex === 7 || firstIndex === 0)) {
-      const tempArray = [];
-      let counter = 0;
-      for (let i = firstIndex; i < currentStyle.photos.length; i += 1) {
-        if (counter > 6) {
-          break;
-        }
-        tempArray.push(currentStyle.photos[i]);
-        counter += 1;
-      }
-      counter = 0;
-      setShortenedThumbnails(tempArray);
-    }
-  };
-
   const leftButton = () => {
     if (currentIndex !== 0) {
       setCurrentIndex(currentIndex - 1);

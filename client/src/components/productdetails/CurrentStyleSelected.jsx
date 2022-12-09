@@ -2,11 +2,12 @@ import React from 'react';
 import { StyledCurrentStyleSelected, CheckMarkOverlay } from './styles/CurrentStyleSelected.styled.js';
 
 function CurrentStyleSelected({
-  currentStyle, product, setCurrentStyle, setMainImage,
+  currentStyle, product, setCurrentStyle, setMainImage, setThumbnails
 }) {
   const chooseStyle = () => {
     setMainImage(product);
     setCurrentStyle(product);
+    setThumbnails();
   };
 
   return (
