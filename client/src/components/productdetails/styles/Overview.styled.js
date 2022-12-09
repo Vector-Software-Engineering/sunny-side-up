@@ -59,15 +59,3 @@ export const StyledProductInfo = styled.div`
 export const InformationBox = styled.div`
   border: 2px outset blue;
 `;
-
-export const StyledExtendedView = styled.img`
-  height: 100%;
-  position: absolute:
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-inded: 2;
-`;

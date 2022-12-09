@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledImage = styled.div`
+const StyledImage = styled.div`
   img {
     position: relative;
     padding: 5px;
@@ -12,4 +12,10 @@ export const StyledImage = styled.div`
     width: 3px;
     overflow: hidden:
   }
+
+  button {
+    all: revert;
+  }
 `;
+
+export default StyledImage;

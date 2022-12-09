@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyledCurrentStyleSelected, CheckMarkOverlay } from './styles/CurrentStyleSelected.styled.js';
 
-const CurrentStyleSelected = ({ currentStyle, product, setCurrentStyle, setMainImage }) => {
-  const chooseStyle = (product) => {
+function CurrentStyleSelected({
+  currentStyle, product, setCurrentStyle, setMainImage,
+}) {
+  const chooseStyle = () => {
     setMainImage(product);
     setCurrentStyle(product);
   };

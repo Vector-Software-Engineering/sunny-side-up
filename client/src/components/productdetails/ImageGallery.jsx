@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import Image from './Image.jsx';
 import { StyledImageGallery, StyledThumbnails, StyleLeftButton, StyleRightButton, StyledMainImage } from './styles/ImageGallery.styled.js';
 
-const ImageGallery = ({
+function ImageGallery({
   currentProduct, currentStyle, mainImage, setMainImage,
   setCurrentIndex, currentIndex, goToExtendedView, firstIndex, setFirstIndex,
-}) => {
+}) {
   const [shortenedThumbnails, setShortenedThumbnails] = useState([]);
 
   const setThumbnails = () => {
@@ -19,7 +19,7 @@ const ImageGallery = ({
           break;
         }
         tempArray.push(currentStyle.photos[i]);
-        counter++;
+        counter += 1;
       }
       counter = 0;
       setShortenedThumbnails(tempArray);
@@ -68,6 +68,6 @@ const ImageGallery = ({
           : <StyleRightButton onClick={rightButton}>➡️</StyleRightButton>}
     </StyledImageGallery>
   );
-};
+}
 
 export default ImageGallery;

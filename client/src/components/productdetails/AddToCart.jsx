@@ -1,18 +1,18 @@
 import React, { useState, useRef } from 'react';
 import Select from 'react-select';
-import { StyledAddToCart } from './styles/AddToCart.styled.js';
+import StyledAddToCart from './styles/AddToCart.styled.js';
 
-const AddToCart = ({ currentStyle }) => {
+function AddToCart({ currentStyle }) {
   const [quantityOptions, setQuantityOptions] = useState([]);
   const [styleSelected, setStyleSelected] = useState('');
   const [quantitySelected, setQuantitySelected] = useState(1);
   const [notSelected, setNotSelected] = useState(false);
   const styleSelectedRef = useRef();
 
-  let sizes = [];
-  let quantity = [];
+  const sizes = [];
+  const quantity = [];
   if (currentStyle.skus !== undefined) {
-    for (let keys in currentStyle.skus) {
+    for (const keys in currentStyle.skus) {
       if (currentStyle.skus[keys].quantity > 0) {
         sizes.push({label: currentStyle.skus[keys].size, value: keys, quantity: currentStyle.skus[keys].quantity});
         quantity.push({label: currentStyle.skus[keys].quantity, value: keys});
@@ -27,9 +27,9 @@ const AddToCart = ({ currentStyle }) => {
     setStyleSelected(e.value);
     setNotSelected(false);
     console.log('e is this: ', e);
-    let totalQuantity = currentStyle.skus[e.value].quantity;
-    let newQuantityOptions = [...Array(Math.min(15, totalQuantity)).keys()];
-    let finalQuantityOptions = [];
+    const totalQuantity = currentStyle.skus[e.value].quantity;
+    const newQuantityOptions = [...Array(Math.min(15, totalQuantity)).keys()];
+    const finalQuantityOptions = [];
     for (let i = 1; i < newQuantityOptions.length + 1; i += 1) {
       finalQuantityOptions.push({ label: i, value: i });
     }
@@ -71,9 +71,6 @@ const AddToCart = ({ currentStyle }) => {
         : <button onClick={chooseSize}>Add To Cart</button>}
     </StyledAddToCart>
   );
-};
-
-//{sizes.length > 0 ? <Dropdown options={sizes} onChange={(e) => grabStyleID(e.value)} value='Select Size'/> : <div>OUT OF STOCK</div>}
-//{sizes.length > 0 ? <Dropdown options={quantityOptions} value='-' /> : <Dropdown disabled options={quantity} value='-'/>}
+}
 
 export default AddToCart;
