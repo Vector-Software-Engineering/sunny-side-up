@@ -15,27 +15,27 @@ export default function AddReviewModal({ prodID, setShowModal }) {
     const obj = {
       product_id: prodID,
       rating: currRating,
-      summary: summary,
-      body: body,
-      recommend: recommend,
-      name: name,
-      email: email,
-      characteristics: {}
-    }
+      summary,
+      body,
+      recommend,
+      name,
+      email,
+      characteristics: {},
+    };
 
     console.log(obj);
-    
+
     axios.post('/api/reviews', {
       product_id: prodID,
       rating: currRating,
-      summary: summary,
-      body: body,
-      recommend: recommend,
-      name: name,
-      email: email,
-      characteristics: {}
-    })
-  }
+      summary,
+      body,
+      recommend,
+      name,
+      email,
+      characteristics: {},
+    });
+  };
 
   return (
     <ModalContainer>
