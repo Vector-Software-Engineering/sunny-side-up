@@ -11,11 +11,12 @@ export default function () {
   // get reviews
   const [reviews, setReviews] = useState ([]);
   const [visReviews, setVisReviews] = useState([]);
+  const [meta, setMeta] = useState({});
   const [numReviews, setNumReviews] = useState(2);
   const [sortBy, setSortBy] = useState('relevance');
   const [ratingFilter, setRatingFilter] = useState(6);
 
-  useEffect(() => {
+  const getReviews = () => {
     axios.get('/api/reviews?product_id=' + prodID)
       .then((response) => {
         setReviews(response.data.results);
@@ -23,6 +24,21 @@ export default function () {
       }).catch((error) => {
         console.log(error);
       });
+  };
+
+  const getMeta = () => {
+    axios.get(`/api/reviews/meta/?product_id=${prodID}`)
+      .then((response) => {
+        setMeta(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    getReviews();
+    getMeta();
   }, []);
 
   const updateVisReviews = () => {
@@ -59,8 +75,8 @@ export default function () {
   return (
     <Container>
       <div className="main">
-        <RatingBreakdown prodID={prodID} reviews={reviews} filterRating={filterRating} ratingFilter={ratingFilter} />
-        <ReviewList prodID={prodID} reviews={reviews} visReviews={visReviews} numReviews={numReviews} sortBy={sortBy} setSortBy={setSortBy} setNumReviews={setNumReviews} />
+        <RatingBreakdown reviews={reviews} meta={meta} filterRating={filterRating} ratingFilter={ratingFilter} />
+        <ReviewList prodID={prodID} reviews={reviews} meta={meta} visReviews={visReviews} numReviews={numReviews} sortBy={sortBy} setSortBy={setSortBy} setNumReviews={setNumReviews} getReviews={getReviews} />
       </div>
     </Container>
   );

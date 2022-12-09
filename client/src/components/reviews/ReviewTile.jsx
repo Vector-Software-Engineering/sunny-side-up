@@ -1,8 +1,23 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { parseISO, format } from 'date-fns';
+import axios from 'axios';
 import { ReviewTile } from './styles/ReviewTile.styled.js';
 
-export default function ({ review }) {
+export default function ({ review, getReviews }) {
+  const markHelpful = () => {
+    axios.put(`api/reviews/${review.review_id}/helpful`)
+      .then((res) => {
+        console.log(res);
+        getReviews();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <ReviewTile>
       <div className="top">
@@ -23,7 +38,8 @@ export default function ({ review }) {
           : null
       }
       <p>{review.response ? (`Response from seller: ${review.response}`) : null }</p>
-      <p>{`${review.helpfulness} customers found this review helpful`}</p>
+      <p>{`${review.helpfulness} helpful`}</p>
+      <p className="pointer" onClick={() => markHelpful()}>Mark Helpful</p>
       {
         review.photos.map((photo, index) => <img key={index} src={photo.url} alt="" />)
       }
