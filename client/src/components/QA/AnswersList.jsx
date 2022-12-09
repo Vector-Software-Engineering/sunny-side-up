@@ -28,13 +28,13 @@ export default function AnswersList({ entry }) {
         <AnswerOverflow>
           {numOfAnswers === true
             ? allAnswers.slice(0, 2).map((answer, i) => (
-              <AnswerEntry key={`${entry.id + i}`} entry={answer} />
+              <AnswerEntry key={`${entry.question_id + i}`} entry={answer} />
             ))
             : null}
 
           {numOfAnswers === false
             ? allAnswers.map((answer, i) => (
-              <AnswerEntry key={`${entry.id + i}`} entry={answer} />
+              <AnswerEntry key={`${entry.question_id + i}`} entry={answer} />
             ))
             : null}
           <br />
