@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ModalContainer = styled.div`
 position: fixed;
@@ -19,23 +19,23 @@ margin: 0;
   font-size: 24px;
 }
 
-`
+`;
 
 const Modal = styled.section`
 margin: auto;
 width: 90%;
 max-width: 40rem;
 background-color: white;
-`
+`;
 
 const ModalHeader = styled.header`
   position: relative;
   margin: 16px 0 0 16px;
-`
+`;
 
 const ModalContent = styled.header`
 padding: 1.5rem;
-`
+`;
 
 const Exit = styled.p`
 padding: 0;
@@ -47,7 +47,7 @@ right: 1rem;
 &: hover {
   cursor: pointer;
 }
-`
+`;
 
 const BiggerInput = styled.textarea`
 width: 70%;
@@ -55,11 +55,11 @@ width: 70%;
 &: focus {
   height: 10em;
 }
-`
+`;
 const SmallerInput = styled.input`
 width: 50%;
 margin: 10px 0;
-`
+`;
 
 export {
   ModalContainer,
@@ -68,5 +68,5 @@ export {
   ModalContent,
   Exit,
   BiggerInput,
-  SmallerInput
-}
+  SmallerInput,
+};

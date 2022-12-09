@@ -1,4 +1,5 @@
-import styled from "styled-components";
+/* eslint-disable import/prefer-default-export */
+import styled from 'styled-components';
 
 export const ReviewList = styled.div`
   grid-column: 3;
@@ -19,4 +20,6 @@ export const ReviewList = styled.div`
   .helper {
     margin: 10px 0;
   }
-`
+
+  
+`;
