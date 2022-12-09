@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledImageGallery = styled.div`
-  position: relative;
-  top: 20px;
+  display: relative;
+  justify-content: center;
+  align-content: center;
 `;
 
 export const StyledMainImage = styled.img`
@@ -13,27 +14,26 @@ export const StyledMainImage = styled.img`
 
 export const StyledThumbnails = styled.div`
   display: flex;
-  position: relative;
   align-content: center;
-  justify-content: space-around;
-  left: -40px;
-  top: -50px;
+  justify-content: center;
+  left: auto;
   background-color: green;
+  width: 100%;
   cursor: default;
 `;
 
 export const StyleLeftButton = styled.button`
   border: none;
-  background-color: inherit;
+  background-color: blue;
   font-size: 20px;
   cursor: pointer;
-  display: inline-block;
+  display: absolute;
 `;
 
 export const StyleRightButton = styled.button`
   border: none;
-  background-color: inherit;
+  background-color: blue;
   font-size: 20px;
   cursor: pointer;
-  display: inline-block;
+  display: relative;
 `;

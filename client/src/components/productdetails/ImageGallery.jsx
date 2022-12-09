@@ -48,13 +48,9 @@ function ImageGallery({
     <StyledImageGallery>
       {!currentStyle
         ? null
-        : mainImage === ''
-        ? <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[0].thumbnail_url} />
-        : <StyledMainImage onClick={goToExtendedView} src={mainImage.photos[currentIndex].thumbnail_url} />}
-        {currentIndex === 0
-        ? null
-        : <StyleLeftButton onClick={leftButton}> ⬅️ </StyleLeftButton
-      >}
+        : currentIndex === 0
+          ? null
+          : <StyleLeftButton onClick={leftButton}>⬅️</StyleLeftButton>}
       <StyledThumbnails>
         {shortenedThumbnails.length !== 0
           ? shortenedThumbnails.map((photo, index) => {
@@ -66,6 +62,11 @@ function ImageGallery({
         : currentIndex === currentStyle.photos.length - 1
           ? null
           : <StyleRightButton onClick={rightButton}>➡️</StyleRightButton>}
+      {!currentStyle
+        ? null
+        : mainImage === ''
+        ? <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[0].thumbnail_url} />
+        : <StyledMainImage onClick={goToExtendedView} src={mainImage.photos[currentIndex].thumbnail_url} />}
     </StyledImageGallery>
   );
 }

@@ -19,6 +19,6 @@ function CurrentStyleSelected({
       </div>
     </StyledCurrentStyleSelected>
   );
-};
+}
 
 export default CurrentStyleSelected;
