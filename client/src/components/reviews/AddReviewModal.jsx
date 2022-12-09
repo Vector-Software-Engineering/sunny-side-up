@@ -10,32 +10,45 @@ export default function AddReviewModal({ prodID, setShowModal }) {
   const [recommend, setRecommend] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [size, setSize] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [comfort, setComfort] = useState(0);
+  const [quality, setQuality] = useState(0);
+  const [length, setLength] = useState(0);
+  const [fit, setFit] = useState(0);
 
   const handleFormSubmit = () => {
     const obj = {
       product_id: prodID,
       rating: currRating,
-      summary: summary,
-      body: body,
-      recommend: recommend,
-      name: name,
-      email: email,
-      characteristics: {}
-    }
+      summary,
+      body,
+      recommend,
+      name,
+      email,
+      characteristics: {},
+    };
 
     console.log(obj);
-    
+
     axios.post('/api/reviews', {
       product_id: prodID,
       rating: currRating,
-      summary: summary,
-      body: body,
-      recommend: recommend,
-      name: name,
-      email: email,
-      characteristics: {}
-    })
-  }
+      summary,
+      body,
+      recommend,
+      name,
+      email,
+      characteristics: {
+        size,
+        width,
+        comfort,
+        quality,
+        length,
+        fit
+      },
+    });
+  };
 
   return (
     <ModalContainer>
