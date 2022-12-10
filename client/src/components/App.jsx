@@ -24,7 +24,7 @@ export default function App() {
   };
 
   const getProductStyles = () => {
-    axios.get('/api/products/40348/styles', {}) // jacket is 403444, shoes are 40348
+    axios.get('/api/products/40348/styles', {}) // jacket is 40344, shoes are 40348
       .then((response) => {
         // console.log(response.data);
         setAllStyles(response.data.results);

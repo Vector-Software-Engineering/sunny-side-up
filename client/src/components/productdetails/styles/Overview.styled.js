@@ -36,15 +36,14 @@ export const StyledSidebar = styled.div`
 
 export const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: minmax(500px, 1000px) 2fr 1fr;
-  grid-template-rows: 4fr 2fr;
+  grid-template-columns: minmax(500px, 500px) 2fr 1fr;
+  grid-template-rows: minmax(200px, 800px) 4fr 2fr;
   border: 2px white;
 `;
 
 export const MainImageBox = styled.div`
   grid-column: 0;
   grid-row: 0;
-  height: 500;
   width: auto;
   border: 2px white;
   overflow: hidden;
@@ -53,10 +52,16 @@ export const MainImageBox = styled.div`
 export const StyledProductInfo = styled.div`
   grid-column: auto;
   grid-row: auto;
+  width: 300px;
   border: 2px white;
   margin-left: 20px;
 `;
 
 export const InformationBox = styled.div`
   border: 2px white;
+`;
+
+export const StyledWrappedGrid = styled.div`
+  display: flex;
+  justify-content: center;
 `;

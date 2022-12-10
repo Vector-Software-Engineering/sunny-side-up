@@ -5,12 +5,12 @@ import AddToCart from './AddToCart.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import {
   StyledOverviewHeader, StyledSidebar, StyledOverview, GridContainer,
-  MainImageBox, InformationBox, StyledProductInfo,
+  MainImageBox, InformationBox, StyledProductInfo, StyledWrappedGrid,
 } from './styles/Overview.styled.js';
 import ViewModal from './ViewModal.jsx';
 
 function Overview({
-  currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle
+  currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle,
 }) {
   const [mainImage, setMainImage] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -47,6 +47,8 @@ function Overview({
     reset();
   };
 
+
+
   return (
     <StyledOverview>
       {!currentStyle || extendedView === false
@@ -63,42 +65,45 @@ function Overview({
         </hgroup>
       </StyledOverviewHeader>
       <StyledSidebar />
-      <GridContainer>
-        <MainImageBox>
-          <ImageGallery
-            currentProduct={currentProduct}
-            currentStyle={currentStyle}
-            mainImage={mainImage}
-            setMainImage={setMainImage}
-            currentIndex={currentIndex}
-            setCurrentIndex={setCurrentIndex}
-            goToExtendedView={goToExtendedView}
-            firstIndex={firstIndex}
-            setFirstIndex={setFirstIndex}
-            shortenedThumbnails={shortenedThumbnails}
-            setThumbnails={setThumbnails}
-          />
-        </MainImageBox>
-        <StyledProductInfo>
-          <ProductInfo
-            currentProduct={currentProduct}
-            allReviews={allReviews}
-            numReviews={numReviews}
-            currentStyle={currentStyle}
-          />
-          <InformationBox>
-            <StyleSelector
-              allStyles={allStyles}
+      <StyledWrappedGrid>
+        <GridContainer>
+          <MainImageBox>
+            <ImageGallery
+              currentProduct={currentProduct}
               currentStyle={currentStyle}
-              setCurrentStyle={setCurrentStyle}
+              mainImage={mainImage}
               setMainImage={setMainImage}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+              goToExtendedView={goToExtendedView}
+              firstIndex={firstIndex}
+              setFirstIndex={setFirstIndex}
+              shortenedThumbnails={shortenedThumbnails}
               setThumbnails={setThumbnails}
+              reset={reset}
             />
-            <AddToCart currentStyle={currentStyle} />
-          </InformationBox>
-        </StyledProductInfo>
-
-      </GridContainer>
+          </MainImageBox>
+          <StyledProductInfo>
+            <ProductInfo
+              currentProduct={currentProduct}
+              allReviews={allReviews}
+              numReviews={numReviews}
+              currentStyle={currentStyle}
+            />
+            <InformationBox>
+              <StyleSelector
+                allStyles={allStyles}
+                currentStyle={currentStyle}
+                setCurrentStyle={setCurrentStyle}
+                setMainImage={setMainImage}
+                setThumbnails={setThumbnails}
+                reset={reset}
+              />
+              <AddToCart currentStyle={currentStyle} />
+            </InformationBox>
+          </StyledProductInfo>
+        </GridContainer>
+      </StyledWrappedGrid>
     </StyledOverview>
   );
 }

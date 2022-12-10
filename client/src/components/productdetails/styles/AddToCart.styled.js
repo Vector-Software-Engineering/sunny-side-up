@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 const StyledAddToCart = styled.div`
-  position: relative;
-  margin-right: 50px;
-  top: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  button {
+    background-color: black;
+    color: white;
+  }
 `;
 
 export default StyledAddToCart;

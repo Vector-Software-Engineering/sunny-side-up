@@ -26,7 +26,9 @@ function ProductInfo({
         {currentProduct.name}
       </StyledName>
       <div>
-        {currentStyle.sale_price
+        {!currentStyle
+          ? null
+          : currentStyle.sale_price
           ? <div>
            <StyledSalePrice>${currentStyle.sale_price.slice(0, -3)}</StyledSalePrice>
            <StyledOriginalPrice>${currentStyle.original_price.slice(0, -3)}</StyledOriginalPrice>

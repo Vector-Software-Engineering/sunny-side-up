@@ -11,7 +11,8 @@ function AddToCart({ currentStyle }) {
 
   const sizes = [];
   const quantity = [];
-  if (currentStyle.skus !== undefined) {
+
+  if (currentStyle !== undefined) {
     for (const keys in currentStyle.skus) {
       if (currentStyle.skus[keys].quantity > 0) {
         sizes.push({label: currentStyle.skus[keys].size, value: keys, quantity: currentStyle.skus[keys].quantity});
@@ -52,18 +53,62 @@ function AddToCart({ currentStyle }) {
     }
   };
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      background: '#fff',
+      borderColor: '#9e9e9e',
+      minHeight: '30px',
+      height: '30px',
+      boxShadow: state.isFocused ? null : null,
+    }),
+
+    valueContainer: (provided, state) => ({
+      ...provided,
+      height: '30px',
+      padding: '0 20px',
+    }),
+
+    input: (provided, state) => ({
+      ...provided,
+      margin: '0px',
+    }),
+    indicatorSeparator: state => ({
+      display: 'none',
+    }),
+    indicatorsContainer: (provided, state) => ({
+      ...provided,
+      height: '30px',
+    }),
+    dropdownIndicator: (styles) => ({
+      ...styles,
+      paddingTop: 5,
+      paddingBottom: 20,
+    }),
+    clearIndicator: (styles) => ({
+      ...styles,
+      paddingTop: 5,
+      paddingBottom: 20,
+    }),
+  };
+
   return (
     <StyledAddToCart>
       { notSelected ? <div>~Please Select Size~</div> : null}
       {sizes.length > 0
-        ? <Select options={sizes} ref={styleSelectedRef} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'}
-        openMenuOnFocus={true}/>
-        : <Select placeholder="OUT OF STOCK" isDisabled={true}
-      />}
+        ? <div>
+          <Select options={sizes} ref={styleSelectedRef} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'} openMenuOnFocus={true} styles={customStyles} />
+        </div>
+        : <div>
+          <Select placeholder="OUT OF STOCK" isDisabled={true} styles={customStyles} styles={customStyles} />
+        </div>}
       {styleSelected !== ''
-        ? <Select options={quantityOptions} onChange={(e) => grabQuantity(e)} defaultValue={1} placeholder={1} />
-        : <Select isDisabled={true} placeholder='-'
-      />}
+        ? <div>
+          <Select options={quantityOptions} onChange={(e) => grabQuantity(e)} defaultValue={1} placeholder={1} styles={customStyles} />
+          </div>
+        : <div>
+          <Select isDisabled={true} placeholder='-' styles={customStyles} />
+        </div>}
       {sizes.length < 1
         ? null
         : styleSelected !== ''

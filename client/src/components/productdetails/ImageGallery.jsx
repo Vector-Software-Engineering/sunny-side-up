@@ -8,7 +8,7 @@ import {
 function ImageGallery({
   currentProduct, currentStyle, mainImage, setMainImage,
   setCurrentIndex, currentIndex, goToExtendedView, firstIndex, setFirstIndex,
-  shortenedThumbnails, setThumbnails,
+  shortenedThumbnails, setThumbnails, reset,
 }) {
   const leftButton = () => {
     if (currentIndex !== 0) {
@@ -16,6 +16,7 @@ function ImageGallery({
       if (currentIndex < 9) {
         setFirstIndex(0);
         setThumbnails();
+        reset();
       }
       console.log('inside leftButton the currentIndex is: ', currentIndex, firstIndex, shortenedThumbnails);
     }
@@ -27,10 +28,15 @@ function ImageGallery({
       if (currentIndex > 4) {
         setFirstIndex(7);
         setThumbnails();
+        reset();
       }
       console.log('inside rightButton the currentIndex is: ', currentIndex, firstIndex, shortenedThumbnails);
     }
   };
+
+  useEffect(() => {
+    reset();
+  }, [shortenedThumbnails]);
 
   return (
     <StyledImageGallery>
@@ -38,12 +44,12 @@ function ImageGallery({
       <StyledThumbnails>
         {!currentStyle
           ? <StyleLeftButton onClick={leftButton}> </StyleLeftButton>
-          : currentIndex === 0
+          : currentIndex === 0 && firstIndex !== 7
             ? <StyleLeftButton onClick={leftButton}> </StyleLeftButton>
             : <StyleLeftButton onClick={leftButton}>←</StyleLeftButton>}
         {shortenedThumbnails
           // eslint-disable-next-line max-len
-          ? shortenedThumbnails.map((photo, index) => <Image key={index} index={index} photo={photo} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} currentStyle={currentStyle} />)
+          ? shortenedThumbnails.map((photo, index) => <Image key={index} index={index + firstIndex} photo={photo} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} currentStyle={currentStyle} />)
           : currentStyle
             // eslint-disable-next-line max-len
             ? currentStyle.photos.map((photo, index) => {
