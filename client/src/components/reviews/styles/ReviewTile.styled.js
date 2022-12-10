@@ -22,4 +22,8 @@ export const ReviewTile = styled.div`
     width: 100px;
   }
 
+  .pointer {
+    margin: 0;
+  }
+
 `
