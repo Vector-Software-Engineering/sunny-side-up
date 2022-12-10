@@ -16,7 +16,6 @@ export default function ViewModal({
           </>
           : <img src={mainImage.photos[currentIndex].thumbnail_url} alt="Main Product" />}
       </ModalContainer>
-
     </div>
   );
 }

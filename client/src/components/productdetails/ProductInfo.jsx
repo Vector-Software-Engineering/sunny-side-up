@@ -1,4 +1,5 @@
 import React from 'react';
+import RatingSummary from '../reviews/RatingSummary.jsx';
 import { FacebookShareButton, PinterestShareButton, TwitterShareButton, FacebookIcon, PinterestIcon, TwitterIcon } from 'react-share';
 
 import {
@@ -6,17 +7,19 @@ import {
 } from './styles/ProductInfo.styled.js';
 
 function ProductInfo({
-  currentProduct, allReviews, numReviews, currentStyle,
+  currentProduct, allReviews, numReviews, currentStyle, reviews,
 }) {
+
+  console.log(reviews, 'reviews are');
   const goToReviews = () => {
     console.log('This link will change View to James Review Component');
   };
 
+  //
   return (
     <div>
       <div>
-        <b>Rating: </b>
-        {allReviews}
+        <RatingSummary reviews={reviews} />
         <a href="#" onClick={goToReviews}> Read all [{numReviews}] reviews</a>
       </div>
       <div>

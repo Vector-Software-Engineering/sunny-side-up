@@ -11,6 +11,7 @@ export default function App() {
   const [numReviews, setNumReviews] = useState(0);
   const [allStyles, setAllStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
+  const [reviews, setReviews] = useState([]);
 
   const [tab, setTab] = useState('detail');
 
@@ -57,7 +58,8 @@ export default function App() {
   const getReviews = () => {
     axios.get('/api/reviews?product_id=40344', {})
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data.results);
+        setReviews(response.data.results);
         setAllReviews(getAverageReviews(response.data));
       }).catch((error) => {
         console.log(error);
@@ -104,7 +106,8 @@ export default function App() {
         numReviews={numReviews}
         allStyles={allStyles}
         currentStyle={currentStyle}
-        setCurrentStyle={setCurrentStyle}/> :
+        setCurrentStyle={setCurrentStyle}
+        reviews={reviews} /> :
         null
       }
 

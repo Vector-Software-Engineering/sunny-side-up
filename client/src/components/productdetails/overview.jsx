@@ -10,7 +10,7 @@ import {
 import ViewModal from './ViewModal.jsx';
 
 function Overview({
-  currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle,
+  currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle, reviews,
 }) {
   const [mainImage, setMainImage] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -93,6 +93,7 @@ function Overview({
               allReviews={allReviews}
               numReviews={numReviews}
               currentStyle={currentStyle}
+              reviews={reviews}
             />
             <InformationBox>
               <StyleSelector

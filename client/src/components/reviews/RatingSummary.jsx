@@ -4,6 +4,8 @@ import './styles/styles.css';
 
 export default function ({ reviews }) {
 
+  console.log('reviews are: ', reviews);
+
   const rating = reviews.reduce((total, next) => {
     return total + next.rating;
   }, 0) / reviews.length;
