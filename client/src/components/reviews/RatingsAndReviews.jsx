@@ -17,7 +17,7 @@ export default function () {
   const [ratingFilter, setRatingFilter] = useState(6);
 
   const getReviews = () => {
-    axios.get('/api/reviews?product_id=' + prodID)
+    axios.get('/api/reviews?product_id=' + prodID + '&count=1000')
       .then((response) => {
         setReviews(response.data.results);
         console.log(response.data.results);
