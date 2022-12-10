@@ -15,9 +15,9 @@ export default function ListviewEntry({ currentProduct, entry }) {
   };
 
   const handleQuestionHelful = (e) => {
-    if (!clickHelpful) {
-      e.preventDefault();
-
+    e.preventDefault();
+    const data = localStorage.getItem(`ssuq: ${entry.question_id}`);
+    if (data === null) {
       axios.put(`/api/qa/questions/${entry.question_id}/helpful`)
         .then((response) => {
           console.log(response);
@@ -26,6 +26,7 @@ export default function ListviewEntry({ currentProduct, entry }) {
         });
 
       setClickHelpful(true);
+      localStorage.setItem(`ssuq: ${entry.question_id}`, true);
     }
   };
 

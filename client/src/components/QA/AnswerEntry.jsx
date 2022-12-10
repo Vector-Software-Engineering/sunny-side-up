@@ -4,8 +4,8 @@ import axios from 'axios';
 import { WordIncrement } from './styles/WordIncrement.styled.js';
 
 export default function AnswerEntry({ entry }) {
-  const [clickHelpful, setClickHelpful] = useState(false);
   const [clickReport, setClickReport] = useState(false);
+  const [clickHelpful, setClickHelpful] = useState(false);
 
   const { date } = entry;
   const formatDate = `${date.slice(5, 7)} ${date.slice(8, 10)} ${date.slice(0, 4)}`;
@@ -13,15 +13,16 @@ export default function AnswerEntry({ entry }) {
 
   const handleAnswerHelpful = (e, id) => {
     e.preventDefault();
-    if (!clickHelpful) {
+    const data = localStorage.getItem(`ssu: ${entry.answer_id}`);
+    if (data === null) {
       axios.put(`/api/qa/answers/${id}/helpful`)
         .then((response) => {
           console.log(response);
         }).catch((error) => {
           console.log(error);
         });
-
       setClickHelpful(true);
+      localStorage.setItem(`ssu: ${entry.answer_id}`, true);
     }
   };
 
