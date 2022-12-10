@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductInfo from './ProductInfo.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
@@ -42,11 +42,15 @@ function Overview({
         counter += 1;
       }
       counter = 0;
+      console.log('we are about to set the new thumbnail array to update in setThumbnails:,', tempArray);
       setShortenedThumbnails(tempArray);
     }
-    reset();
+    // reset();
   };
 
+  useEffect(() => {
+    setThumbnails();
+  }, [currentStyle]);
 
 
   return (

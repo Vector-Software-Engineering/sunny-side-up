@@ -7,7 +7,7 @@ function CurrentStyleSelected({
   const chooseStyle = () => {
     setMainImage(product);
     setCurrentStyle(product);
-    setThumbnails();
+    // setThumbnails();
     reset();
   };
 
