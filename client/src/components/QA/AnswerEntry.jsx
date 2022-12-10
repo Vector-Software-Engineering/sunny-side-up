@@ -7,12 +7,10 @@ export default function AnswerEntry({ entry }) {
   const [clickHelpful, setClickHelpful] = useState(false);
   const [clickReport, setClickReport] = useState(false);
 
-  // format date
   const { date } = entry;
   const formatDate = `${date.slice(5, 7)} ${date.slice(8, 10)} ${date.slice(0, 4)}`;
   const postedDate = format(new Date(formatDate), 'MMMM d, yyyy');
 
-  // console.log(formatDate)
   const handleAnswerHelpful = (e, id) => {
     e.preventDefault();
     if (!clickHelpful) {
@@ -47,25 +45,12 @@ export default function AnswerEntry({ entry }) {
         <b>A: </b>
         {entry.body}
       </div>
-      <div style={{ fontSize: '14px', color: 'grey' }}>
-        by&nbsp;
-        {entry.answerer_name}
-        &nbsp;
-        |
-        &nbsp;
-        {postedDate}
-        &nbsp;
-        |
-        &nbsp;
-        Helpful?
-        &nbsp;
+      <div style={{ fontSize: '14px', color: 'grey', paddingTop: '6px' }}>
+        {`by ${entry.answerer_name} | ${postedDate} | Helpful? `}
         <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.answer_id)}>
           <u>Yes</u>
         </WordIncrement>
-        (
-        {clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}
-        ) |
-        &nbsp;
+        {`(${clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}) | `}
         <WordIncrement onClick={(e) => handleAnswerReport(e, entry.answer_id)}><u>{clickReport ? 'Reported' : 'Report'}</u></WordIncrement>
       </div>
     </>
