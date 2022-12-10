@@ -4,7 +4,7 @@ import ReviewTile from "./ReviewTile.jsx";
 import AddReviewModal from "./AddReviewModal.jsx";
 import { ReviewList } from './styles/ReviewList.styled.js';
 
-export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setSortBy, setNumReviews }) {
+export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setSortBy, setNumReviews, getReviews, meta }) {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -23,7 +23,7 @@ export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setS
       {
         visReviews.map((review, index) => {
           console.log(review);
-          return <ReviewTile key={ review.review_id } review={ review } />
+          return <ReviewTile key={review.review_id} review={review} getReviews={getReviews} />;
         })
       }
       <div className='helper pointer'>
@@ -34,7 +34,7 @@ export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setS
         }
       </div>
 
-      {showModal && <AddReviewModal prodID={prodID} setShowModal={setShowModal}/>}
+      {(showModal && meta.characteristics) && <AddReviewModal prodID={prodID} setShowModal={setShowModal} characteristics={meta.characteristics} />}
     </ReviewList>
   )
 }

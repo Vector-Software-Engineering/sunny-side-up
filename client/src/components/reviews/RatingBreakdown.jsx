@@ -7,7 +7,7 @@ import RatingSummary from './RatingSummary.jsx';
 import { RatingBreakdown } from './styles/RatingBreakdown.styled.js';
 import ProductBreakdown from './ProductBreakdown.jsx';
 
-export default function ({ prodID, reviews, filterRating, ratingFilter }) {
+export default function ({ reviews, filterRating, ratingFilter, meta }) {
   return (
     <RatingBreakdown>
       <RatingSummary reviews={reviews} />
@@ -22,7 +22,11 @@ export default function ({ prodID, reviews, filterRating, ratingFilter }) {
       <a className={'pointer' + (ratingFilter === 1 ? ' pointer-on' : '')} onClick={() => filterRating(1)}>{ '★☆☆☆☆ : ' + reviews.filter((review) => review.rating === 1).length }</a>
       <br />
       <br />
-      <ProductBreakdown prodID={prodID} />
+      {
+        meta.characteristics
+          ? <ProductBreakdown characteristics={meta.characteristics} />
+          : null
+      }
     </RatingBreakdown>
   );
 }
