@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-export const Overflow = styled.div`
+const Overflow = styled.div`
   overflow-y: auto;
   max-height: 60vh;
   display: inline-block;
 `;
+
+export default Overflow;

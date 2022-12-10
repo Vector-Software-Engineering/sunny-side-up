@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput,
 } from './styles/Modal.styled.js';
-import { Button } from './styles/Button.styled.js';
+import Button from './styles/Button.styled.js';
 
 export default function AddQuestionModal({ currentProduct, toggleModal }) {
   const postQuestion = (results) => {
@@ -27,9 +27,10 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
     const formData = new FormData(form);
 
     const results = {};
-    for (const [key, value] of formData) {
+    [...formData.entries()].forEach((row) => {
+      const [key, value] = row;
       results[key] = value;
-    }
+    });
 
     results.product_id = currentProduct.id;
     postQuestion(results);

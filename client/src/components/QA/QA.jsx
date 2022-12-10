@@ -1,6 +1,6 @@
 import React from 'react';
 import Listview from './Listview.jsx';
-import { Container } from './styles/Container.styled.js';
+import Container from './styles/Container.styled.js';
 
 export default function QA({ currentProduct }) {
   return (

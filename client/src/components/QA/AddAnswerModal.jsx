@@ -3,14 +3,14 @@ import axios from 'axios';
 import {
   ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput,
 } from './styles/Modal.styled.js';
-import { Button } from './styles/Button.styled.js';
+import Button from './styles/Button.styled.js';
 
-export default function AddAnswerModal({ currentProduct, currentQuestion, toggleModal }) {
+export default function AddAnswerModal({ currentProduct, curQ, toggleModal }) {
   const [photos, setPhotos] = useState([]);
   const [warning, setWarning] = useState(false);
 
   const postAnswer = (results) => {
-    axios.post(`/api/qa/questions/${currentQuestion.question_id}/answers`, results)
+    axios.post(`/api/qa/questions/${curQ.question_id}/answers`, results)
       .then((response) => {
         console.log(response);
       }).catch((error) => {
@@ -30,9 +30,11 @@ export default function AddAnswerModal({ currentProduct, currentQuestion, toggle
     const formData = new FormData(form);
 
     const results = {};
-    for (const [key, value] of formData) {
+    [...formData.entries()].forEach((row) => {
+      const [key, value] = row;
       results[key] = value;
-    }
+    });
+
     results.photos = photos;
     postAnswer(results);
     toggleModal();
@@ -62,7 +64,7 @@ export default function AddAnswerModal({ currentProduct, currentQuestion, toggle
           <h5>
             {currentProduct.name}
             &nbsp;:&nbsp;
-            {currentQuestion.question_body}
+            {curQ.question_body}
           </h5>
         </ModalHeader>
         <ModalContent>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Bucket = styled.div`
+const Bucket = styled.div`
   border: 1px solid black;
   margin: 10px 0;
   padding: 10px;
@@ -8,3 +8,5 @@ export const Bucket = styled.div`
   padding-top: '30px';
   font-size: '30px';
 `;
+
+export default Bucket;

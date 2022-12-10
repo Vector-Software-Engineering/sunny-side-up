@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 import axios from 'axios';
-import { WordIncrement } from './styles/WordIncrement.styled.js';
+import WordIncrement from './styles/WordIncrement.styled.js';
 
 export default function AnswerEntry({ entry }) {
   const [clickReport, setClickReport] = useState(false);

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ListviewEntry from './ListviewEntry.jsx';
-import { Button } from './styles/Button.styled.js';
-import { Input } from './styles/Input.styled.js';
-import { Overflow } from './styles/Overflow.styled.js';
+import Button from './styles/Button.styled.js';
+import Input from './styles/Input.styled.js';
+import Overflow from './styles/Overflow.styled.js';
 import AddQuestionModal from './AddQuestionModal.jsx';
 
 export default function Listview({ currentProduct }) {
