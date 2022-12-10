@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from './styles/Button.styled.js';
+import Button from '../styles/Button.styled.js';
 import AnswerEntry from './AnswerEntry.jsx';
-import AnswerOverflow from './styles/AnswerOverflow.styled.js';
+import AnswerOverflow from '../styles/AnswerOverflow.styled.js';
 
 export default function AnswersList({ entry }) {
   const [allAnswers, setAllAnswers] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import WordIncrement from './styles/WordIncrement.styled.js';
-import Bucket from './styles/Bucket.styled.js';
+import WordIncrement from '../styles/WordIncrement.styled.js';
+import Bucket from '../styles/Bucket.styled.js';
 import AnswersList from './AnswersList.jsx';
 import AddAnswerModal from './AddAnswerModal.jsx';
 

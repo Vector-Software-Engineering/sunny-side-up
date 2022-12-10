@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {
   ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput,
-} from './styles/Modal.styled.js';
-import Button from './styles/Button.styled.js';
+} from '../styles/Modal.styled.js';
+import Button from '../styles/Button.styled.js';
 
 export default function AddAnswerModal({ currentProduct, curQ, toggleModal }) {
   const [photos, setPhotos] = useState([]);
