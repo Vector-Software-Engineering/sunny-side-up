@@ -1,10 +1,15 @@
 import React from 'react';
-import { StyledImage } from './styles/Image.styled.js';
+import StyledImage from './styles/Image.styled.js';
 
-const Image = ({ photo, setMainImage, index, setCurrentIndex, currentStyle }) => {
+function Image({
+  photo, setMainImage, index, setCurrentIndex, currentStyle,
+}) {
   const setIndexAndMain = () => {
+    console.log(currentStyle);
     setMainImage(currentStyle);
-    setCurrentIndex(index);
+    if (index < currentStyle.photos.length) {
+      setCurrentIndex(index);
+    }
   };
 
   return (
@@ -14,6 +19,6 @@ const Image = ({ photo, setMainImage, index, setCurrentIndex, currentStyle }) =>
       </div>
     </StyledImage>
   );
-};
+}
 
 export default Image;
