@@ -18,7 +18,7 @@ export default function App() {
   const getProducts = () => {
     axios.get('/api/products/', {})
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       }).catch((error) => {
         console.log(error);
       });
@@ -58,7 +58,7 @@ export default function App() {
   const getReviews = () => {
     axios.get('/api/reviews?product_id=40344', {})
       .then((response) => {
-        console.log(response.data.results);
+        // console.log(response.data.results);
         setReviews(response.data.results);
         setAllReviews(getAverageReviews(response.data));
       }).catch((error) => {

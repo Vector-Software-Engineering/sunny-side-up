@@ -33,8 +33,8 @@ function Overview({
   const reset = () => {
     setSeed(Math.random());
   };
-  const [date, setDate] = useState(new Date().toLocaleString("en-US", dateoptions))
-  const [time, setTime] = useState(new Date().toLocaleString("en-US", timeoptions))
+  const [date, setDate] = useState(new Date().toLocaleString("en-US", dateoptions));
+  const [time, setTime] = useState(new Date().toLocaleString("en-US", timeoptions));
 
   const goToExtendedView = () => {
     console.log('we are going to extended view');
@@ -42,7 +42,6 @@ function Overview({
   };
 
   const setThumbnails = () => {
-    console.log('the firstIndex is:, ', firstIndex);
     // eslint-disable-next-line max-len
     if (currentStyle && (shortenedThumbnails !== undefined || firstIndex === 7 || firstIndex === 0)) {
       const tempArray = [];
@@ -55,7 +54,6 @@ function Overview({
         counter += 1;
       }
       counter = 0;
-      console.log('we are about to set the new thumbnail array to update in setThumbnails:,', tempArray);
       setShortenedThumbnails(tempArray);
     }
   };

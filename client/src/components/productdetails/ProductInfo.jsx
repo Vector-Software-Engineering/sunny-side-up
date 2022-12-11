@@ -9,13 +9,9 @@ import {
 function ProductInfo({
   currentProduct, allReviews, numReviews, currentStyle, reviews,
 }) {
-
-  console.log(reviews, 'reviews are');
   const goToReviews = () => {
     console.log('This link will change View to James Review Component');
   };
-
-  //
   return (
     <div>
       <div>
