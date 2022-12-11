@@ -1,5 +1,5 @@
 require('dotenv').config();
-const path = require('path')
+const path = require('path');
 const express = require('express');
 const axios = require('axios');
 const logger = require('../middleware/logger.js');
@@ -12,7 +12,7 @@ app.use(logger);
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.all('/api/*', (req, res) => {
-  const method = req.method;
+  const { method } = req;
   const url = req.url.replace('/api', '');
 
   axios({

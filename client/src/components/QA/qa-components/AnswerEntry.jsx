@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 import axios from 'axios';
-import { WordIncrement } from './styles/WordIncrement.styled.js';
+import WordIncrement from '../styles/WordIncrement.styled.js';
 
 export default function AnswerEntry({ entry }) {
-  const [clickHelpful, setClickHelpful] = useState(false);
   const [clickReport, setClickReport] = useState(false);
+  const [clickHelpful, setClickHelpful] = useState(false);
 
-  // format date
   const { date } = entry;
-  const formatDate = format(new Date(date), 'MMMM d, yyyy');
+  const formatDate = `${date.slice(5, 7)} ${date.slice(8, 10)} ${date.slice(0, 4)}`;
+  const postedDate = format(new Date(formatDate), 'MMMM d, yyyy');
 
   const handleAnswerHelpful = (e, id) => {
     e.preventDefault();
-    if (!clickHelpful) {
+    const data = localStorage.getItem(`ssu: ${entry.answer_id}`);
+    if (data === null) {
       axios.put(`/api/qa/answers/${id}/helpful`)
         .then((response) => {
           console.log(response);
         }).catch((error) => {
           console.log(error);
         });
-
       setClickHelpful(true);
+      localStorage.setItem(`ssu: ${entry.answer_id}`, true);
     }
   };
 
@@ -45,25 +46,13 @@ export default function AnswerEntry({ entry }) {
         <b>A: </b>
         {entry.body}
       </div>
-      <div style={{ fontSize: '14px', color: 'grey' }}>
-        {' '}
-        by
-        {' '}
-        {entry.answerer_name}
-        {' '}
-        |
-        {' '}
-        {formatDate}
-        {' '}
-        | Helpful?
-        {' '}
-        <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.answer_id)}><u>Yes</u></WordIncrement>
-        {' '}
-        (
-        {clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}
-        ) |
-        {' '}
-        <WordIncrement><u onClick={(e) => handleAnswerReport(e, entry.answer_id)}>{clickReport ? 'Reported' : 'Report'}</u></WordIncrement>
+      <div style={{ fontSize: '14px', color: 'grey', paddingTop: '6px' }}>
+        {`by ${entry.answerer_name} | ${postedDate} | Helpful? `}
+        <WordIncrement onClick={(e) => handleAnswerHelpful(e, entry.answer_id)}>
+          <u>Yes</u>
+        </WordIncrement>
+        {`(${clickHelpful ? entry.helpfulness + 1 : entry.helpfulness}) | `}
+        <WordIncrement onClick={(e) => handleAnswerReport(e, entry.answer_id)}><u>{clickReport ? 'Reported' : 'Report'}</u></WordIncrement>
       </div>
     </>
   );

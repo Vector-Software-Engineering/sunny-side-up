@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import {
   ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput,
-} from './styles/Modal.styled.js';
-import { Button } from './styles/Button.styled.js';
+} from '../styles/Modal.styled.js';
+import Button from '../styles/Button.styled.js';
 
 export default function AddQuestionModal({ currentProduct, toggleModal }) {
   const postQuestion = (results) => {
@@ -27,9 +27,10 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
     const formData = new FormData(form);
 
     const results = {};
-    for (const [key, value] of formData) {
+    [...formData.entries()].forEach((row) => {
+      const [key, value] = row;
       results[key] = value;
-    }
+    });
 
     results.product_id = currentProduct.id;
     postQuestion(results);
@@ -43,23 +44,21 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
           <Exit onClick={handleCloseClick}>X</Exit>
           <h2 className="modal-title">Ask Your Question</h2>
           <h5>
-            About the
-            {' ' + currentProduct.name}
+            About the&nbsp;
+            {currentProduct.name}
           </h5>
         </ModalHeader>
         <ModalContent>
           <form id="add-question" onSubmit={handleFormSubmit}>
-            <label>Question*</label>
+            <span>Question*</span>
             <br />
             <BiggerInput name="body" maxlength="1000" placeholder="Why did you like the product or not?" required />
             <br />
-            <label>
-              Nickname*
-            </label>
+            <span>Nickname*</span>
             <br />
             <SmallerInput name="name" maxlength="60" placeholder="jackson11!" required />
             <h6>For privacy reasons, do not use your full name or email address</h6>
-            <label>Email*</label>
+            <span>Email*</span>
             <br />
             <SmallerInput name="email" type="email" maxlength="60" placeholder="jack@email.com" required />
             <br />
