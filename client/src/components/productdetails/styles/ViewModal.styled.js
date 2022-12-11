@@ -13,7 +13,7 @@ const ModalContainer = styled.div`
   align-content: center;
   font-size: 20px;
   height: 80%;
-  width: 80%;
+
 
   button {
     display: flex;
@@ -65,6 +65,13 @@ const SmallerInput = styled.input`
 width: 50%;
 `;
 
+const ExtendedViewContainer = styled.div`
+  display: flex;
+  margin-left: 140px;
+  height: 100%;
+  width: 100%;
+`;
+
 export {
   ModalContainer,
   Modal,
@@ -73,4 +80,5 @@ export {
   Exit,
   BiggerInput,
   SmallerInput,
+  ExtendedViewContainer,
 };

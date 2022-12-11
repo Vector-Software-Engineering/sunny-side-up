@@ -71,8 +71,8 @@ function Overview({
     <StyledOverview>
       {!currentStyle || extendedView === false
         ? null : mainImage === ''
-          ? <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} />
-          : <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} />}
+          ? <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} />
+          : <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} />}
       <StyledOverviewHeader>
         <hgroup style={{display: 'flex', justifyContent: 'center'}}>
         <img src="https://i.ibb.co/6YwX274/eggwithname.png" alt="eggwithname" border="0" />

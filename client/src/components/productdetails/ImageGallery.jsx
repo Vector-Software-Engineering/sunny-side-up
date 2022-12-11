@@ -68,11 +68,9 @@ function ImageGallery({
 
       {!currentStyle
         ? null
-        : mainImage === ''
-          // eslint-disable-next-line max-len
-          ? <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[0].thumbnail_url} />
-          // eslint-disable-next-line max-len
-          : <StyledMainImage onClick={goToExtendedView} src={mainImage.photos[currentIndex].thumbnail_url} />}
+        : <>
+        <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[currentIndex].thumbnail_url} />
+        </>}
     </StyledImageGallery>
   );
 }
