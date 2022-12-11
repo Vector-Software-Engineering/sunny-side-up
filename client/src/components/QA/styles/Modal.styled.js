@@ -46,6 +46,9 @@ right: 1rem;
 
 const BiggerInput = styled.textarea`
 width: 70%;
+display:block;
+margin-left: auto;
+margin-right: auto;
 
 &: focus {
   height: 10em;
@@ -53,6 +56,9 @@ width: 70%;
 `;
 const SmallerInput = styled.input`
 width: 50%;
+display:block;
+margin-left: auto;
+margin-right: auto;
 `;
 
 export {

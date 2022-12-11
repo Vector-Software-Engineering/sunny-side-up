@@ -51,17 +51,12 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
         <ModalContent>
           <form id="add-question" onSubmit={handleFormSubmit}>
             <span>Question*</span>
-            <br />
             <BiggerInput name="body" maxlength="1000" placeholder="Why did you like the product or not?" required />
-            <br />
             <span>Nickname*</span>
-            <br />
             <SmallerInput name="name" maxlength="60" placeholder="jackson11!" required />
             <h6>For privacy reasons, do not use your full name or email address</h6>
             <span>Email*</span>
-            <br />
             <SmallerInput name="email" type="email" maxlength="60" placeholder="jack@email.com" required />
-            <br />
             <h6>For authentication reasons, you will not be emailed</h6>
             <Button type="submit">Submit</Button>
           </form>

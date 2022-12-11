@@ -70,26 +70,18 @@ export default function AddAnswerModal({ currentProduct, curQ, toggleModal }) {
         <ModalContent>
           <form id="add-question" onSubmit={handleFormSubmit}>
             <span>Your Answer*</span>
-            <br />
             <BiggerInput name="body" maxlength="1000" placeholder="Why did you like the product or not?" required />
-            <br />
             <span>Nickname*</span>
-            <br />
             <SmallerInput name="name" maxlength="60" placeholder="jack543!" required />
-            <br />
             <h6>For privacy reasons, do not use your full name or email address</h6>
             <span>Email*</span>
-            <br />
             <SmallerInput name="email" type="email" maxlength="60" placeholder="jack@email.com" required />
-            <br />
             <h6>For authentication reasons, you will not be emailed</h6>
             <span>Photos</span>
-            <br />
             <div>
               <SmallerInput type="file" id="photos" accept="image/*" onChange={onChangeFiles} multiple />
             </div>
             {warning ? <small style={{ fontSize: '20px', color: 'red' }}>Select up to 5 photos</small> : <small>Select up to 5 photos</small>}
-            <br />
             <div>
               {photos.map((photo, i) => <img key={`${photo + i}`} style={{ height: '150px', width: '150px' }} src={photo} alt="thumbnail" />)}
             </div>
