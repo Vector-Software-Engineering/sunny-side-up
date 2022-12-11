@@ -1,21 +1,21 @@
 import React from 'react';
+import RatingSummary from '../reviews/RatingSummary.jsx';
 import { FacebookShareButton, PinterestShareButton, TwitterShareButton, FacebookIcon, PinterestIcon, TwitterIcon } from 'react-share';
 
 import {
   StyledSalePrice, StyledOriginalPrice, StyledName, StyleShare,
 } from './styles/ProductInfo.styled.js';
 
-const ProductInfo = ({ currentProduct, allReviews, numReviews, currentStyle }) => {
-
+function ProductInfo({
+  currentProduct, allReviews, numReviews, currentStyle, reviews,
+}) {
   const goToReviews = () => {
     console.log('This link will change View to James Review Component');
   };
-
   return (
     <div>
       <div>
-        <b>Rating: </b>
-        {allReviews}
+        <RatingSummary reviews={reviews} />
         <a href="#" onClick={goToReviews}> Read all [{numReviews}] reviews</a>
       </div>
       <div>
@@ -25,13 +25,15 @@ const ProductInfo = ({ currentProduct, allReviews, numReviews, currentStyle }) =
         {currentProduct.name}
       </StyledName>
       <div>
-        {currentStyle.sale_price
-        ? <div>
+        {!currentStyle
+          ? null
+          : currentStyle.sale_price
+          ? <div>
            <StyledSalePrice>${currentStyle.sale_price.slice(0, -3)}</StyledSalePrice>
            <StyledOriginalPrice>${currentStyle.original_price.slice(0, -3)}</StyledOriginalPrice>
           </div>
-        : currentStyle
-        ? <div>${currentStyle.original_price.slice(0, -3)}</div> : null}
+          : currentStyle
+          ? <div>${currentStyle.original_price.slice(0, -3)}</div> : null}
       </div>
       <div>
         <b>Description </b>
@@ -57,6 +59,6 @@ const ProductInfo = ({ currentProduct, allReviews, numReviews, currentStyle }) =
       </div>
     </div>
   );
-};
+}
 
 export default ProductInfo;
