@@ -12,6 +12,17 @@ import ViewModal from './ViewModal.jsx';
 function Overview({
   currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle, reviews,
 }) {
+  const timeoptions = {
+    timeZone: "EST",
+    hour: "2-digit",
+    minute: "2-digit"
+  }
+  const dateoptions = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+
   const [mainImage, setMainImage] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [firstIndex, setFirstIndex] = useState(0);
@@ -22,6 +33,8 @@ function Overview({
   const reset = () => {
     setSeed(Math.random());
   };
+  const [date, setDate] = useState(new Date().toLocaleString("en-US", dateoptions))
+  const [time, setTime] = useState(new Date().toLocaleString("en-US", timeoptions))
 
   const goToExtendedView = () => {
     console.log('we are going to extended view');
@@ -45,13 +58,16 @@ function Overview({
       console.log('we are about to set the new thumbnail array to update in setThumbnails:,', tempArray);
       setShortenedThumbnails(tempArray);
     }
-    // reset();
   };
 
   useEffect(() => {
     setThumbnails();
+    const interval = setInterval(() => {
+      setTime(new Date().toLocaleString("en-US", timeoptions));
+      setDate(new Date().toLocaleString("en-US", dateoptions));
+    }, 20000);
+    return () => clearInterval(interval);
   }, [currentStyle]);
-
 
   return (
     <StyledOverview>
@@ -60,11 +76,12 @@ function Overview({
           ? <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} />
           : <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} />}
       <StyledOverviewHeader>
-        <hgroup>
-          <h1>Sunny Side Up</h1>
+        <hgroup style={{display: 'flex', justifyContent: 'center'}}>
+        <img src="https://i.ibb.co/6YwX274/eggwithname.png" alt="eggwithname" border="0" />
+        </hgroup>
+        <hgroup style={{display: 'flex', justifyContent: 'center'}}>
           <time>
-            <b>12/04/2022 07:46pm </b>
-            <span>Philadelphia</span>
+            <p>{date} {time} PHI</p>
           </time>
         </hgroup>
       </StyledOverviewHeader>

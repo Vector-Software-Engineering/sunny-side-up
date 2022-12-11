@@ -1,26 +1,48 @@
-import React from "react";
-import { ReviewTile } from './styles/ReviewTile.styled.js';
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+import React from 'react';
 import { parseISO, format } from 'date-fns';
+import axios from 'axios';
+import { ReviewTile } from './styles/ReviewTile.styled.js';
 
-export default function ({ review }) {
+export default function ({ review, getReviews }) {
+  const markHelpful = () => {
+    axios.put(`api/reviews/${review.review_id}/helpful`)
+      .then((res) => {
+        console.log(res);
+        getReviews();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <ReviewTile>
-      <div className='top'>
+      <div className="top">
         <h3>{review.summary}</h3>
-        <span>{'by: ' + review.reviewer_name}</span>
+        <span>{`by: ${review.reviewer_name}`}</span>
         <span>{format(parseISO(review.date), 'MMM d, yyyy')}</span>
-        <span>{review.rating + ' stars'}</span>
+        <span>{`${review.rating} stars`}</span>
       </div>
       <p>{review.body}</p>
       {
-        review.recommend ?
-        <p>✓ I recommend this product</p> : 
-        null
-      }      
-      <p>{review.response ? ('Response from seller: ' +  review.response) : null }</p>
-      <p>{review.helpfulness + ' customers found this review helpful'}</p>
-      {/* <h1>{review.photos}</h1> */}
+        review.response !== null
+          ? <p>{`response from seller: ${review.response}`}</p>
+          : null
+      }
+      {
+        review.recommend
+          ? <p>✓ I recommend this product</p>
+          : null
+      }
+      <p>{review.response ? (`Response from seller: ${review.response}`) : null }</p>
+      <p>{`${review.helpfulness} helpful`}</p>
+      <p className="pointer" onClick={() => markHelpful()}>Mark Helpful</p>
+      {
+        review.photos.map((photo, index) => <img key={index} src={photo.url} alt="" />)
+      }
     </ReviewTile>
-  )
+  );
 }

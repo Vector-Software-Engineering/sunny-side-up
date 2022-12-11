@@ -1,19 +1,15 @@
-import React from "react";
+import React from 'react';
 import { RatingSummary } from './styles/RatingSummary.styled.js';
 import './styles/styles.css';
 
 export default function ({ reviews }) {
-
-  console.log('reviews are: ', reviews);
-
-  const rating = reviews.reduce((total, next) => {
-    return total + next.rating;
-  }, 0) / reviews.length;
+  const rating = reviews.reduce((total, next) => total + next.rating, 0) / reviews.length;
 
   return (
     <RatingSummary>
       <span>{ ' rating: ' }</span>
-      <div className='stars' style={{'--rating' : rating}}></div>
+      <div className="stars" style={{ '--rating': rating }} />
+      <p>{`${reviews.length} reviews`}</p>
     </RatingSummary>
-  )
+  );
 }

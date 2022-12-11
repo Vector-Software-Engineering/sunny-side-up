@@ -112,15 +112,11 @@ export default function App() {
       }
 
       {
-        tab==='qa' ?
-          <QA currentProduct={currentProduct}/> :
-        null
+        tab === 'qa' && <QA currentProduct={currentProduct} />
       }
 
       {
-        tab === 'reviews' ?
-          <ReviewList /> :
-        null
+        tab === 'reviews' && <ReviewList />
       }
     </AppDiv>
   );

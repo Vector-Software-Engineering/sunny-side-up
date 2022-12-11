@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+const Button = styled.button`
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -18,3 +18,5 @@ export const Button = styled.button`
     color: white;
   }
 `;
+
+export default Button;

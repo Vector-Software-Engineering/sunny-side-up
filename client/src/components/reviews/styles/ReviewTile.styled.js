@@ -18,4 +18,12 @@ export const ReviewTile = styled.div`
     grid-template-columns: 35% 25% 25% 15%; 
   }
 
+  img {
+    width: 100px;
+  }
+
+  .pointer {
+    margin: 0;
+  }
+
 `
