@@ -46,7 +46,7 @@ right: 1rem;
 
 const BiggerInput = styled.textarea`
 width: 70%;
-display:block;
+display: block;
 margin-left: auto;
 margin-right: auto;
 

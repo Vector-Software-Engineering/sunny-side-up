@@ -22,16 +22,18 @@ export const StyledOverviewHeader = styled.header`
   text-align: center;
 `;
 
+// height: 100%;
+// width: 140px;
+// position: fixed;
+// z-index: 1;
+// top: 0;
+// left: 0;
+// background-color: #FFF;
+// overflow-x: hidden;
+// padding-top: 20px;
+
 export const StyledSidebar = styled.div`
-  height: 100%;
-  width: 140px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #FFF;
-  overflow-x: hidden;
-  padding-top: 20px;
+
 `;
 
 export const GridContainer = styled.div`

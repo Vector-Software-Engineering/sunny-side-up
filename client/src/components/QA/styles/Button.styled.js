@@ -5,8 +5,8 @@ const Button = styled.button`
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
-  background-color: white;
-  color: black;
+  background-color: ${(props) => props.theme.buttonBG};
+  color: ${(props) => props.theme.buttonColor};
   width: fit-content;
   margin-top: 10px;
 

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme, GlobalStyles } from '../themes.js';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/overview.jsx';
 import ReviewList from './reviews/RatingsAndReviews.jsx';
@@ -12,8 +14,12 @@ export default function App() {
   const [allStyles, setAllStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
   const [reviews, setReviews] = useState([]);
-
+  const [theme, setTheme] = useState('light');
   const [tab, setTab] = useState('detail');
+
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
 
   const getProducts = () => {
     axios.get('/api/products/', {})
@@ -92,32 +98,38 @@ export default function App() {
   }, []);
 
   return (
-    <AppDiv>
-      <h1>Product Name</h1>
-      { tab !== 'detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
-      { tab !== 'qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
-      { tab !== 'reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <AppDiv>
+        <h1>Product Name</h1>
+        { tab !== 'detail' ? <span onClick={() => { setTab('detail'); }}>detail - </span> : null }
+        { tab !== 'qa' ? <span onClick={() => { setTab('qa'); }}>qa - </span> : null }
+        { tab !== 'reviews' ? <span onClick={() => { setTab('reviews'); }}>reviews</span> : null }
+        <button style={{top:0, right:0}} onClick={themeToggler}>Toggle Theme</button>
+        {
+          tab === 'detail'
+            ? (
+              <Overview
+                currentProduct={currentProduct}
+                allReviews={allReviews}
+                numReviews={numReviews}
+                allStyles={allStyles}
+                currentStyle={currentStyle}
+                setCurrentStyle={setCurrentStyle}
+                reviews={reviews}
+              />
+            )
+            : null
+        }
 
-      {
-        tab === 'detail' ?
-        <Overview
-        currentProduct={currentProduct}
-        allReviews={allReviews}
-        numReviews={numReviews}
-        allStyles={allStyles}
-        currentStyle={currentStyle}
-        setCurrentStyle={setCurrentStyle}
-        reviews={reviews} /> :
-        null
-      }
+        {
+          tab === 'qa' && <QA currentProduct={currentProduct} />
+        }
 
-      {
-        tab === 'qa' && <QA currentProduct={currentProduct} />
-      }
-
-      {
-        tab === 'reviews' && <ReviewList />
-      }
-    </AppDiv>
+        {
+          tab === 'reviews' && <ReviewList />
+        }
+      </AppDiv>
+    </ThemeProvider>
   );
 }
