@@ -1,14 +1,14 @@
 import React from 'react';
 import ExtendedViewDots from './ExtendedViewDots.jsx';
 import {
-  ModalContainer, ExtendedViewContainer,
+  ModalContainer, ExtendedViewContainer, StyledLeftArrow, StyledRightArrow, StyledDots, StyledExit, StyledImgContainer, StyledExtendedImg,
 } from './styles/ViewModal.styled.js';
 
 export default function ViewModal({
   mainImage, currentIndex, currentStyle, goToExtendedView, setCurrentIndex, setMainImage,
 }) {
   const onRightClick = () => {
-    if (currentIndex !== currentStyle.photos.length) {
+    if (currentIndex !== currentStyle.photos.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -21,15 +21,17 @@ export default function ViewModal({
     <div>
       <ModalContainer>
         <ExtendedViewContainer>
-          <>
-            <div onClick={onLeftClick}>←</div>
-            <img src={currentStyle.photos[currentIndex].thumbnail_url} alt="Main Product" />
-            <button onClick={goToExtendedView} >❌</button>
+          <StyledLeftArrow onClick={onLeftClick}>←</StyledLeftArrow>
+          <StyledImgContainer>
+            <StyledExtendedImg src={currentStyle.photos[currentIndex].thumbnail_url} alt="Main Product" />
+            <StyledExit onClick={goToExtendedView}>❌</StyledExit>
+          </StyledImgContainer>
+          <StyledDots>
             {currentStyle ? currentStyle.photos.map((photo, index) => {
               return <div><ExtendedViewDots key={index} index={index} setCurrentIndex={setCurrentIndex} setMainImage={setMainImage} currentStyle={currentStyle} currentIndex ={currentIndex} /></div>
             }) : null}
-            <div onClick={onRightClick}>→</div>
-          </>
+          </StyledDots>
+          <StyledRightArrow onClick={onRightClick}>→</StyledRightArrow>
         </ExtendedViewContainer>
       </ModalContainer>
     </div>

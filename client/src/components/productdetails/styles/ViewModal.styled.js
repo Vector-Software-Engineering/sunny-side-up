@@ -12,7 +12,7 @@ const ModalContainer = styled.div`
   justify-content: center;
   align-content: center;
   font-size: 20px;
-  height: 80%;
+  height: 100%;
 
 
   button {
@@ -48,7 +48,6 @@ padding: 0;
 position: absolute;
 top: 0;
 right: 1rem;
-
 &: hover {
   cursor: pointer;
 }
@@ -66,10 +65,51 @@ width: 50%;
 `;
 
 const ExtendedViewContainer = styled.div`
+  position: relative;
   display: flex;
-  margin-left: 140px;
+  justify-content: center;
   height: 100%;
   width: 100%;
+`;
+
+const StyledLeftArrow = styled.div`
+  position: relative;
+  margin-top: 320px;
+  font-size: 100px;
+  cursor: pointer;
+  color: white;
+`;
+
+const StyledRightArrow = styled.div`
+  position: relative;
+  margin-top: 320px;
+  font-size: 100px;
+  cursor: pointer;
+  color: white;
+`;
+
+const StyledDots = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledImgContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+`;
+
+const StyledExit = styled.button`
+`;
+
+const StyledExtendedImg = styled.img`
+  cursor: crosshair;
 `;
 
 export {
@@ -81,4 +121,10 @@ export {
   BiggerInput,
   SmallerInput,
   ExtendedViewContainer,
+  StyledLeftArrow,
+  StyledRightArrow,
+  StyledDots,
+  StyledExit,
+  StyledImgContainer,
+  StyledExtendedImg,
 };
