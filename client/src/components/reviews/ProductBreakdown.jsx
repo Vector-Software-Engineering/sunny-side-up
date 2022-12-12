@@ -3,7 +3,6 @@ import { ProductBreakdown } from './styles/ProductBreakdown.styled.js';
 import './styles/styles.css';
 
 export default function ({ characteristics }) {
-  console.log('chards: ' + JSON.stringify(characteristics));
   return (
     <ProductBreakdown>
       {

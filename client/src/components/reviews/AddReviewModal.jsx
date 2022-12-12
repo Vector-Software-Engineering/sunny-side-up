@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-tag-spacing */
 /* eslint-disable jsx-quotes */
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import axios from 'axios';
-import RadioClicker from "./RadioClicker.jsx";
+import RadioClicker from './RadioClicker.jsx';
 import { ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput } from './styles/ReviewModal.styled.js';
 
 export default function AddReviewModal({ prodID, setShowModal, characteristics }) {
@@ -23,24 +25,73 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    if (currRating === 0) {
+      alert('You must select an overall rating!');
+      return;
+    }
+    if (summary === '') {
+      alert('You must write a summary!');
+      return;
+    }
+    if (body === '') {
+      alert('You must write a body!');
+      return;
+    }
+    if (name === '') {
+      alert('You must add a name!');
+      return;
+    }
+    if (email === '') {
+      alert('You must add an email!');
+      return;
+    }
+    if (summary === '') {
+      alert('You must write a summary!');
+      return;
+    }
+
     const chars = {};
     if (characteristics.Size !== undefined) {
       chars[characteristics.Size.id] = size;
+      if (size === 0) {
+        alert('You must select a size rating!');
+        return;
+      }
     }
     if (characteristics.Width !== undefined) {
       chars[characteristics.Width.id] = width;
+      if (width === 0) {
+        alert('You must select a width rating!');
+        return;
+      }
     }
     if (characteristics.Comfort !== undefined) {
       chars[characteristics.Comfort.id] = comfort;
+      if (comfort === 0) {
+        alert('You must select a comfort rating!');
+        return;
+      }
     }
     if (characteristics.Quality !== undefined) {
       chars[characteristics.Quality.id] = quality;
+      if (quality === 0) {
+        alert('You must select a quality rating!');
+        return;
+      }
     }
     if (characteristics.Length !== undefined) {
       chars[characteristics.Length.id] = length;
+      if (length === 0) {
+        alert('You must select a length rating!');
+        return;
+      }
     }
     if (characteristics.Fit !== undefined) {
       chars[characteristics.Fit.id] = fit;
+      if (fit === 0) {
+        alert('You must select a fit rating!');
+        return;
+      }
     }
 
     axios.post('/api/reviews', {
@@ -56,6 +107,7 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
     })
       .then((response) => {
         console.log(response.data);
+        setShowModal(false);
       })
       .catch((error) => {
         console.log(error);
@@ -86,7 +138,9 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
               <label>yes</label>
               <input type="radio" name='recommend' onClick={() => setRecommend(false)}/>
               <label>no</label>
-            </div><br /><br />
+            </div>
+            <br />
+            <br />
             <div>
               {
                 characteristics.Size !== undefined
@@ -122,20 +176,20 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
             </div>
             <div></div>
             <label>Summary</label><br></br>
-            <SmallerInput name="summary" maxlength="60" placeholder="Ex. Best purchase ever" value={summary} onChange={(e) => setSummary(e.target.value)} /><br /><br />
+            <SmallerInput name="summary" maxlength="60" placeholder="Ex. Best purchase ever" value={summary} onChange={(e) => setSummary(e.target.value)} required /><br /><br />
 
             <label>Full Review</label><br></br>
-            <BiggerInput name='body' maxlength='1000' placeholder="Why did you like the product or not?" value={body} onChange={(e) => setBody(e.target.value)} />
+            <BiggerInput name='body' maxlength='1000' placeholder="Why did you like the product or not?" value={body} onChange={(e) => setBody(e.target.value)} required />
             <p>{`Currently ${body.length} chars. Need ${Math.max(50 - body.length, 0)} more. Max 1000`}</p>
             <br />
             <br />
 
             <label>Name</label><br></br>
-            <SmallerInput name='name' maxlength='60' placeholder='jack543!' value={name} onChange={(e) => setName(e.target.value)} />
+            <SmallerInput name='name' maxlength='60' placeholder='jack543!' value={name} onChange={(e) => setName(e.target.value)} required />
             <p>For privacy reasons, do not use your full name or email address</p>
 
             <label>Email*</label><br></br>
-            <SmallerInput name='email' type="email" maxlength="60" placeholder="jack@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <SmallerInput name='email' type="email" maxlength="60" placeholder="jack@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <p>For authentication reasons, you will not be emailed</p>
 
             <label>Photos</label><br></br>
