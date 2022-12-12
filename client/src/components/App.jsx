@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/overview.jsx';
-import ReviewList from './reviews/RatingsAndReviews.jsx';
 import { AppDiv } from './App.styled.js';
+import RatingsAndReviews from './reviews/RatingsAndReviews.jsx';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
@@ -66,25 +66,6 @@ export default function App() {
       });
   };
 
-  const postReview = () => {
-    axios.post('/api/reviews/', {
-      product_id: 40344,
-      rating: 2,
-      summary: 'looks great, NOT, go to SUNNY SIDE UP to get some real DRIP',
-      body: 'random text jake is cool fr, but also chefs it up it the kitchen',
-      recommend: false,
-      name: 'james',
-      email: 'bigballerjames@gmail.com',
-      photos: [],
-      characteristics: {},
-    })
-      .then((response) => {
-        console.log(response.data);
-      }).catch((error) => {
-        console.log(error);
-      });
-  };
-
   useEffect(() => {
     getProduct();
     getReviews();
@@ -94,21 +75,26 @@ export default function App() {
   return (
     <AppDiv>
       <h1>Product Name</h1>
-      { tab !== 'detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
-      { tab !== 'qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
-      { tab !== 'reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
+      <div className="center-bar">
+        <span className='pointer' style={{'fontWeight': (tab==='detail' ? 'bold' : '')}} onClick={ () => {setTab('detail')} }>detail</span>
+        <span> - </span>
+        <span className='pointer' style={{'fontWeight': (tab==='qa' ? 'bold' : '')}} onClick={ () => {setTab('qa')} }>qa</span>
+        <span> - </span>
+        <span className='pointer' style={{'fontWeight': (tab==='reviews' ? 'bold' : '')}} onClick={ () => {setTab('reviews')} }>reviews</span>
+      </div>
 
       {
-        tab === 'detail' ?
+        tab === 'detail' ? (
         <Overview
-        currentProduct={currentProduct}
-        allReviews={allReviews}
-        numReviews={numReviews}
-        allStyles={allStyles}
-        currentStyle={currentStyle}
-        setCurrentStyle={setCurrentStyle}
-        reviews={reviews} /> :
-        null
+          currentProduct={currentProduct}
+          allReviews={allReviews}
+          numReviews={numReviews}
+          allStyles={allStyles}
+          currentStyle={currentStyle}
+          setCurrentStyle={setCurrentStyle}
+          reviews={reviews} />
+      ) :
+          null
       }
 
       {
@@ -116,7 +102,7 @@ export default function App() {
       }
 
       {
-        tab === 'reviews' && <ReviewList />
+        tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
       }
     </AppDiv>
   );

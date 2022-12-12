@@ -1,15 +1,14 @@
 /* eslint-disable max-len */
-import React, { useState, useEffect } from "react"
-import ReviewList from "./ReviewList.jsx";
-import axios from "axios";
-import { differenceInDays, parseISO } from "date-fns";
-import RatingBreakdown from "./RatingBreakdown.jsx";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { differenceInDays, parseISO } from 'date-fns';
+import ReviewList from './ReviewList.jsx';
+import RatingBreakdown from './RatingBreakdown.jsx';
 import { Container } from './styles/Container.styled.js';
 
-export default function () {
-  const [prodID, setProdID] = useState(40344);
+export default function ({ currentProduct }) {
   // get reviews
-  const [reviews, setReviews] = useState ([]);
+  const [reviews, setReviews] = useState([]);
   const [visReviews, setVisReviews] = useState([]);
   const [meta, setMeta] = useState({});
   const [numReviews, setNumReviews] = useState(2);
@@ -17,17 +16,16 @@ export default function () {
   const [ratingFilter, setRatingFilter] = useState(6);
 
   const getReviews = () => {
-    axios.get('/api/reviews?product_id=' + prodID + '&count=1000')
+    axios.get(`/api/reviews?product_id=${currentProduct.id}&count=1000`)
       .then((response) => {
         setReviews(response.data.results);
-        console.log(response.data.results);
       }).catch((error) => {
         console.log(error);
       });
   };
 
   const getMeta = () => {
-    axios.get(`/api/reviews/meta/?product_id=${prodID}`)
+    axios.get(`/api/reviews/meta/?product_id=${currentProduct.id}`)
       .then((response) => {
         setMeta(response.data);
       })
@@ -76,7 +74,7 @@ export default function () {
     <Container>
       <div className="main">
         <RatingBreakdown reviews={reviews} meta={meta} filterRating={filterRating} ratingFilter={ratingFilter} />
-        <ReviewList prodID={prodID} reviews={reviews} meta={meta} visReviews={visReviews} numReviews={numReviews} sortBy={sortBy} setSortBy={setSortBy} setNumReviews={setNumReviews} getReviews={getReviews} />
+        <ReviewList prodID={currentProduct.id} reviews={reviews} meta={meta} visReviews={visReviews} numReviews={numReviews} sortBy={sortBy} setSortBy={setSortBy} setNumReviews={setNumReviews} getReviews={getReviews} />
       </div>
     </Container>
   );
