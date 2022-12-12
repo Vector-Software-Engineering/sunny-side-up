@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-tag-spacing */
 /* eslint-disable jsx-quotes */
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import axios from 'axios';
-import RadioClicker from "./RadioClicker.jsx";
+import RadioClicker from './RadioClicker.jsx';
 import { ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput } from './styles/ReviewModal.styled.js';
 
 export default function AddReviewModal({ prodID, setShowModal, characteristics }) {
@@ -86,7 +88,9 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
               <label>yes</label>
               <input type="radio" name='recommend' onClick={() => setRecommend(false)}/>
               <label>no</label>
-            </div><br /><br />
+            </div>
+            <br />
+            <br />
             <div>
               {
                 characteristics.Size !== undefined
