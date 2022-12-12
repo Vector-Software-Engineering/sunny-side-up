@@ -11,6 +11,11 @@ export default function ({ characteristics }) {
           : null
       }
       {
+        characteristics.Size !== undefined
+          ? <p>{`size: ${characteristics.Size.value}`}</p>
+          : null
+      }
+      {
         characteristics.Width !== undefined
           ? <p>{`width: ${characteristics.Width.value}`}</p>
           : null

@@ -24,7 +24,33 @@ export default function ({ review, getReviews }) {
         <h3>{review.summary}</h3>
         <span>{`by: ${review.reviewer_name}`}</span>
         <span>{format(parseISO(review.date), 'MMM d, yyyy')}</span>
-        <span>{`${review.rating} stars`}</span>
+        <div>
+          {
+            review.rating > 0
+              ? <span>★</span>
+              : <span>☆</span>
+          }
+          {
+            review.rating > 1
+              ? <span>★</span>
+              : <span>☆</span>
+          }
+          {
+            review.rating > 2
+              ? <span>★</span>
+              : <span>☆</span>
+          }
+          {
+            review.rating > 3
+              ? <span>★</span>
+              : <span>☆</span>
+          }
+          {
+            review.rating > 4
+              ? <span>★</span>
+              : <span>☆</span>
+          }
+        </div>
       </div>
       <p>{review.body}</p>
       {
