@@ -19,6 +19,4 @@ export const ReviewList = styled.div`
   .helper {
     margin: 10px 0;
   }
-
-  
 `;

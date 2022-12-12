@@ -176,20 +176,20 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
             </div>
             <div></div>
             <label>Summary</label><br></br>
-            <SmallerInput name="summary" maxlength="60" placeholder="Ex. Best purchase ever" value={summary} onChange={(e) => setSummary(e.target.value)} /><br /><br />
+            <SmallerInput name="summary" maxlength="60" placeholder="Ex. Best purchase ever" value={summary} onChange={(e) => setSummary(e.target.value)} required /><br /><br />
 
             <label>Full Review</label><br></br>
-            <BiggerInput name='body' maxlength='1000' placeholder="Why did you like the product or not?" value={body} onChange={(e) => setBody(e.target.value)} />
+            <BiggerInput name='body' maxlength='1000' placeholder="Why did you like the product or not?" value={body} onChange={(e) => setBody(e.target.value)} required />
             <p>{`Currently ${body.length} chars. Need ${Math.max(50 - body.length, 0)} more. Max 1000`}</p>
             <br />
             <br />
 
             <label>Name</label><br></br>
-            <SmallerInput name='name' maxlength='60' placeholder='jack543!' value={name} onChange={(e) => setName(e.target.value)} />
+            <SmallerInput name='name' maxlength='60' placeholder='jack543!' value={name} onChange={(e) => setName(e.target.value)} required />
             <p>For privacy reasons, do not use your full name or email address</p>
 
             <label>Email*</label><br></br>
-            <SmallerInput name='email' type="email" maxlength="60" placeholder="jack@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <SmallerInput name='email' type="email" maxlength="60" placeholder="jack@email.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
             <p>For authentication reasons, you will not be emailed</p>
 
             <label>Photos</label><br></br>
