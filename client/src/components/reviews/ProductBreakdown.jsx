@@ -7,37 +7,98 @@ export default function ({ characteristics }) {
     <ProductBreakdown>
       {
         characteristics.Size !== undefined
-          ? <p>{`size: ${characteristics.Size.value}`}</p>
-          : null
-      }
-      {
-        characteristics.Size !== undefined
-          ? <p>{`size: ${characteristics.Size.value}`}</p>
+          ? (
+            <div className="char-box">
+              <p>Size: </p>
+              <span>1</span>
+              <div className="line-box">
+                <div style={{ left: `${characteristics.Size.value * 25 - 25}px` }} className="line-icon">|</div>
+              </div>
+              <span>5</span>
+              <p>1: Too small</p>
+              <p>5: Too Big</p>
+            </div>
+          )
           : null
       }
       {
         characteristics.Width !== undefined
-          ? <p>{`width: ${characteristics.Width.value}`}</p>
+          ? (
+            <div className="char-box">
+              <p>Width: </p>
+              <span>1</span>
+              <div className="line-box">
+                <div style={{ left: `${characteristics.Width.value * 25 - 25}px` }} className="line-icon">|</div>
+              </div>
+              <span>5</span>
+              <p>1: Too small</p>
+              <p>5: Too Big</p>
+            </div>
+          )
           : null
       }
       {
         characteristics.Comfort !== undefined
-          ? <p>{`comfort: ${characteristics.Comfort.value}`}</p>
+          ? (
+            <div className="char-box">
+              <p>Comfort: </p>
+              <span>1</span>
+              <div className="line-box">
+                <div style={{ left: `${characteristics.Comfort.value * 25 - 25}px` }} className="line-icon">|</div>
+              </div>
+              <span>5</span>
+              <p>1: Poor</p>
+              <p>5: Great</p>
+            </div>
+          )
           : null
       }
       {
         characteristics.Quality !== undefined
-          ? <p>{`quality: ${characteristics.Quality.value}`}</p>
+          ? (
+            <div className="char-box">
+              <p>Quality: </p>
+              <span>1</span>
+              <div className="line-box">
+                <div style={{ left: `${characteristics.Length.value * 25 - 25}px` }} className="line-icon">|</div>
+              </div>
+              <span>5</span>
+              <p>1: Poor</p>
+              <p>5: Great</p>
+            </div>
+          )
           : null
       }
       {
         characteristics.Length !== undefined
-          ? <p>{`length: ${characteristics.Length.value}`}</p>
+          ? (
+            <div className="char-box">
+              <p>Length: </p>
+              <span>1</span>
+              <div className="line-box">
+                <div style={{ left: `${characteristics.Length.value * 25 - 25}px` }} className="line-icon">|</div>
+              </div>
+              <span>5</span>
+              <p>1: Too Short</p>
+              <p>5: Too Long</p>
+            </div>
+          )
           : null
       }
       {
         characteristics.Fit !== undefined
-          ? <p>{`fit: ${characteristics.Fit.value}`}</p>
+          ? (
+            <div className="char-box">
+              <p>Fit: </p>
+              <span>1</span>
+              <div className="line-box">
+                <div style={{ left: `${characteristics.Fit.value * 25 - 25}px` }} className="line-icon">|</div>
+              </div>
+              <span>5</span>
+              <p>1: Too big</p>
+              <p>5: Too small</p>
+            </div>
+          )
           : null
       }
     </ProductBreakdown>
