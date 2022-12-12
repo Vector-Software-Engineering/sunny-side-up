@@ -14,11 +14,27 @@ export default function App() {
   const [allStyles, setAllStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
   const [reviews, setReviews] = useState([]);
-  const [theme, setTheme] = useState('light');
   const [tab, setTab] = useState('detail');
 
+  const getInitialTheme = () => {
+    const data = localStorage.getItem('theme');
+    if (data === null || data === 'light') {
+      localStorage.setItem('theme', 'light');
+      return 'light';
+    }
+    return 'dark';
+  };
+
+  const [theme, setTheme] = useState(getInitialTheme());
+
   const themeToggler = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
+    if (theme === 'light') {
+      localStorage.setItem('theme', 'dark');
+      setTheme('dark');
+    } else if (theme === 'dark') {
+      localStorage.setItem('theme', 'light');
+      setTheme('light');
+    }
   };
 
   const getProducts = () => {

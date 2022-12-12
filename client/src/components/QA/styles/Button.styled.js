@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
+  transition: all 0.34s ease;
   border: none;
   cursor: pointer;
   font-size: 14px;

@@ -44,6 +44,7 @@ export default function AddAnswerModal({ currentProduct, curQ, toggleModal }) {
     if (e.target.files.length > 5) {
       setWarning(true);
       document.getElementById('photos').value = null;
+      setPhotos([]);
       e.preventDefault();
     } else {
       const res = [];

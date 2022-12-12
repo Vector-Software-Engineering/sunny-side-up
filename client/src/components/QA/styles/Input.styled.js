@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Input = styled.input`
-  transition: width 4s ease-in-out;
+  transition: all 0.34s ease;
   justify-content: start;
   width: 35%;
   height: 5vh;
