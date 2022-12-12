@@ -1,35 +1,45 @@
 import styled from 'styled-components';
 
 export const StyledImageGallery = styled.div`
-  position: relative;
-  top: 20px;
+  display: relative;
+  justify-content: center;
+  align-content: center;
 `;
 
 export const StyledMainImage = styled.img`
   cursor: zoom-in;
+  height: 100%;
+  width: 100%;
 `;
 
 export const StyledThumbnails = styled.div`
   display: flex;
-  position: relative;
   align-content: center;
-  justify-content: space-around;
-  left: -40px;
+  justify-content: center;
+  left: auto;
+  width: 100%;
   cursor: default;
 `;
 
 export const StyleLeftButton = styled.button`
   border: none;
-  background-color: inherit;
-  font-size: 20px;
+  font-size: 40px;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  background-color: white;
+  align-content: center;
 `;
 
 export const StyleRightButton = styled.button`
   border: none;
-  background-color: inherit;
-  font-size: 20px;
+  font-size: 40px;
+  top: 10px;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  background-color: white;
+  align-content: center;
 `;

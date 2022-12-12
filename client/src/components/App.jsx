@@ -3,7 +3,7 @@ import axios from 'axios';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/overview.jsx';
 import ReviewList from './reviews/RatingsAndReviews.jsx';
-import { AppDiv, StyledApp} from './App.styled.js';
+import { AppDiv } from './App.styled.js';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
@@ -11,20 +11,21 @@ export default function App() {
   const [numReviews, setNumReviews] = useState(0);
   const [allStyles, setAllStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
+  const [reviews, setReviews] = useState([]);
 
   const [tab, setTab] = useState('detail');
 
   const getProducts = () => {
     axios.get('/api/products/', {})
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       }).catch((error) => {
         console.log(error);
       });
   };
 
   const getProductStyles = () => {
-    axios.get('/api/products/40344/styles', {}) // jacket is 403444, shoes are 40348
+    axios.get('/api/products/40348/styles', {}) // jacket is 40344, shoes are 40348
       .then((response) => {
         // console.log(response.data);
         setAllStyles(response.data.results);
@@ -57,7 +58,8 @@ export default function App() {
   const getReviews = () => {
     axios.get('/api/reviews?product_id=40344', {})
       .then((response) => {
-        // console.log(response.data);
+        // console.log(response.data.results);
+        setReviews(response.data.results);
         setAllReviews(getAverageReviews(response.data));
       }).catch((error) => {
         console.log(error);
@@ -104,20 +106,17 @@ export default function App() {
         numReviews={numReviews}
         allStyles={allStyles}
         currentStyle={currentStyle}
-        setCurrentStyle={setCurrentStyle}/> :
+        setCurrentStyle={setCurrentStyle}
+        reviews={reviews} /> :
         null
       }
 
       {
-        tab==='qa' ?
-          <QA currentProduct={currentProduct}/> :
-        null
+        tab === 'qa' && <QA currentProduct={currentProduct} />
       }
 
       {
-        tab === 'reviews' ?
-          <ReviewList /> :
-        null
+        tab === 'reviews' && <ReviewList />
       }
     </AppDiv>
   );

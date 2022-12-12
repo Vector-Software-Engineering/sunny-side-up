@@ -5,19 +5,21 @@ export const StyledCurrentStyleSelected = styled.div`
   div {
     height: 30px;
     width: 30px;
+    margin-bottom: 10px;
   }
 
   img {
     position: relative;
-    border: 1px solid #111;
     padding: 5px;
-    width: 30px;
+    width: 50px;
   }
 `;
 
 export const CheckMarkOverlay = styled.div`
   position: relative;
-  top: 20px;
-  left: 30px;
+  top: 40px;
+  left: 47px;
+  width: auto;
   z-index: 1;
+  color: red;
 `;

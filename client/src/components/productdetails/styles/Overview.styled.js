@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
+// /  margin-left: 140px;
 export const StyledOverview = styled.div`
-  margin-left: 140px;
 
   article {
     display: flex;
@@ -15,7 +15,7 @@ export const StyledOverviewHeader = styled.header`
   display: block;
   background: transparent;
   height: 50%;
-  margin: 225px auto 45px;
+  margin: 100px auto 100px;
   position: relative;
   text-align: center;
   width: 100%;
@@ -34,31 +34,34 @@ export const StyledSidebar = styled.div`
   padding-top: 20px;
 `;
 
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: minmax(500px, 500px) 2fr 1fr;
+  grid-template-rows: minmax(200px, 800px) 4fr 2fr;
+  border: 2px white;
+`;
+
 export const MainImageBox = styled.div`
-  display: absolute;
-  top-margin: -100px;
-  width: 330px;
+  grid-column: 0;
+  grid-row: 0;
+  width: auto;
+  border: 2px white;
+  overflow: hidden;
+`;
+
+export const StyledProductInfo = styled.div`
+  grid-column: auto;
+  grid-row: auto;
+  width: 300px;
+  border: 2px white;
+  margin-left: 20px;
 `;
 
 export const InformationBox = styled.div`
-  display: inline-block;
-  width: 400px;
-`;
-export const StyledFooter = styled.div`
-  display: block;
-  height: 200px;
-  width: 100%;
-  bottom: 0px;
+  border: 2px white;
 `;
 
-export const StyledExtendedView = styled.img`
-  height: 100%;
-  position: absolute:
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-inded: 2;
+export const StyledWrappedGrid = styled.div`
+  display: flex;
+  justify-content: center;
 `;
