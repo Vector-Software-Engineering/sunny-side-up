@@ -15,8 +15,8 @@ const Button = styled.button`
   &: hover {
     opacity: 0.9;
     transform: scale(0.98);
-    background-color: black;
-    color: white;
+    background-color: ${(props) => props.theme.buttonColor};
+    color: ${(props) => props.theme.buttonBG};
   }
 `;
 

@@ -5,8 +5,8 @@ import Container from './styles/Container.styled.js';
 export default function QA({ currentProduct }) {
   return (
     <Container>
-      <h4>{currentProduct.name}</h4>
-      <h4 style={{ display: 'flex', justifyContent: 'center' }}>Questions & Answers</h4>
+      <span>{currentProduct.name}</span>
+      <span style={{ display: 'flex', justifyContent: 'center' }}>Questions & Answers</span>
       <Listview currentProduct={currentProduct} />
     </Container>
   );
