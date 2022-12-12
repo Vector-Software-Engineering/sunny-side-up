@@ -6,7 +6,6 @@ export const ReviewList = styled.div`
   font-size: 10px;
 
   .write-review {
-    font-size: 8px;
     margin: 0;
     padding: 0;
   }
