@@ -18,7 +18,7 @@ export default function App() {
   const [reviews, setReviews] = useState([]);
   const [tab, setTab] = useState('detail');
 
-  console.log('the currentProduct is: ', currentProduct.id);
+  const productId = currentProduct.id || 40344;
 
   const getInitialTheme = () => {
     const data = localStorage.getItem('theme');
@@ -42,7 +42,8 @@ export default function App() {
   };
 
   const getProducts = (count) => {
-    axios.get(`/api/products?count=${count}`, {})
+    // axios.get(`/api/products?count=${count}`, {})
+    axios.get('/api/products?count=100', {})
       .then((response) => {
         // console.log(response.data);
         setProductList(response.data);
@@ -52,7 +53,7 @@ export default function App() {
   };
 
   const getProductStyles = () => {
-    axios.get(`/api/products/${currentProduct.id}/styles`, {}) // jacket is 40344, shoes are 40348
+    axios.get(`/api/products/${productId}/styles`, {}) // jacket is 40344, shoes are 40348
       .then((response) => {
         // console.log(response.data);
         setAllStyles(response.data.results);
@@ -83,7 +84,7 @@ export default function App() {
   };
 
   const getReviews = () => {
-    axios.get(`/api/reviews?product_id=${currentProduct.id}&count=1000`, {})
+    axios.get(`/api/reviews?product_id=${productId}&count=1000`, {})
       .then((response) => {
         // console.log(response.data.results);
         setReviews(response.data.results);
@@ -93,29 +94,8 @@ export default function App() {
       });
   };
 
-  const postReview = () => {
-    axios.post('/api/reviews/', {
-      product_id: 40344,
-      rating: 2,
-      summary: 'looks great, NOT, go to SUNNY SIDE UP to get some real DRIP',
-      body: 'random text jake is cool fr, but also chefs it up it the kitchen',
-      recommend: false,
-      name: 'james',
-      email: 'bigballerjames@gmail.com',
-      photos: [],
-      characteristics: {},
-    })
-      .then((response) => {
-        console.log(response.data);
-      }).catch((error) => {
-        console.log(error);
-      });
-  };
-
   useEffect(() => {
     getProduct();
-    getReviews();
-    getProductStyles();
     getProducts();
   }, []);
 
@@ -138,38 +118,40 @@ export default function App() {
         </div>
         <Button onClick={themeToggler}>THEME</Button>
         <div className="page">
-        <div className="side-bar">
-          {
-            productList.map((product, index) => <p key={`${product.name} ${index}`} className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }}>{product.name}</p>)
-          }
+          <div className="side-bar">
+            <div>
+              {
+              productList.map((product) => <p key={`${product.name}`} className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }} >{product.name}</p>)
+              }
+            </div>
+          </div>
+
+          <div className="main">
+            {
+              tab === 'detail' ? (
+                <Overview
+                  currentProduct={currentProduct}
+                  allReviews={allReviews}
+                  numReviews={numReviews}
+                  allStyles={allStyles}
+                  currentStyle={currentStyle}
+                  setCurrentStyle={setCurrentStyle}
+                  reviews={reviews}
+                  setTab={setTab}
+                />
+              )
+                : null
+            }
+
+            {
+              tab === 'qa' && <QA currentProduct={currentProduct} />
+            }
+
+            {
+              tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
+            }
+          </div>
         </div>
-
-        <div className="main">
-          {
-            tab === 'detail' ? (
-              <Overview
-                currentProduct={currentProduct}
-                allReviews={allReviews}
-                numReviews={numReviews}
-                allStyles={allStyles}
-                currentStyle={currentStyle}
-                setCurrentStyle={setCurrentStyle}
-                reviews={reviews}
-                setTab={setTab}
-              />
-            )
-              : null
-          }
-
-          {
-            tab === 'qa' && <QA currentProduct={currentProduct} />
-          }
-
-          {
-            tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
-          }
-        </div>
-      </div>
       </AppDiv>
     </ThemeProvider>
   );

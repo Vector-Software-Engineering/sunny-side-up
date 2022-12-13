@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
 export const StyledCurrentStyleSelected = styled.div`
-
-  div {
-    height: 30px;
-    width: 30px;
-    margin-bottom: 10px;
-  }
-
   img {
     position: relative;
     padding: 5px;
     width: 50px;
   }
+`;
+
+export const StyledImgContainer = styled.div`
+  height: 50px;
+  width: 50px;
+  padding-right: 100px;
+  background-color: pink;
+  overflow: hidden;
 `;
 
 export const CheckMarkOverlay = styled.div`
