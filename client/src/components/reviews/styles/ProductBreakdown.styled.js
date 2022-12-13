@@ -25,5 +25,6 @@ export const ProductBreakdown = styled.div`
 
   .char-box {
     margin-bottom: 20px;
+    width: 150px;
   }
 `;
