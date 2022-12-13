@@ -12,17 +12,6 @@ import ViewModal from './ViewModal.jsx';
 function Overview({
   currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle, reviews,
 }) {
-  const timeoptions = {
-    timeZone: "EST",
-    hour: "2-digit",
-    minute: "2-digit"
-  }
-  const dateoptions = {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  };
-
   const [mainImage, setMainImage] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [firstIndex, setFirstIndex] = useState(0);
@@ -33,8 +22,6 @@ function Overview({
   const reset = () => {
     setSeed(Math.random());
   };
-  const [date, setDate] = useState(new Date().toLocaleString("en-US", dateoptions));
-  const [time, setTime] = useState(new Date().toLocaleString("en-US", timeoptions));
 
   const goToExtendedView = () => {
     console.log('we are going to extended view');
@@ -60,11 +47,6 @@ function Overview({
 
   useEffect(() => {
     setThumbnails();
-    const interval = setInterval(() => {
-      setTime(new Date().toLocaleString("en-US", timeoptions));
-      setDate(new Date().toLocaleString("en-US", dateoptions));
-    }, 20000);
-    return () => clearInterval(interval);
   }, [currentStyle]);
 
   return (
@@ -73,17 +55,6 @@ function Overview({
         ? null : mainImage === ''
           ? <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} />
           : <ViewModal currentStyle={currentStyle} mainImage={mainImage} currentIndex={currentIndex} goToExtendedView={goToExtendedView} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} />}
-      <StyledOverviewHeader>
-        <hgroup style={{display: 'flex', justifyContent: 'center'}}>
-        <img src="https://i.ibb.co/6YwX274/eggwithname.png" alt="eggwithname" border="0" />
-        </hgroup>
-        <hgroup style={{display: 'flex', justifyContent: 'center'}}>
-          <time>
-            <p>{date} {time} PHI</p>
-          </time>
-        </hgroup>
-      </StyledOverviewHeader>
-      <StyledSidebar />
       <StyledWrappedGrid>
         <GridContainer>
           <MainImageBox>

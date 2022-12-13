@@ -122,7 +122,7 @@ export default function App() {
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
       <AppDiv>
-      <h1>Product Name</h1>
+        <h1>Sunny Side Up</h1>
         <div className="center-bar">
           <span className="pointer" style={{ fontWeight: (tab === 'detail' ? 'bold' : '') }} onClick={() => { setTab('detail'); }}>detail</span>
           <span> - </span>
