@@ -22,7 +22,6 @@ export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setS
       </div>
       {
         visReviews.map((review, index) => {
-          console.log(review);
           return <ReviewTile key={review.review_id} review={review} getReviews={getReviews} />;
         })
       }

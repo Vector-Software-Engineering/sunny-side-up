@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
