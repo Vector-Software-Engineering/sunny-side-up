@@ -22,27 +22,6 @@ const ModalContainer = styled.div`
   }
 `;
 
-const Modal = styled.section`
-margin: auto;
-width: 60%;
-max-height: 72%;
-max-width: 40rem;
-background-color: white;
-overflow-y: auto;
-display: inline-block;
-`;
-
-const ModalHeader = styled.header`
-border-stlye: solid;
-border-size: 1px;
-padding: 1rem;
-position: relative;
-`;
-
-const ModalContent = styled.header`
-padding: 1.5rem;
-`;
-
 const Exit = styled.p`
 padding: 0;
 position: absolute;
@@ -51,17 +30,6 @@ right: 1rem;
 &: hover {
   cursor: pointer;
 }
-`;
-
-const BiggerInput = styled.textarea`
-width: 70%;
-
-&: focus {
-  height: 10em;
-}
-`;
-const SmallerInput = styled.input`
-width: 50%;
 `;
 
 const ExtendedViewContainer = styled.div`
@@ -116,27 +84,22 @@ const StyledMagnifier = styled.div`
   display: ${(props) => props.showMagnify ? '' : 'none'};
   position: absolute;
   pointerEvents: none;
-  height: 200px;
-  width: 200px;
-  top: ${(props) => props.y - 200 / 2}px;
-  left: ${(props) => props.x - 200 / 2}px;
+  height: 300px;
+  width: 300px;
+  top: ${(props) => props.y - 100 / 2}px;
+  left: ${(props) => props.x / 2}px;
   opacity: 1;
   border: 1px solid lightgray;
   background-image: url('${(props) => props.src}');
   background-repeat: no-repeat;
-  background-size: ${(props) => props.width * 2.5}px ${(props) => props.height * 2.5}px;
-  background-position: ${(props) => -props.x * 2.5 + 200 / 2}px ${(props) => -props.y * 2.5 + 200 / 2}px;
+  background-size: ${(props) => props.width * 1.5}px ${(props) => props.height * 1.5}px;
+  background-position: ${(props) => -props.x * 1.5 + 100 / 2}px ${(props) => -props.y * 1.5 + 100 / 2}px;
   cursor: zoom-out;
 `;
 
 export {
   ModalContainer,
-  Modal,
-  ModalHeader,
-  ModalContent,
   Exit,
-  BiggerInput,
-  SmallerInput,
   ExtendedViewContainer,
   StyledLeftArrow,
   StyledRightArrow,
