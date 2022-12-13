@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme, GlobalStyles } from '../themes.js';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/overview.jsx';
-import { AppDiv } from './App.styled.js';
 import RatingsAndReviews from './reviews/RatingsAndReviews.jsx';
+import { AppDiv } from './App.styled.js';
+import Button from './QA/styles/Button.styled.js';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
@@ -13,8 +16,28 @@ export default function App() {
   const [allStyles, setAllStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
   const [reviews, setReviews] = useState([]);
-
   const [tab, setTab] = useState('detail');
+
+  const getInitialTheme = () => {
+    const data = localStorage.getItem('theme');
+    if (data === null || data === 'light') {
+      localStorage.setItem('theme', 'light');
+      return 'light';
+    }
+    return 'dark';
+  };
+
+  const [theme, setTheme] = useState(getInitialTheme());
+
+  const themeToggler = () => {
+    if (theme === 'light') {
+      localStorage.setItem('theme', 'dark');
+      setTheme('dark');
+    } else if (theme === 'dark') {
+      localStorage.setItem('theme', 'light');
+      setTheme('light');
+    }
+  };
 
   const getProducts = () => {
     axios.get('/api/products/', {})
@@ -67,6 +90,25 @@ export default function App() {
       });
   };
 
+  const postReview = () => {
+    axios.post('/api/reviews/', {
+      product_id: 40344,
+      rating: 2,
+      summary: 'looks great, NOT, go to SUNNY SIDE UP to get some real DRIP',
+      body: 'random text jake is cool fr, but also chefs it up it the kitchen',
+      recommend: false,
+      name: 'james',
+      email: 'bigballerjames@gmail.com',
+      photos: [],
+      characteristics: {},
+    })
+      .then((response) => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     getProduct();
     getReviews();
@@ -74,38 +116,41 @@ export default function App() {
   }, []);
 
   return (
-    <AppDiv>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <AppDiv>
       <h1>Product Name</h1>
-      <div className="center-bar">
-        <span className='pointer' style={{'fontWeight': (tab==='detail' ? 'bold' : '')}} onClick={ () => {setTab('detail')} }>detail</span>
-        <span> - </span>
-        <span className='pointer' style={{'fontWeight': (tab==='qa' ? 'bold' : '')}} onClick={ () => {setTab('qa')} }>qa</span>
-        <span> - </span>
-        <span className='pointer' style={{'fontWeight': (tab==='reviews' ? 'bold' : '')}} onClick={ () => {setTab('reviews')} }>reviews</span>
-      </div>
+        <div className="center-bar">
+          <span className="pointer" style={{ fontWeight: (tab === 'detail' ? 'bold' : '') }} onClick={() => { setTab('detail'); }}>detail</span>
+          <span> - </span>
+          <span className="pointer" style={{ fontWeight: (tab === 'qa' ? 'bold' : '') }} onClick={() => { setTab('qa'); }}>qa</span>
+          <span> - </span>
+          <span className="pointer" style={{ fontWeight: (tab === 'reviews' ? 'bold' : '') }} onClick={() => { setTab('reviews'); }}>reviews</span>
+        </div>
+        <Button onClick={themeToggler}>THEME</Button>
+        {
+          tab === 'detail' ? (
+            <Overview
+              currentProduct={currentProduct}
+              allReviews={allReviews}
+              numReviews={numReviews}
+              allStyles={allStyles}
+              currentStyle={currentStyle}
+              setCurrentStyle={setCurrentStyle}
+              reviews={reviews}
+            />
+          )
+            : null
+        }
 
-      {
-        tab === 'detail' ? (
-          <Overview
-            currentProduct={currentProduct}
-            allReviews={allReviews}
-            numReviews={numReviews}
-            allStyles={allStyles}
-            currentStyle={currentStyle}
-            setCurrentStyle={setCurrentStyle}
-            reviews={reviews}
-          />
-        )
-          : null
-      }
+        {
+          tab === 'qa' && <QA currentProduct={currentProduct} />
+        }
 
-      {
-        tab === 'qa' && <QA currentProduct={currentProduct} />
-      }
-
-      {
-        tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
-      }
-    </AppDiv>
+        {
+          tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
+        }
+      </AppDiv>
+    </ThemeProvider>
   );
 }

@@ -4,7 +4,7 @@ const AnswerOverflow = styled.div`
   display: inline-block;
   overflow-y: auto;
   max-height: 20vh;
-  width: 100%;
+  width: 80%;
 `;
 
 export default AnswerOverflow;
