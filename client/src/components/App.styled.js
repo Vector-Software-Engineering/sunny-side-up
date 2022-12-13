@@ -1,6 +1,28 @@
 import styled from "styled-components";
 
-export const AppDiv = styled.div`
+const Button = styled.button`
+  transition: all 0.34s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: ${(props) => props.theme.buttonBG};
+  color: ${(props) => props.theme.buttonColor};
+  width: fit-content;
+  margin-top: 10px;
+  position: fixed;
+  right: 5%;
+  top: 1%;
+
+  &: hover {
+    opacity: 0.9;
+    transform: scale(0.98);
+    background-color: ${(props) => props.theme.buttonColor};
+    color: ${(props) => props.theme.buttonBG};
+  }
+`;
+
+const AppDiv = styled.div`
 
   @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
   font-family: 'Courier Prime', monospace;
@@ -52,3 +74,8 @@ export const AppDiv = styled.div`
     color: white;
   }
 `;
+
+export {
+  Button,
+  AppDiv,
+};

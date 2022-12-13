@@ -6,8 +6,7 @@ import { lightTheme, darkTheme, GlobalStyles } from '../themes.js';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/overview.jsx';
 import RatingsAndReviews from './reviews/RatingsAndReviews.jsx';
-import { AppDiv } from './App.styled.js';
-import Button from './QA/styles/Button.styled.js';
+import { AppDiv, Button } from './App.styled.js';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
@@ -18,6 +17,8 @@ export default function App() {
   const [currentStyle, setCurrentStyle] = useState('');
   const [reviews, setReviews] = useState([]);
   const [tab, setTab] = useState('detail');
+
+  console.log('the currentProduct is: ', currentProduct.id);
 
   const getInitialTheme = () => {
     const data = localStorage.getItem('theme');
@@ -51,7 +52,7 @@ export default function App() {
   };
 
   const getProductStyles = () => {
-    axios.get('/api/products/40348/styles', {}) // jacket is 40344, shoes are 40348
+    axios.get(`/api/products/${currentProduct.id}/styles`, {}) // jacket is 40344, shoes are 40348
       .then((response) => {
         // console.log(response.data);
         setAllStyles(response.data.results);
@@ -82,7 +83,7 @@ export default function App() {
   };
 
   const getReviews = () => {
-    axios.get('/api/reviews?product_id=40344', {})
+    axios.get(`/api/reviews?product_id=${currentProduct.id}&count=1000`, {})
       .then((response) => {
         // console.log(response.data.results);
         setReviews(response.data.results);
@@ -118,6 +119,11 @@ export default function App() {
     getProducts();
   }, []);
 
+  useEffect(() => {
+    getProductStyles();
+    getReviews();
+  }, [currentProduct]);
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
@@ -149,6 +155,7 @@ export default function App() {
                 currentStyle={currentStyle}
                 setCurrentStyle={setCurrentStyle}
                 reviews={reviews}
+                setTab={setTab}
               />
             )
               : null

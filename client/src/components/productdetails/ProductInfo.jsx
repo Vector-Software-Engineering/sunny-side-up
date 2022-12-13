@@ -7,10 +7,10 @@ import {
 } from './styles/ProductInfo.styled.js';
 
 function ProductInfo({
-  currentProduct, allReviews, numReviews, currentStyle, reviews,
+  currentProduct, allReviews, numReviews, currentStyle, reviews, setTab,
 }) {
   const goToReviews = () => {
-    console.log('This link will change View to James Review Component');
+    setTab('reviews');
   };
   return (
     <div>

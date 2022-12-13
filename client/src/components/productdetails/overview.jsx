@@ -4,13 +4,13 @@ import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import {
-  StyledOverviewHeader, StyledSidebar, StyledOverview, GridContainer,
+  StyledOverview, GridContainer,
   MainImageBox, InformationBox, StyledProductInfo, StyledWrappedGrid,
 } from './styles/Overview.styled.js';
 import ViewModal from './ViewModal.jsx';
 
 function Overview({
-  currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle, reviews,
+  currentProduct, allReviews, numReviews, allStyles, currentStyle, setCurrentStyle, reviews, setTab,
 }) {
   const [mainImage, setMainImage] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -80,6 +80,7 @@ function Overview({
               numReviews={numReviews}
               currentStyle={currentStyle}
               reviews={reviews}
+              setTab={setTab}
             />
             <InformationBox>
               <StyleSelector
