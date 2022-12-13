@@ -33,12 +33,12 @@ export default function ViewModal({
   // };
 
   const onImageClick = (e) => {
-    console.log('Going to ZOOOOOOOOMY view');
+    //console.log('Going to ZOOOOOOOOMY view');
     //mouseEnter(e);
     //setShowMagnify(!showMagnify);
-    console.log('the width and the height', width, height);
-    console.log('true if showing', showMagnify);
-    console.log('this the mous x and y coordinate', x, y);
+    //console.log('the width and the height', width, height);
+    // console.log('true if showing', showMagnify);
+    //console.log('this the mous x and y coordinate', x, y);
   };
 
   const mouseMove = (e) => {
