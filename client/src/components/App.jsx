@@ -1,24 +1,50 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme, GlobalStyles } from '../themes.js';
 import QA from './QA/QA.jsx';
 import Overview from './productdetails/overview.jsx';
-import ReviewList from './reviews/RatingsAndReviews.jsx';
+import RatingsAndReviews from './reviews/RatingsAndReviews.jsx';
 import { AppDiv } from './App.styled.js';
+import Button from './QA/styles/Button.styled.js';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
+  const [productList, setProductList] = useState([]);
   const [allReviews, setAllReviews] = useState(0);
   const [numReviews, setNumReviews] = useState(0);
   const [allStyles, setAllStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
   const [reviews, setReviews] = useState([]);
-
   const [tab, setTab] = useState('detail');
 
-  const getProducts = () => {
-    axios.get('/api/products/', {})
+  const getInitialTheme = () => {
+    const data = localStorage.getItem('theme');
+    if (data === null || data === 'light') {
+      localStorage.setItem('theme', 'light');
+      return 'light';
+    }
+    return 'dark';
+  };
+
+  const [theme, setTheme] = useState(getInitialTheme());
+
+  const themeToggler = () => {
+    if (theme === 'light') {
+      localStorage.setItem('theme', 'dark');
+      setTheme('dark');
+    } else if (theme === 'dark') {
+      localStorage.setItem('theme', 'light');
+      setTheme('light');
+    }
+  };
+
+  const getProducts = (count) => {
+    axios.get(`/api/products?count=${count}`, {})
       .then((response) => {
         // console.log(response.data);
+        setProductList(response.data);
       }).catch((error) => {
         console.log(error);
       });
@@ -89,35 +115,55 @@ export default function App() {
     getProduct();
     getReviews();
     getProductStyles();
+    getProducts();
   }, []);
 
   return (
-    <AppDiv>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <AppDiv>
       <h1>Product Name</h1>
-      { tab !== 'detail' ? <span onClick={ () => {setTab('detail')} }>detail - </span> : null }
-      { tab !== 'qa' ? <span onClick={ () => {setTab('qa')} }>qa - </span> : null }
-      { tab !== 'reviews' ? <span onClick={ () => {setTab('reviews')} }>reviews</span> : null }
+        <div className="center-bar">
+          <span className="pointer" style={{ fontWeight: (tab === 'detail' ? 'bold' : '') }} onClick={() => { setTab('detail'); }}>detail</span>
+          <span> - </span>
+          <span className="pointer" style={{ fontWeight: (tab === 'qa' ? 'bold' : '') }} onClick={() => { setTab('qa'); }}>qa</span>
+          <span> - </span>
+          <span className="pointer" style={{ fontWeight: (tab === 'reviews' ? 'bold' : '') }} onClick={() => { setTab('reviews'); }}>reviews</span>
+        </div>
+        <Button onClick={themeToggler}>THEME</Button>
+        <div className="page">
+        <div className="side-bar">
+          {
+            productList.map((product, index) => <p key={`${product.name} ${index}`} className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }}>{product.name}</p>)
+          }
+        </div>
 
-      {
-        tab === 'detail' ?
-        <Overview
-        currentProduct={currentProduct}
-        allReviews={allReviews}
-        numReviews={numReviews}
-        allStyles={allStyles}
-        currentStyle={currentStyle}
-        setCurrentStyle={setCurrentStyle}
-        reviews={reviews} /> :
-        null
-      }
+        <div className="main">
+          {
+            tab === 'detail' ? (
+              <Overview
+                currentProduct={currentProduct}
+                allReviews={allReviews}
+                numReviews={numReviews}
+                allStyles={allStyles}
+                currentStyle={currentStyle}
+                setCurrentStyle={setCurrentStyle}
+                reviews={reviews}
+              />
+            )
+              : null
+          }
 
-      {
-        tab === 'qa' && <QA currentProduct={currentProduct} />
-      }
+          {
+            tab === 'qa' && <QA currentProduct={currentProduct} />
+          }
 
-      {
-        tab === 'reviews' && <ReviewList />
-      }
-    </AppDiv>
+          {
+            tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
+          }
+        </div>
+      </div>
+      </AppDiv>
+    </ThemeProvider>
   );
 }
