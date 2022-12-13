@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import QA from './QA/QA.jsx';
@@ -85,16 +86,17 @@ export default function App() {
 
       {
         tab === 'detail' ? (
-        <Overview
-          currentProduct={currentProduct}
-          allReviews={allReviews}
-          numReviews={numReviews}
-          allStyles={allStyles}
-          currentStyle={currentStyle}
-          setCurrentStyle={setCurrentStyle}
-          reviews={reviews} />
-      ) :
-          null
+          <Overview
+            currentProduct={currentProduct}
+            allReviews={allReviews}
+            numReviews={numReviews}
+            allStyles={allStyles}
+            currentStyle={currentStyle}
+            setCurrentStyle={setCurrentStyle}
+            reviews={reviews}
+          />
+        )
+          : null
       }
 
       {
