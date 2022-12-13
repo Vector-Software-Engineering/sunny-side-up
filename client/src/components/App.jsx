@@ -11,6 +11,7 @@ import Button from './QA/styles/Button.styled.js';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
+  const [productList, setProductList] = useState([]);
   const [allReviews, setAllReviews] = useState(0);
   const [numReviews, setNumReviews] = useState(0);
   const [allStyles, setAllStyles] = useState([]);
@@ -39,10 +40,11 @@ export default function App() {
     }
   };
 
-  const getProducts = () => {
-    axios.get('/api/products/', {})
+  const getProducts = (count) => {
+    axios.get(`/api/products?count=${count}`, {})
       .then((response) => {
         // console.log(response.data);
+        setProductList(response.data);
       }).catch((error) => {
         console.log(error);
       });
@@ -113,6 +115,7 @@ export default function App() {
     getProduct();
     getReviews();
     getProductStyles();
+    getProducts();
   }, []);
 
   return (
@@ -128,28 +131,38 @@ export default function App() {
           <span className="pointer" style={{ fontWeight: (tab === 'reviews' ? 'bold' : '') }} onClick={() => { setTab('reviews'); }}>reviews</span>
         </div>
         <Button onClick={themeToggler}>THEME</Button>
-        {
-          tab === 'detail' ? (
-            <Overview
-              currentProduct={currentProduct}
-              allReviews={allReviews}
-              numReviews={numReviews}
-              allStyles={allStyles}
-              currentStyle={currentStyle}
-              setCurrentStyle={setCurrentStyle}
-              reviews={reviews}
-            />
-          )
-            : null
-        }
+        <div className="page">
+        <div className="side-bar">
+          {
+            productList.map((product, index) => <p key={`${product.name} ${index}`} className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }}>{product.name}</p>)
+          }
+        </div>
 
-        {
-          tab === 'qa' && <QA currentProduct={currentProduct} />
-        }
+        <div className="main">
+          {
+            tab === 'detail' ? (
+              <Overview
+                currentProduct={currentProduct}
+                allReviews={allReviews}
+                numReviews={numReviews}
+                allStyles={allStyles}
+                currentStyle={currentStyle}
+                setCurrentStyle={setCurrentStyle}
+                reviews={reviews}
+              />
+            )
+              : null
+          }
 
-        {
-          tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
-        }
+          {
+            tab === 'qa' && <QA currentProduct={currentProduct} />
+          }
+
+          {
+            tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
+          }
+        </div>
+      </div>
       </AppDiv>
     </ThemeProvider>
   );
