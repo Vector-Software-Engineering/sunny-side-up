@@ -112,6 +112,23 @@ const StyledExtendedImg = styled.img`
   cursor: crosshair;
 `;
 
+const StyledMagnifier = styled.div`
+  display: ${(props) => props.showMagnify ? '' : 'none'};
+  position: absolute;
+  pointerEvents: none;
+  height: 200px;
+  width: 200px;
+  top: ${(props) => props.y - 200 / 2}px;
+  left: ${(props) => props.x - 200 / 2}px;
+  opacity: 1;
+  border: 1px solid lightgray;
+  background-image: url('${(props) => props.src}');
+  background-repeat: no-repeat;
+  background-size: ${(props) => props.width * 2.5}px ${(props) => props.height * 2.5}px;
+  background-position: ${(props) => -props.x * 2.5 + 200 / 2}px ${(props) => -props.y * 2.5 + 200 / 2}px;
+  cursor: zoom-out;
+`;
+
 export {
   ModalContainer,
   Modal,
@@ -127,4 +144,5 @@ export {
   StyledExit,
   StyledImgContainer,
   StyledExtendedImg,
+  StyledMagnifier,
 };
