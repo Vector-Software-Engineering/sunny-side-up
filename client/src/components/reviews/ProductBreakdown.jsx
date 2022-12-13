@@ -60,7 +60,7 @@ export default function ({ characteristics }) {
               <p>Quality: </p>
               <span>1</span>
               <div className="line-box">
-                <div style={{ left: `${characteristics.Length.value * 25 - 25}px` }} className="line-icon">|</div>
+                <div style={{ left: `${characteristics.Quality.value * 25 - 25}px` }} className="line-icon">|</div>
               </div>
               <span>5</span>
               <p>1: Poor</p>

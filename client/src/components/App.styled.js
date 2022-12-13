@@ -4,7 +4,21 @@ export const AppDiv = styled.div`
 
   @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
   font-family: 'Courier Prime', monospace;
-  margin-left: 140px;
+
+  .page {
+    display: grid;
+    grid-template-columns: 140px 1fr;  
+  }
+
+  .side-bar {
+    grid-column: 1;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+
+  .main {
+    grid-column: 2;
+  }
 
   h1 {
     text-align: center;
@@ -25,6 +39,8 @@ export const AppDiv = styled.div`
     padding: 2px 2px 2px 0;
     display: inline-block;
     font-size: 12px;
+    margin: 0;
+    line-height: 1.1;
     &:hover {
       background-color: black;
       color: white;

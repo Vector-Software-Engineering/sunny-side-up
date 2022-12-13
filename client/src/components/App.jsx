@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -8,6 +10,7 @@ import RatingsAndReviews from './reviews/RatingsAndReviews.jsx';
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
+  const [productList, setProductList] = useState([]);
   const [allReviews, setAllReviews] = useState(0);
   const [numReviews, setNumReviews] = useState(0);
   const [allStyles, setAllStyles] = useState([]);
@@ -16,10 +19,11 @@ export default function App() {
 
   const [tab, setTab] = useState('detail');
 
-  const getProducts = () => {
-    axios.get('/api/products/', {})
+  const getProducts = (count) => {
+    axios.get(`/api/products?count=${count}`, {})
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
+        setProductList(response.data);
       }).catch((error) => {
         console.log(error);
       });
@@ -39,7 +43,7 @@ export default function App() {
   const getProduct = () => {
     axios.get('/api/products/40344', {})
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setCurrentProduct(response.data);
       }).catch((error) => {
         console.log(error);
@@ -71,6 +75,7 @@ export default function App() {
     getProduct();
     getReviews();
     getProductStyles();
+    getProducts();
   }, []);
 
   return (
@@ -84,28 +89,40 @@ export default function App() {
         <span className='pointer' style={{'fontWeight': (tab==='reviews' ? 'bold' : '')}} onClick={ () => {setTab('reviews')} }>reviews</span>
       </div>
 
-      {
-        tab === 'detail' ? (
-          <Overview
-            currentProduct={currentProduct}
-            allReviews={allReviews}
-            numReviews={numReviews}
-            allStyles={allStyles}
-            currentStyle={currentStyle}
-            setCurrentStyle={setCurrentStyle}
-            reviews={reviews}
-          />
-        )
-          : null
-      }
+      <div className="page">
+        <div className="side-bar">
+          {
+            productList.map((product) => <p className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }}>{product.name}</p>)
+          }
+        </div>
 
-      {
-        tab === 'qa' && <QA currentProduct={currentProduct} />
-      }
+        <div className="main">
+          {
+            tab === 'detail' ? (
+              <Overview
+                currentProduct={currentProduct}
+                allReviews={allReviews}
+                numReviews={numReviews}
+                allStyles={allStyles}
+                currentStyle={currentStyle}
+                setCurrentStyle={setCurrentStyle}
+                reviews={reviews}
+              />
+            )
+              : null
+          }
 
-      {
-        tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
-      }
+          {
+            tab === 'qa' && <QA currentProduct={currentProduct} />
+          }
+
+          {
+            tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
+          }
+        </div>
+      </div>
+
+
     </AppDiv>
   );
 }
