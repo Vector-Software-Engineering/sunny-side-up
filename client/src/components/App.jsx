@@ -116,8 +116,11 @@ export default function App() {
           <span> - </span>
           <span className="pointer" style={{ fontWeight: (tab === 'reviews' ? 'bold' : '') }} onClick={() => { setTab('reviews'); }}>reviews</span>
         </div>
-        <Button onClick={themeToggler}>THEME</Button>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Button onClick={themeToggler}>THEME</Button>
+        </div>
         <div className="page">
+          <span style={{ fontWeight: 'bold', paddingBottom: '5px', marginLeft: '23px' }}>SHOP ALL</span>
           <div className="side-bar">
             <div>
               {

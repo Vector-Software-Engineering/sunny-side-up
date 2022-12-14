@@ -1,18 +1,17 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
+  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+  font-family: 'Courier Prime', monospace;
   transition: all 0.34s ease;
   border: none;
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
+  margin-right: 10px;
   background-color: ${(props) => props.theme.buttonBG};
   color: ${(props) => props.theme.buttonColor};
   width: fit-content;
-  margin-top: 10px;
-  position: fixed;
-  right: 5%;
-  top: 1%;
 
   &: hover {
     opacity: 0.9;
@@ -49,7 +48,7 @@ const AppDiv = styled.div`
 
   .center-bar {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
   }
 
   center-bar span {
@@ -64,14 +63,14 @@ const AppDiv = styled.div`
     margin: 0;
     line-height: 1.1;
     &:hover {
-      background-color: black;
-      color: white;
+      background-color: ${(props) => props.theme.buttonColor};
+      color: ${(props) => props.theme.buttonBG};
     }
   }
 
   .pointer-on {
-    background-color: black;
-    color: white;
+    background-color: ${(props) => props.theme.buttonColor};
+    color: ${(props) => props.theme.buttonBG};
   }
 `;
 
