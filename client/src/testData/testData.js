@@ -2,6 +2,84 @@ export const numReviews = 5;
 
 export const allReviews = 2.8;
 
+export const reviews = [
+  {
+      "review_id": 1274687,
+      "rating": 3,
+      "summary": "ewewe",
+      "recommend": false,
+      "response": null,
+      "body": "eweew",
+      "date": "2022-05-29T00:00:00.000Z",
+      "reviewer_name": "ewewe",
+      "helpfulness": 0,
+      "photos": [
+          {
+              "id": 2454908,
+              "url": "text"
+          }
+      ]
+  },
+  {
+      "review_id": 1274686,
+      "rating": 3,
+      "summary": "ewewe",
+      "recommend": false,
+      "response": null,
+      "body": "eweew",
+      "date": "2022-05-29T00:00:00.000Z",
+      "reviewer_name": "ewewe",
+      "helpfulness": 0,
+      "photos": [
+          {
+              "id": 2454907,
+              "url": "text"
+          }
+      ]
+  },
+  {
+      "review_id": 1274685,
+      "rating": 3,
+      "summary": "sddsd",
+      "recommend": true,
+      "response": null,
+      "body": "",
+      "date": "2022-05-29T00:00:00.000Z",
+      "reviewer_name": "sdasdasd",
+      "helpfulness": 0,
+      "photos": [
+          {
+              "id": 2454906,
+              "url": "text"
+          }
+      ]
+  },
+  {
+      "review_id": 1136065,
+      "rating": 5,
+      "summary": "Best purchase ever",
+      "recommend": true,
+      "response": null,
+      "body": "A body that consists of at least 50 characters to submit!",
+      "date": "2022-02-27T00:00:00.000Z",
+      "reviewer_name": "Jello World",
+      "helpfulness": 0,
+      "photos": []
+  },
+  {
+      "review_id": 1136064,
+      "rating": 5,
+      "summary": "a great summary",
+      "recommend": true,
+      "response": null,
+      "body": "A body that consists of at least 50 characters to submit!",
+      "date": "2022-02-27T00:00:00.000Z",
+      "reviewer_name": "Jello World",
+      "helpfulness": 0,
+      "photos": []
+  },
+]
+
 export const currentStyle = {
   style_id: 240525,
   name: 'White & White',
