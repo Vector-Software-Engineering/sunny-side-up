@@ -13,10 +13,10 @@ function CurrentStyleSelected({
 
   return (
     <StyledCurrentStyleSelected>
-      <CheckMarkOverlay>
-        {currentStyle.style_id === product.style_id ? <div>✓</div> : null}
-      </CheckMarkOverlay>
       <StyledImgContainer>
+        <CheckMarkOverlay>
+          {currentStyle.style_id === product.style_id ? <div>✓</div> : null}
+        </CheckMarkOverlay>
         <img onClick={() => chooseStyle(product)} src={product.photos[0].thumbnail_url}/>
       </StyledImgContainer>
     </StyledCurrentStyleSelected>

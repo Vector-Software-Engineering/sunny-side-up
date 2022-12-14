@@ -15,8 +15,9 @@ font-size: 20px;
 const Modal = styled.section`
 margin: auto;
 width: 60%;
-max-height: 72%;
+max-height: 75%;
 max-width: 40rem;
+min-width: 3 0rem;
 background-color: white;
 overflow-y: auto;
 display: inline-block;
@@ -25,12 +26,12 @@ display: inline-block;
 const ModalHeader = styled.header`
 border-stlye: solid;
 border-size: 1px;
-padding: 1rem;
+padding: 1rem 1rem 0 1rem;
 position: relative;
 `;
 
 const ModalContent = styled.header`
-padding: 1.5rem;
+padding: 0 1.5rem 1.5rem 1.5rem;
 `;
 
 const Exit = styled.p`
@@ -49,6 +50,7 @@ width: 70%;
 display: block;
 margin-left: auto;
 margin-right: auto;
+margin-bottom: 15px;
 
 &: focus {
   height: 10em;

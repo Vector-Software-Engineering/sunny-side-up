@@ -4,23 +4,22 @@ export const StyledCurrentStyleSelected = styled.div`
   img {
     position: relative;
     padding: 5px;
+    height: 50px;
     width: 50px;
   }
 `;
 
 export const StyledImgContainer = styled.div`
-  height: 50px;
-  width: 50px;
+  position: relative;
+  height: 60px;
+  width: 60px;
   padding-right: 100px;
-  background-color: pink;
   overflow: hidden;
 `;
 
 export const CheckMarkOverlay = styled.div`
-  position: relative;
-  top: 40px;
-  left: 47px;
-  width: auto;
+  position: absolute;
+  left: 3.5%;
   z-index: 1;
   color: red;
 `;
