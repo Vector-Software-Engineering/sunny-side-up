@@ -24,6 +24,7 @@ export const StyledThumbnails = styled.div`
 export const StyleLeftButton = styled.button`
   border: none;
   font-size: 40px;
+  color: ${(props) => props.theme.fontColor};
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -37,6 +38,7 @@ export const StyleLeftButton = styled.button`
 export const StyleRightButton = styled.button`
   border: none;
   font-size: 40px;
+  color: ${(props) => props.theme.fontColor};
   top: 10px;
   cursor: pointer;
   display: flex;
