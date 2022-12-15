@@ -14,10 +14,12 @@ function ProductInfo({
   };
   return (
     <div>
-      <div>
-        <RatingSummary reviews={reviews} />
-        <a href="#" onClick={goToReviews}> Read all [{numReviews}] reviews</a>
-      </div>
+      {numReviews !== 0
+        ? <div>
+            <RatingSummary reviews={reviews} />
+            <a href="#" onClick={goToReviews}> Read all [{numReviews}] reviews</a>
+          </div>
+        : null}
       <div>
         {currentProduct.category}
       </div>
