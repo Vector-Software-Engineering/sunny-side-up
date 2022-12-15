@@ -16,9 +16,7 @@ export default function AnswerEntry({ entry }) {
     const data = localStorage.getItem(`ssu: ${entry.answer_id}`);
     if (data === null) {
       axios.put(`/api/qa/answers/${id}/helpful`)
-        .then((response) => {
-          console.log(response);
-        }).catch((error) => {
+        .catch((error) => {
           console.log(error);
         });
       setClickHelpful(true);
@@ -30,9 +28,7 @@ export default function AnswerEntry({ entry }) {
     if (!clickReport) {
       e.preventDefault();
       axios.put(`/api/qa/answers/${id}/report`)
-        .then((response) => {
-          console.log(response);
-        }).catch((error) => {
+        .catch((error) => {
           console.log(error);
         });
 

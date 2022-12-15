@@ -24,7 +24,6 @@ function Overview({
   };
 
   const goToExtendedView = () => {
-    console.log('we are going to extended view');
     setExtendedView(!extendedView);
   };
 

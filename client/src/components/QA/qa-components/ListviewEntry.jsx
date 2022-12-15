@@ -19,9 +19,7 @@ export default function ListviewEntry({ currentProduct, entry }) {
     const data = localStorage.getItem(`ssuq: ${entry.question_id}`);
     if (data === null) {
       axios.put(`/api/qa/questions/${entry.question_id}/helpful`)
-        .then((response) => {
-          console.log(response);
-        }).catch((error) => {
+        .catch((error) => {
           console.log(error);
         });
 

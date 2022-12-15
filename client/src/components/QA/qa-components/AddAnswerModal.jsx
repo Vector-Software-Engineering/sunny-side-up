@@ -11,9 +11,7 @@ export default function AddAnswerModal({ currentProduct, curQ, toggleModal }) {
 
   const postAnswer = (results) => {
     axios.post(`/api/qa/questions/${curQ.question_id}/answers`, results)
-      .then((response) => {
-        console.log(response);
-      }).catch((error) => {
+      .catch((error) => {
         console.log(error);
       });
   };
