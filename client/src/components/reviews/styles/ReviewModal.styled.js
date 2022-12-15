@@ -7,8 +7,8 @@ right: 0;
 bottom: 0;
 left: 0;
 z-index: 1000;
-background-color: rgba(0,0,0,0.75);
 display: flex;
+background-color: rgba(0,0,0,0.75);
 margin: 0;
 
 .modal-title {
@@ -25,7 +25,8 @@ const Modal = styled.section`
 margin: auto;
 width: 90%;
 max-width: 40rem;
-background-color: white;
+background-color: ${(props) => props.theme.body};
+color: ${(props) => props.theme.fontColor};
 `;
 
 const ModalHeader = styled.header`

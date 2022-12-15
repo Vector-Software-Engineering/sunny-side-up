@@ -8,14 +8,18 @@ import { ReviewTile } from './styles/ReviewTile.styled.js';
 
 export default function ({ review, getReviews }) {
   const markHelpful = () => {
-    axios.put(`api/reviews/${review.review_id}/helpful`)
-      .then((res) => {
-        console.log(res);
-        getReviews();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const data = localStorage.getItem(`reviewHelpful: ${review.review_id}`);
+    if (data === null) {
+      axios.put(`api/reviews/${review.review_id}/helpful`)
+        .then((res) => {
+          console.log(res);
+          getReviews();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      localStorage.setItem(`reviewHelpful: ${review.review_id}`, true);
+    }
   };
 
   return (
@@ -65,7 +69,11 @@ export default function ({ review, getReviews }) {
       }
       <p>{review.response ? (`Response from seller: ${review.response}`) : null }</p>
       <p>{`${review.helpfulness} helpful`}</p>
-      <p className="pointer" onClick={() => markHelpful()}>Mark Helpful</p>
+      {
+        !localStorage.getItem(`reviewHelpful: ${review.review_id}`)
+          ? <p className="pointer" onClick={() => markHelpful()}>Mark Helpful</p>
+          : null
+      }
       {
         review.photos.map((photo, index) => <img key={index} src={photo.url} alt="" />)
       }
