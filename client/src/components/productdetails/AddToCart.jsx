@@ -58,6 +58,7 @@ function AddToCart({ currentStyle }) {
       ...provided,
       background: '#fff',
       borderColor: '#9e9e9e',
+      margin: '8px 8px 8px 0',
       minHeight: '30px',
       height: '30px',
       boxShadow: state.isFocused ? null : null,

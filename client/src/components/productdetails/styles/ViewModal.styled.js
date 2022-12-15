@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 const ModalContainer = styled.div`
   position: absolute;
-  top: 500px;
+  top: 0px;
   right: 0;
-  bottom: 100px;
   left: 0;
   z-index: 1000;
   background-color: rgba(0,0,0,0.75);
@@ -13,7 +12,6 @@ const ModalContainer = styled.div`
   align-content: center;
   font-size: 20px;
   height: 100%;
-
 
   button {
     display: flex;
@@ -37,11 +35,13 @@ const ExtendedViewContainer = styled.div`
   display: flex;
   justify-content: center;
   height: 100%;
-  width: 100%;
+  width: auto;
+  cursor: ${(props) => props.clickMagnify ? 'zoom-out' : 'crosshair'};
 `;
 
 const StyledLeftArrow = styled.div`
-  position: relative;
+  position: absolute;
+  left: 0;
   margin-top: 320px;
   font-size: 100px;
   cursor: pointer;
@@ -49,7 +49,8 @@ const StyledLeftArrow = styled.div`
 `;
 
 const StyledRightArrow = styled.div`
-  position: relative;
+  position: absolute;
+  right: 0;
   margin-top: 320px;
   font-size: 100px;
   cursor: pointer;
@@ -59,8 +60,11 @@ const StyledRightArrow = styled.div`
 const StyledDots = styled.div`
   position: absolute;
   bottom: 0;
-  left: 50%;
-  background-color: blue;
+  left: 42%;
+  opacity: 5;
+  padding: 0 8px;
+  background-color: rgba(255,255,255,.4);
+  border-radius: 15px;
   display: flex;
   justify-content: center;
 `;
@@ -71,9 +75,19 @@ const StyledImgContainer = styled.div`
   justify-content: center;
   height: 100%;
   width: 100%;
+  cursor: crosshair;
 `;
 
-const StyledExit = styled.button`
+const StyledExit = styled.div`
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: .4rem;
+  height: 27px;
+  background-color: rgba(0,0,0,0);
+  &: hover{
+    cursor: pointer;
+  }
 `;
 
 const StyledExtendedImg = styled.img`

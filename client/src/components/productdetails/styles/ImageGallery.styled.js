@@ -24,17 +24,21 @@ export const StyledThumbnails = styled.div`
 export const StyleLeftButton = styled.button`
   border: none;
   font-size: 40px;
+  color: ${(props) => props.theme.fontColor};
   cursor: pointer;
   display: flex;
   justify-content: center;
   width: 10%;
   background-color: white;
   align-content: center;
+  background-color: ${(props) => props.theme.body};
+  transition: all 0.34s ease;
 `;
 
 export const StyleRightButton = styled.button`
   border: none;
   font-size: 40px;
+  color: ${(props) => props.theme.fontColor};
   top: 10px;
   cursor: pointer;
   display: flex;
@@ -42,4 +46,6 @@ export const StyleRightButton = styled.button`
   width: 10%;
   background-color: white;
   align-content: center;
+  background-color: ${(props) => props.theme.body};
+  transition: all 0.34s ease;
 `;

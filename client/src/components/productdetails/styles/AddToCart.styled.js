@@ -5,8 +5,8 @@ const StyledAddToCart = styled.div`
   margin-bottom: 20px;
 
   button {
-    background-color: black;
-    color: white;
+    background-color: ${(props) => props.theme.fontColor};
+    color: ${(props) => props.theme.body};
   }
 `;
 

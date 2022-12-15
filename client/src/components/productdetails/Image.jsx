@@ -1,11 +1,10 @@
 import React from 'react';
-import StyledImage from './styles/Image.styled.js';
+import { StyledImage, StyledSelectedImage } from './styles/Image.styled.js';
 
 function Image({
-  photo, setMainImage, index, setCurrentIndex, currentStyle,
+  photo, setMainImage, index, setCurrentIndex, currentStyle, currentIndex,
 }) {
   const setIndexAndMain = () => {
-    console.log(currentStyle);
     setMainImage(currentStyle);
     if (index < currentStyle.photos.length) {
       setCurrentIndex(index);
@@ -15,7 +14,11 @@ function Image({
   return (
     <StyledImage>
       <div>
-        <img onClick={() => setIndexAndMain(photo, index)} src={photo.thumbnail_url} alt="style" />
+        {!currentStyle.photos[currentIndex]
+          ? null
+          : currentStyle.photos[currentIndex].thumbnail_url === photo.thumbnail_url
+            ? <StyledSelectedImage onClick={() => setIndexAndMain(photo, index)} src={photo.thumbnail_url} alt="style" />
+            : <img onClick={() => setIndexAndMain(photo, index)} src={photo.thumbnail_url} alt="style" />}
       </div>
     </StyledImage>
   );

@@ -12,4 +12,13 @@ const StyledImage = styled.div`
   }
 `;
 
-export default StyledImage;
+const StyledSelectedImage = styled.img`
+  border: 1px;
+  border-color: black;
+  border-style: ridge;
+`;
+
+export {
+  StyledImage,
+  StyledSelectedImage,
+};
