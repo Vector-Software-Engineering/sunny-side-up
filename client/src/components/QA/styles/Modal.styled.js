@@ -18,7 +18,8 @@ width: 60%;
 max-height: 75%;
 max-width: 40rem;
 min-width: 3 0rem;
-background-color: white;
+background-color: ${(props) => props.theme.body};
+color: ${(props) => props.theme.fontColor};
 overflow-y: auto;
 display: inline-block;
 `;
@@ -39,6 +40,7 @@ padding: 0;
 position: absolute;
 top: 0;
 right: 1rem;
+color: ${(props) => props.theme.fontColor};
 
 &: hover {
   cursor: pointer;
@@ -51,6 +53,9 @@ display: block;
 margin-left: auto;
 margin-right: auto;
 margin-bottom: 15px;
+background-color: ${(props) => props.theme.body};
+color: ${(props) => props.theme.fontColor};
+border-color: ${(props) => props.theme.inputBorderColor};
 
 &: focus {
   height: 10em;
@@ -61,6 +66,9 @@ width: 50%;
 display:block;
 margin-left: auto;
 margin-right: auto;
+background-color: ${(props) => props.theme.body};
+color: ${(props) => props.theme.fontColor};
+border-color: ${(props) => props.theme.inputBorderColor};
 `;
 
 export {
