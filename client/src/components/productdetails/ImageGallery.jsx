@@ -68,9 +68,9 @@ function ImageGallery({
 
       {!currentStyle
         ? null
-        : <>
-        <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[currentIndex].thumbnail_url} />
-        </>}
+        : currentStyle.photos[currentIndex]
+          ? <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[currentIndex].thumbnail_url} />
+          : null}
     </StyledImageGallery>
   );
 }
