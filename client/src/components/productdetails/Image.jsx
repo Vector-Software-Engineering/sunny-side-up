@@ -5,7 +5,6 @@ function Image({
   photo, setMainImage, index, setCurrentIndex, currentStyle, currentIndex,
 }) {
   const setIndexAndMain = () => {
-    console.log(currentStyle);
     setMainImage(currentStyle);
     if (index < currentStyle.photos.length) {
       setCurrentIndex(index);
