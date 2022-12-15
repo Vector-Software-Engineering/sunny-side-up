@@ -42,10 +42,8 @@ export default function App() {
   };
 
   const getProducts = (count) => {
-    // axios.get(`/api/products?count=${count}`, {})
     axios.get('/api/products?count=100', {})
       .then((response) => {
-        // console.log(response.data);
         setProductList(response.data);
       }).catch((error) => {
         console.log(error);
@@ -55,7 +53,6 @@ export default function App() {
   const getProductStyles = () => {
     axios.get(`/api/products/${productId}/styles`, {}) // jacket is 40344, shoes are 40348
       .then((response) => {
-        // console.log(response.data);
         setAllStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
       }).catch((error) => {
@@ -66,7 +63,6 @@ export default function App() {
   const getProduct = () => {
     axios.get('/api/products/40344', {})
       .then((response) => {
-        // console.log(response.data);
         setCurrentProduct(response.data);
       }).catch((error) => {
         console.log(error);
@@ -86,7 +82,6 @@ export default function App() {
   const getReviews = () => {
     axios.get(`/api/reviews?product_id=${productId}&count=1000`, {})
       .then((response) => {
-        // console.log(response.data.results);
         setReviews(response.data.results);
         setAllReviews(getAverageReviews(response.data));
       }).catch((error) => {

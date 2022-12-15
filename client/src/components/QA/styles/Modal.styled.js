@@ -55,6 +55,7 @@ margin-right: auto;
 margin-bottom: 15px;
 background-color: ${(props) => props.theme.body};
 color: ${(props) => props.theme.fontColor};
+border: 2px solid;
 border-color: ${(props) => props.theme.inputBorderColor};
 
 &: focus {
@@ -63,7 +64,7 @@ border-color: ${(props) => props.theme.inputBorderColor};
 `;
 const SmallerInput = styled.input`
 width: 50%;
-display:block;
+display: block;
 margin-left: auto;
 margin-right: auto;
 background-color: ${(props) => props.theme.body};
