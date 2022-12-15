@@ -8,7 +8,7 @@ const Button = styled.button`
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
-  margin-right: 10px;
+  margin-right: 7.5px;
   background-color: ${(props) => props.theme.buttonBG};
   color: ${(props) => props.theme.buttonColor};
   width: fit-content;
