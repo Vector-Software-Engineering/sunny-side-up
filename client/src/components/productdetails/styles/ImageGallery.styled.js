@@ -30,6 +30,8 @@ export const StyleLeftButton = styled.button`
   width: 10%;
   background-color: white;
   align-content: center;
+  background-color: ${(props) => props.theme.body};
+  transition: all 0.34s ease;
 `;
 
 export const StyleRightButton = styled.button`
@@ -42,4 +44,6 @@ export const StyleRightButton = styled.button`
   width: 10%;
   background-color: white;
   align-content: center;
+  background-color: ${(props) => props.theme.body};
+  transition: all 0.34s ease;
 `;
