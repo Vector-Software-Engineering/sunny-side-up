@@ -82,7 +82,16 @@ export default function AddAnswerModal({ currentProduct, curQ, toggleModal }) {
             </div>
             {warning ? <small style={{ fontSize: '20px', color: 'red' }}>Select up to 5 photos</small> : <small>Select up to 5 photos</small>}
             <div>
-              {photos.map((photo, i) => <img key={`${photo + i}`} style={{ height: '150px', width: '150px' }} src={photo} alt="thumbnail" />)}
+              {photos.map((photo, i) => (
+                <img
+                  key={`${photo + i}`}
+                  style={{
+                    height: '125px', width: '125px', margin: '10px', border: '1px solid',
+                  }}
+                  src={photo}
+                  alt="thumbnail"
+                />
+              ))}
             </div>
             <Button type="submit">Submit</Button>
           </form>
