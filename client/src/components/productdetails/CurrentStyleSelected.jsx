@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledCurrentStyleSelected, CheckMarkOverlay } from './styles/CurrentStyleSelected.styled.js';
+import { StyledCurrentStyleSelected, CheckMarkOverlay, StyledImgContainer } from './styles/CurrentStyleSelected.styled.js';
 
 function CurrentStyleSelected({
   currentStyle, product, setCurrentStyle, setMainImage, setThumbnails, reset,
@@ -13,12 +13,12 @@ function CurrentStyleSelected({
 
   return (
     <StyledCurrentStyleSelected>
-      <CheckMarkOverlay>
-        {currentStyle.style_id === product.style_id ? <div>✓</div> : null}
-      </CheckMarkOverlay>
-      <div>
+      <StyledImgContainer>
+        <CheckMarkOverlay>
+          {currentStyle.style_id === product.style_id ? <div>✓</div> : null}
+        </CheckMarkOverlay>
         <img onClick={() => chooseStyle(product)} src={product.photos[0].thumbnail_url}/>
-      </div>
+      </StyledImgContainer>
     </StyledCurrentStyleSelected>
   );
 }

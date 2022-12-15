@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
 export const StyledCurrentStyleSelected = styled.div`
-
-  div {
-    height: 30px;
-    width: 30px;
-    margin-bottom: 10px;
-  }
-
   img {
     position: relative;
     padding: 5px;
+    height: 50px;
     width: 50px;
   }
 `;
 
-export const CheckMarkOverlay = styled.div`
+export const StyledImgContainer = styled.div`
   position: relative;
-  top: 40px;
-  left: 47px;
-  width: auto;
+  height: 60px;
+  width: 60px;
+  padding-right: 100px;
+  overflow: hidden;
+`;
+
+export const CheckMarkOverlay = styled.div`
+  position: absolute;
+  left: 3.5%;
   z-index: 1;
   color: red;
 `;
