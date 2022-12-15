@@ -49,13 +49,13 @@ function ImageGallery({
             : <StyleLeftButton onClick={leftButton}>←</StyleLeftButton>}
         {shortenedThumbnails
           // eslint-disable-next-line max-len
-          ? shortenedThumbnails.map((photo, index) => <Image key={index} index={index + firstIndex} photo={photo} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} currentStyle={currentStyle} />)
+          ? shortenedThumbnails.map((photo, index) => <Image key={index} index={index + firstIndex} photo={photo} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} currentStyle={currentStyle} currentIndex={currentIndex} />)
           : currentStyle
             // eslint-disable-next-line max-len
             ? currentStyle.photos.map((photo, index) => {
               if (index < 7) {
                 // eslint-disable-next-line max-len
-                return <Image key={index} index={index} photo={photo} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} currentStyle={currentStyle} />;
+                return <Image key={index} index={index} photo={photo} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} currentStyle={currentStyle} currentIndex={currentIndex} />;
               }
             })
             : null}

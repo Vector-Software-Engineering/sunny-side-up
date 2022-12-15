@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyledDots } from './styles/ExtendedViewDots.styled.js';
 
 function ExtendedViewDots({
   index, currentStyle, setMainImage, setCurrentIndex, currentIndex,
@@ -13,8 +14,8 @@ function ExtendedViewDots({
   return (
     <div>
       {index === currentIndex
-        ? <div onClick={setIndexAndMain} type="button">◉</div>
-        : <div onClick={setIndexAndMain} type="button">○</div>}
+        ? <StyledDots onClick={setIndexAndMain} type="button">◉</StyledDots>
+        : <StyledDots onClick={setIndexAndMain} type="button">○</StyledDots>}
     </div>
   );
 }
