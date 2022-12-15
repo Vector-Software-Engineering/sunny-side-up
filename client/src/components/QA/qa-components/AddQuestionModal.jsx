@@ -42,7 +42,7 @@ export default function AddQuestionModal({ currentProduct, toggleModal }) {
       <Modal>
         <ModalHeader>
           <Exit onClick={handleCloseClick}>X</Exit>
-          <h2 className="modal-title">Ask Your Question</h2>
+          <h3 className="modal-title">Ask Your Question</h3>
           <h5>
             About the&nbsp;
             {currentProduct.name}

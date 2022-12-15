@@ -80,10 +80,12 @@ export default function Listview({ currentProduct }) {
               <ListviewEntry currentProduct={currentProduct} key={`${entry.question_body + i}`} entry={entry} />)))}
         </Overflow>
       </div>
-      {numOfQuestions < filteredQuestions.length && (
-        <Button onClick={handleMoreClick}>SEE MORE QUESTIONS</Button>
-      )}
-      <Button onClick={addQuestions}>ADD QUESTION</Button>
+      <div className="bottom-buttons">
+        {numOfQuestions < filteredQuestions.length && (
+          <Button onClick={handleMoreClick}>SEE MORE QUESTIONS</Button>
+        )}
+        <Button onClick={addQuestions}>ADD QUESTION</Button>
+      </div>
       {showQModal && <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal} />}
     </>
   );

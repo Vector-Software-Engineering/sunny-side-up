@@ -61,7 +61,7 @@ export default function AddAnswerModal({ currentProduct, curQ, toggleModal }) {
       <Modal>
         <ModalHeader>
           <Exit onClick={handleCloseClick}>X</Exit>
-          <h2 className="modal-title">Submit Your Answer</h2>
+          <h3 className="modal-title">Submit Your Answer</h3>
           <h5>
             {currentProduct.name}
             &nbsp;:&nbsp;
