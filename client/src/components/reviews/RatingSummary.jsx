@@ -8,7 +8,7 @@ export default function ({ reviews }) {
   return (
     <RatingSummary>
       <span>{ ' rating: ' }</span>
-      <div className="stars" style={{ '--rating': rating }} />
+      <div className="stars" style={{ '--rating': rating, backgroundColor: 'white' }} />
       <p>{`${reviews.length} reviews`}</p>
     </RatingSummary>
   );
