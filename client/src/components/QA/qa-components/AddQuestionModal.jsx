@@ -8,9 +8,7 @@ import Button from '../styles/Button.styled.js';
 export default function AddQuestionModal({ currentProduct, toggleModal }) {
   const postQuestion = (results) => {
     axios.post('/api/qa/questions', results)
-      .then((response) => {
-        console.log(response);
-      }).catch((error) => {
+      .catch((error) => {
         console.log(error);
       });
   };

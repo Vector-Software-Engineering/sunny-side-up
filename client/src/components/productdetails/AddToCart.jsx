@@ -21,13 +21,9 @@ function AddToCart({ currentStyle }) {
     }
   }
 
-  // console.log('sizes are: ', sizes);
-  // console.log('quantites are: ', quantity);
-
   const grabStyleID = (e) => {
     setStyleSelected(e.value);
     setNotSelected(false);
-    console.log('e is this: ', e);
     const totalQuantity = currentStyle.skus[e.value].quantity;
     const newQuantityOptions = [...Array(Math.min(15, totalQuantity)).keys()];
     const finalQuantityOptions = [];
@@ -39,11 +35,10 @@ function AddToCart({ currentStyle }) {
 
   const grabQuantity = (e) => {
     setQuantitySelected(e.value);
-    console.log('grabbing the quantity: ', e);
   };
 
   const addProduct = (data) => {
-    console.log('Selected: [product_id, style_id, quantity]', data);
+    // console.log('Selected: [product_id, style_id, quantity]', data);
   };
 
   const chooseSize = () => {

@@ -11,8 +11,7 @@ export default function ({ review, getReviews }) {
     const data = localStorage.getItem(`reviewHelpful: ${review.review_id}`);
     if (data === null) {
       axios.put(`api/reviews/${review.review_id}/helpful`)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           getReviews();
         })
         .catch((err) => {

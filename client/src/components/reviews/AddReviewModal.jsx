@@ -105,8 +105,7 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
       characteristics: chars,
       photos,
     })
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
         setShowModal(false);
       })
       .catch((error) => {

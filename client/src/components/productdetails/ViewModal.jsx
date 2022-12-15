@@ -27,21 +27,12 @@ export default function ViewModal({
     }
   };
 
-  // const mouseEnter = (e) => {
-  //   const elem = e.currentTarget;
-  //   const { width, height } = elem.getBoundingClientRect();
-  //   setSize([width, height]);
-  // };
-
   const onImageClick = (e) => {
     setClickMagnify(!clickMagnify);
   };
 
   const mouseMove = (e) => {
-    //console.log('this is what e is: ', e);
-    //console.log(document.getElementsByClassName('test'));
     const elem = e.currentTarget;
-    //console.log('this is what e.currentTarget', elem);
     const { top, left } = elem.getBoundingClientRect();
     const x = e.pageX - left - window.pageXOffset;
     const y = e.pageY - top - window.pageYOffset;
@@ -72,12 +63,10 @@ export default function ViewModal({
                   const { width, height } = elem.getBoundingClientRect();
                   setSize([width, height]);
                   setShowMagnify(true);
-                  console.log('we are on mouse center');
                 }}
                 onMouseLeave={() => {
                   // close magnifier
                   setShowMagnify(false);
-                  console.log('leaving mouse');
                 }}
                 className="test"
                 onClick={(e) => onImageClick(e)}

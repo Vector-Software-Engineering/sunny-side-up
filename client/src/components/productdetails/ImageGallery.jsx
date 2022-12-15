@@ -18,7 +18,6 @@ function ImageGallery({
         setThumbnails();
         reset();
       }
-      console.log('inside leftButton the currentIndex is: ', currentIndex, firstIndex, shortenedThumbnails);
     }
   };
 
@@ -30,7 +29,6 @@ function ImageGallery({
         setThumbnails();
         reset();
       }
-      console.log('inside rightButton the currentIndex is: ', currentIndex, firstIndex, shortenedThumbnails);
     }
   };
 
