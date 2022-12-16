@@ -14,7 +14,7 @@ const StyledImage = styled.div`
 
 const StyledSelectedImage = styled.img`
   border: 1px;
-  border-color: black;
+  border-color: ${(props) => props.theme.fontColor};
   border-style: ridge;
 `;
 
