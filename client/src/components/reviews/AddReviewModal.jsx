@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-tag-spacing */
 /* eslint-disable jsx-quotes */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import axios from 'axios';
 import RadioClicker from './RadioClicker.jsx';
 import { ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput } from './styles/ReviewModal.styled.js';

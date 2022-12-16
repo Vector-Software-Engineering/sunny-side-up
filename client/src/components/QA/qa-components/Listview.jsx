@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import ListviewEntry from './ListviewEntry.jsx';
 import Button from '../styles/Button.styled.js';
 import Input from '../styles/Input.styled.js';
 import Overflow from '../styles/Overflow.styled.js';
-import AddQuestionModal from './AddQuestionModal.jsx';
+
+const AddQuestionModal = React.lazy(() => import('./AddQuestionModal.jsx'));
 
 export default function Listview({ currentProduct }) {
   const [QA, setQA] = useState([]);
@@ -86,7 +87,11 @@ export default function Listview({ currentProduct }) {
         )}
         <Button onClick={addQuestions}>ADD QUESTION</Button>
       </div>
-      {showQModal && <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal} />}
+      {showQModal && (
+        <Suspense fallback={<div>Loading</div>}>
+          <AddQuestionModal currentProduct={currentProduct} toggleModal={toggleModal} />
+        </Suspense>
+      )}
     </>
   );
 }
