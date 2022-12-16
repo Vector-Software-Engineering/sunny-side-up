@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+  // @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
   text-align: left;
   font-family: 'Courier Prime', monospace;
   font-size: 12px;
