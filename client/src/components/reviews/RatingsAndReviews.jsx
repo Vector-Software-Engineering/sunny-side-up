@@ -74,7 +74,7 @@ export default function ({ currentProduct }) {
     <Container>
       <div className="main">
         <RatingBreakdown reviews={reviews} meta={meta} filterRating={filterRating} ratingFilter={ratingFilter} />
-        <ReviewList prodID={currentProduct.id} reviews={reviews} meta={meta} visReviews={visReviews} numReviews={numReviews} sortBy={sortBy} setSortBy={setSortBy} setNumReviews={setNumReviews} getReviews={getReviews} />
+        <ReviewList product={currentProduct} reviews={reviews} meta={meta} visReviews={visReviews} numReviews={numReviews} sortBy={sortBy} setSortBy={setSortBy} setNumReviews={setNumReviews} getReviews={getReviews} />
       </div>
     </Container>
   );

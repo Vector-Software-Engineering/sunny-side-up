@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+  // @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
   font-family: 'Courier Prime', monospace;
   transition: all 0.34s ease;
   border: none;
@@ -23,7 +23,7 @@ const Button = styled.button`
 
 const AppDiv = styled.div`
 
-  @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+  // @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
   font-family: 'Courier Prime', monospace;
 
   .page {

@@ -7,7 +7,7 @@ import axios from 'axios';
 import RadioClicker from './RadioClicker.jsx';
 import { ModalContainer, Modal, ModalHeader, ModalContent, Exit, BiggerInput, SmallerInput } from './styles/ReviewModal.styled.js';
 
-export default function AddReviewModal({ prodID, setShowModal, characteristics }) {
+export default function AddReviewModal({ product, setShowModal, characteristics }) {
   const [currRating, setCurrRating] = useState(0);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
@@ -95,7 +95,7 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
     }
 
     axios.post('/api/reviews', {
-      product_id: prodID,
+      product_id: product.id,
       rating: currRating,
       summary,
       body,
@@ -120,7 +120,7 @@ export default function AddReviewModal({ prodID, setShowModal, characteristics }
         <ModalHeader>
           <Exit onClick={() => {setShowModal(false)}}>X</Exit>
           <h2 className="modal-title">Write Your Review</h2>
-          <h3 className="modal-title">about the product name</h3>
+          <h3 className="modal-title">{`about ${product.name}`}</h3>
         </ModalHeader>
         <ModalContent>
           <form id='add-review' onSubmit={(e) => { handleFormSubmit(e); }}>
