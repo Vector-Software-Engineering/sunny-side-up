@@ -4,7 +4,7 @@ import ReviewTile from "./ReviewTile.jsx";
 import AddReviewModal from "./AddReviewModal.jsx";
 import { ReviewList } from './styles/ReviewList.styled.js';
 
-export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setSortBy, setNumReviews, getReviews, meta }) {
+export default function ({ product, reviews, visReviews, numReviews, sortBy, setSortBy, setNumReviews, getReviews, meta }) {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -33,7 +33,7 @@ export default function ({ prodID, reviews, visReviews, numReviews, sortBy, setS
         }
       </div>
 
-      {(showModal && meta.characteristics) && <AddReviewModal prodID={prodID} setShowModal={setShowModal} characteristics={meta.characteristics} />}
+      {(showModal && meta.characteristics) && <AddReviewModal product={product} setShowModal={setShowModal} characteristics={meta.characteristics} />}
     </ReviewList>
   )
 }
