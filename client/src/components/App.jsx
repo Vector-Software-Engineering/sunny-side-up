@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import axios from 'axios';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from '../themes.js';
-import QA from './QA/QA.jsx';
 import Overview from './productdetails/overview.jsx';
-import RatingsAndReviews from './reviews/RatingsAndReviews.jsx';
 import { AppDiv, Button } from './App.styled.js';
+
+const QA = React.lazy(() => import('./QA/QA.jsx'));
+const RatingsAndReviews = React.lazy(() => import('./reviews/RatingsAndReviews.jsx'));
 
 export default function App() {
   const [currentProduct, setCurrentProduct] = useState({});
@@ -119,7 +120,7 @@ export default function App() {
           <div className="side-bar">
             <div>
               {
-              productList.map((product) => <p key={`${product.name}`} className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }} >{product.name}</p>)
+              productList.map((product) => <p key={`${product.name}`} className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }}>{product.name}</p>)
               }
             </div>
           </div>
@@ -141,13 +142,18 @@ export default function App() {
                 : null
             }
 
-            {
-              tab === 'qa' && <QA currentProduct={currentProduct} />
-            }
+            {tab === 'qa' && (
+              <Suspense fallback={<div>Loading</div>}>
+                <QA currentProduct={currentProduct} />
+              </Suspense>
+            )}
 
-            {
-              tab === 'reviews' && <RatingsAndReviews currentProduct={currentProduct} />
-            }
+            {tab === 'reviews' && (
+              <Suspense fallback={<div>Loading</div>}>
+                <RatingsAndReviews currentProduct={currentProduct} />
+              </Suspense>
+            )}
+
           </div>
         </div>
       </AppDiv>
