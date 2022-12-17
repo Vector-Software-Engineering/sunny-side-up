@@ -21,10 +21,13 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 - [@jaketalexander](https://github.com/jaketalexander) - Questions & Answers Module
 
 ## Primary Features
-
+ - Questions & Answers
+   - 
 ## Primary Technologies
  - React
    - A Javascript library used for building an interactive UI
+ - Express
+   - A flexible Node.js framework that provides a robust set of features for web and mobile applications.
  - Babel
    - A Javascript compiler for transforming code into cross-browser compatible versions
  - Webpack
