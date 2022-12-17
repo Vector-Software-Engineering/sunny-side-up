@@ -37,4 +37,5 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 
 ## Lighthouse Audit Result
 
-[sunny-side-lighthouse-report.pdf](https://github.com/Vector-Software-Engineering/sunny-side-up/files/10252624/sunny-side-lighthouse-report.pdf)
+<img width="640" alt="Screenshot 2022-12-17 at 1 30 01 PM" src="https://user-images.githubusercontent.com/37193140/208263208-84ac06b7-822b-499d-8765-af08a5705380.png">
+
