@@ -36,7 +36,7 @@ const ExtendedViewContainer = styled.div`
   justify-content: center;
   height: 100%;
   width: auto;
-  cursor: ${(props) => props.clickMagnify ? 'zoom-out' : 'crosshair'};
+  cursor: ${(props) => (props.clickMagnify ? 'zoom-out' : 'crosshair')};
 `;
 
 const StyledLeftArrow = styled.div`
@@ -95,7 +95,7 @@ const StyledExtendedImg = styled.img`
 `;
 
 const StyledMagnifier = styled.div`
-  display: ${(props) => props.showMagnify ? '' : 'none'};
+  display: ${(props) => (props.showMagnify ? '' : 'none')};
   position: absolute;
   pointerEvents: none;
   height: 300px;

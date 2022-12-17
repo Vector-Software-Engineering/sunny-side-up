@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import ExtendedViewDots from './ExtendedViewDots.jsx';
 import {
-  ModalContainer, ExtendedViewContainer, StyledLeftArrow, StyledRightArrow, StyledDots, StyledExit, StyledImgContainer, StyledExtendedImg, StyledMagnifier, StyledExpandedZoom,
+  ModalContainer, ExtendedViewContainer, StyledLeftArrow, StyledRightArrow, StyledDots,
+  StyledExit, StyledImgContainer, StyledExtendedImg, StyledMagnifier, StyledExpandedZoom,
 } from './styles/ViewModal.styled.js';
 
 export default function ViewModal({

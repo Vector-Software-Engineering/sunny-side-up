@@ -41,10 +41,10 @@ function ImageGallery({
 
       <StyledThumbnails>
         {!currentStyle
-          ? <StyleLeftButton onClick={leftButton}> </StyleLeftButton>
+          ? <StyleLeftButton id="LeftArrow" aria-label="Left Arrow Thumbnail Navigator" onClick={leftButton}> </StyleLeftButton>
           : currentIndex === 0 && firstIndex !== 7
-            ? <StyleLeftButton onClick={leftButton}> </StyleLeftButton>
-            : <StyleLeftButton onClick={leftButton}>←</StyleLeftButton>}
+            ? <StyleLeftButton id="LeftArrow" aria-label="Left Arrow Thumbnail Navigator" onClick={leftButton}> </StyleLeftButton>
+            : <StyleLeftButton id="LeftArrow" aria-label="Left Arrow Thumbnail Navigator" onClick={leftButton}>←</StyleLeftButton>}
         {shortenedThumbnails
           // eslint-disable-next-line max-len
           ? shortenedThumbnails.map((photo, index) => <Image key={index} index={index + firstIndex} photo={photo} setMainImage={setMainImage} setCurrentIndex={setCurrentIndex} currentStyle={currentStyle} currentIndex={currentIndex} />)
@@ -58,16 +58,16 @@ function ImageGallery({
             })
             : null}
         {!currentStyle
-          ? <StyleRightButton onClick={rightButton}> </StyleRightButton>
+          ? <StyleRightButton id="RightArrow" aria-label="Right Arrow Thumbnail Navigator" onClick={rightButton}> </StyleRightButton>
           : currentIndex === currentStyle.photos.length - 1
-            ? <StyleRightButton onClick={rightButton}> </StyleRightButton>
-            : <StyleRightButton onClick={rightButton}>→</StyleRightButton>}
+            ? <StyleRightButton id="RightArrow" aria-label="Right Arrow Thumbnail Navigator" onClick={rightButton}> </StyleRightButton>
+            : <StyleRightButton id="RightArrow" aria-label="Right Arrow Thumbnail Navigator" onClick={rightButton}>→</StyleRightButton>}
       </StyledThumbnails>
 
       {!currentStyle
         ? null
         : currentStyle.photos[currentIndex]
-          ? <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[currentIndex].thumbnail_url} />
+          ? <StyledMainImage onClick={goToExtendedView} src={currentStyle.photos[currentIndex].thumbnail_url} alt="Main Product" />
           : null}
     </StyledImageGallery>
   );

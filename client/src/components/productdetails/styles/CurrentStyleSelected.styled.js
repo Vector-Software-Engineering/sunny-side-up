@@ -4,15 +4,16 @@ export const StyledCurrentStyleSelected = styled.div`
   img {
     position: relative;
     padding: 5px;
-    height: 50px;
-    width: 50px;
+    width:100%;
+    height:100%;
+    object-fit:cover;
   }
 `;
 
 export const StyledImgContainer = styled.div`
   position: relative;
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
   padding-right: 100px;
   overflow: hidden;
 `;

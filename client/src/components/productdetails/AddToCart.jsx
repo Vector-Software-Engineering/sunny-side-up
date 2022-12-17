@@ -59,20 +59,20 @@ function AddToCart({ currentStyle }) {
       boxShadow: state.isFocused ? null : null,
     }),
 
-    valueContainer: (provided, state) => ({
+    valueContainer: (provided) => ({
       ...provided,
       height: '30px',
       padding: '0 20px',
     }),
 
-    input: (provided, state) => ({
+    input: (provided) => ({
       ...provided,
       margin: '0px',
     }),
-    indicatorSeparator: state => ({
+    indicatorSeparator: () => ({
       display: 'none',
     }),
-    indicatorsContainer: (provided, state) => ({
+    indicatorsContainer: (provided) => ({
       ...provided,
       height: '30px',
     }),
@@ -91,25 +91,44 @@ function AddToCart({ currentStyle }) {
   return (
     <StyledAddToCart>
       { notSelected ? <div>~Please Select Size~</div> : null}
-      {sizes.length > 0
-        ? <div>
-          <Select options={sizes} ref={styleSelectedRef} onChange={(e) => grabStyleID(e)} placeholder={'Select Size'} openMenuOnFocus={true} styles={customStyles} />
+      {sizes.length > 0 ? (
+        <div>
+          <Select
+            options={sizes}
+            ref={styleSelectedRef}
+            onChange={(e) => grabStyleID(e)}
+            placeholder="Select Size"
+            openMenuOnFocus
+            styles={customStyles}
+            aria-label="Select Size"
+          />
         </div>
-        : <div>
-          <Select placeholder="OUT OF STOCK" isDisabled={true} styles={customStyles} styles={customStyles} />
-        </div>}
-      {styleSelected !== ''
-        ? <div>
-          <Select options={quantityOptions} onChange={(e) => grabQuantity(e)} defaultValue={1} placeholder={1} styles={customStyles} />
+      )
+        : (
+          <div>
+            <Select placeholder="OUT OF STOCK" isDisabled styles={customStyles} styles={customStyles} aria-label="Out of Stock" />
           </div>
-        : <div>
-          <Select isDisabled={true} placeholder='-' styles={customStyles} />
-        </div>}
+)}
+      {styleSelected !== ''
+        ? (
+          <div>
+            <Select options={quantityOptions} onChange={(e) => grabQuantity(e)} defaultValue={1} placeholder={1} styles={customStyles} aria-label="Quantity Selector" />
+          </div>
+        )
+        : (
+          <div>
+            <Select isDisabled placeholder="-" styles={customStyles} aria-label="Disabled Quantity Selector Please Choose Size"/>
+          </div>
+        )}
       {sizes.length < 1
         ? null
         : styleSelected !== ''
-        ? <button onClick={() => addProduct([currentStyle.style_id, styleSelected, quantitySelected])}>Add To Cart</button>
-        : <button onClick={chooseSize}>Add To Cart</button>}
+          ? (
+            <button
+              onClick={() => addProduct([currentStyle.style_id, styleSelected, quantitySelected])}>Add To Cart
+            </button>
+          )
+          : <button onClick={chooseSize}>Add To Cart</button>}
     </StyledAddToCart>
   );
 }
