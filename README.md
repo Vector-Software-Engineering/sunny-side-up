@@ -38,5 +38,6 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 
 ## Lighthouse Audit Result
 
-<img width="640" alt="Screenshot 2022-12-17 at 1 30 01 PM" src="https://user-images.githubusercontent.com/37193140/208263208-84ac06b7-822b-499d-8765-af08a5705380.png">
+![Screenshot 2022-12-17 at 1 36 26 PM](https://user-images.githubusercontent.com/37193140/208263390-7ceaa105-26f3-4975-9d20-a98fb9fd7e32.png)
+
 
