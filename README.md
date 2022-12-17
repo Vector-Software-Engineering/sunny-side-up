@@ -3,7 +3,7 @@
 ### Table of Contents
 
 - Overview
-- Authors(## Authors)
+- [Authors](## Authors)
 - Primary Features
 - Primary Technologies
 - LightHouse Audit Results
