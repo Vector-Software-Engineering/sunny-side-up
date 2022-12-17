@@ -21,9 +21,8 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 - [@jaketalexander](https://github.com/jaketalexander) - Questions & Answers Module
 
 ## Primary Features
- ### Overview
- ### Questions & Answers
- ### Ratings & Reviews
+ ###Questions & Answers
+   - 
 ## Primary Technologies
  - React
    - A Javascript library used for building an interactive UI
@@ -38,3 +37,4 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 
 ## Lighthouse Audit Result
 
+[sunny-side-lighthouse-report.pdf](https://github.com/Vector-Software-Engineering/sunny-side-up/files/10252624/sunny-side-lighthouse-report.pdf)
