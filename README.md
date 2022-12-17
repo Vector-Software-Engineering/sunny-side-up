@@ -35,7 +35,8 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
    - A bundler that creates static assets of the Reach components for browser consumption
 ## Screenshots of Application
 ![Screenshot 2022-12-17 at 11 48 58 AM](https://user-images.githubusercontent.com/37193140/208255817-68f841b4-960f-44f5-874f-c000dfcfb26e.png)
-![Screen Shot 2022-12-17 at 11 56 49 AM](https://user-images.githubusercontent.com/114206067/208264025-78d7dcc8-6eea-4edf-a302-1863f3635eee.png)
+![Screen Shot 2022-12-17 at 11 58 47 AM](https://user-images.githubusercontent.com/114206067/208264053-36f42f91-73d2-4c3c-be17-bbeecb632d41.png)
+
 
 
 
