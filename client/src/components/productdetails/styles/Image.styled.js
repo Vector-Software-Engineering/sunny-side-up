@@ -2,13 +2,19 @@ import styled from 'styled-components';
 
 const StyledImage = styled.div`
   img {
-    padding: 1px;
-    height: 50px;
-    width: 50px;
+    width:100%;
+    height:100%;
+    object-fit:cover;
   }
 
   button {
     all: revert;
+  }
+
+  div {
+    padding: 3px;
+    height: 50px;
+    width: 50px;
   }
 `;
 

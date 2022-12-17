@@ -44,6 +44,7 @@ const AppDiv = styled.div`
   h1 {
     text-align: center;
     margin-bottom: 5px;
+    color: red;
   }
 
   .center-bar {
@@ -63,7 +64,7 @@ const AppDiv = styled.div`
     margin: 0;
     line-height: 1.1;
     &:hover {
-      background-color: ${(props) => props.theme.buttonColor};
+      background-color: red;
       color: ${(props) => props.theme.buttonBG};
     }
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledDots } from './styles/ExtendedViewDots.styled.js';
+import StyledDots from './styles/ExtendedViewDots.styled.js';
 
 function ExtendedViewDots({
   index, currentStyle, setMainImage, setCurrentIndex, currentIndex,
