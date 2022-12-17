@@ -1,7 +1,5 @@
 # Sunny Side Up | Hack Reactor Front-end Capstone
 
-![Screenshot 2022-12-17 at 11 48 58 AM](https://user-images.githubusercontent.com/37193140/208255817-68f841b4-960f-44f5-874f-c000dfcfb26e.png)
-
 ### Table of Contents
 
 - Overview
@@ -25,6 +23,14 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 ### Primary Features
 
 ### Primary Technologies
+ - React
+  - A Javascript library used for building an interactive UI
+ - Babel
+  - A Javascript compiler for transforming code into cross-browser compatible versions
+ - Webpack
+  - A bundler that creates static assets of the Reach components for browser consumption
+### Screenshots of Application
+![Screenshot 2022-12-17 at 11 48 58 AM](https://user-images.githubusercontent.com/37193140/208255817-68f841b4-960f-44f5-874f-c000dfcfb26e.png)
 
 ### Lighthouse Audit Result
 
