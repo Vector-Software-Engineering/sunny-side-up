@@ -22,8 +22,14 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 
 ## Primary Features
  ### Product Overview
+ - The Overview module is top-most module on the Product Detail page.
+ - This component will guide the customer through selecting a specific style and size to add to their cart.
  ### Questions & Answers
+ - The Questions & Answers module allows asking and answering of questions for the product selected.
+ - This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product.
  ### Ratings & Reviews
+ - The Ratings & Reviews module will allow viewing and submission of reviews for the product selected.
+ - This component extends the ability to write, read, and browse through reviews for the current product.
 ## Primary Technologies
  - React
    - A Javascript library used for building an interactive UI
@@ -36,9 +42,7 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 ## Screenshots of Application
 ![Screenshot 2022-12-17 at 11 48 58 AM](https://user-images.githubusercontent.com/37193140/208255817-68f841b4-960f-44f5-874f-c000dfcfb26e.png)
 ![Screen Shot 2022-12-17 at 11 58 47 AM](https://user-images.githubusercontent.com/114206067/208264053-36f42f91-73d2-4c3c-be17-bbeecb632d41.png)
-
-
-
+![Screen Shot 2022-12-17 at 11 59 54 AM](https://user-images.githubusercontent.com/59150695/208264058-9b15457a-d7e3-4959-bb68-eedc260d1bd2.jpg)
 
 ## Lighthouse Audit Result
 
