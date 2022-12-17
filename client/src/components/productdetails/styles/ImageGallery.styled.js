@@ -10,6 +10,8 @@ export const StyledMainImage = styled.img`
   cursor: zoom-in;
   height: 100%;
   width: 100%;
+  max-width: 500px;
+  object-fit: fill;
 `;
 
 export const StyledThumbnails = styled.div`
@@ -19,6 +21,7 @@ export const StyledThumbnails = styled.div`
   left: auto;
   width: 100%;
   cursor: default;
+  margin-bottom: 5px;
 `;
 
 export const StyleLeftButton = styled.button`

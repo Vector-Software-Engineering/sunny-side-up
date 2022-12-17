@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import axios from 'axios';
 import WordIncrement from '../styles/WordIncrement.styled.js';
 import Bucket from '../styles/Bucket.styled.js';
 import AnswersList from './AnswersList.jsx';
-import AddAnswerModal from './AddAnswerModal.jsx';
+
+const AddAnswerModal = React.lazy(() => import('./AddAnswerModal.jsx'));
 
 export default function ListviewEntry({ currentProduct, entry }) {
   const [showAModal, setShowAModal] = useState(false);
@@ -51,7 +52,9 @@ export default function ListviewEntry({ currentProduct, entry }) {
       </div>
       <AnswersList entry={entry} />
       {showAModal && (
-        <AddAnswerModal currentProduct={currentProduct} curQ={entry} toggleModal={toggleModal} />
+        <Suspense fallback={<div>Loading</div>}>
+          <AddAnswerModal currentProduct={currentProduct} curQ={entry} toggleModal={toggleModal} />
+        </Suspense>
       )}
     </Bucket>
   );
