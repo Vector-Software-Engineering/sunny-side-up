@@ -17,12 +17,13 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 ## Authors
 
 - [@andepants](https://github.com/andepants) - Product Overview Module
-- [@jamesleakos](https://github.com/jamesleakos) - Ratings & Reviews Module
 - [@jaketalexander](https://github.com/jaketalexander) - Questions & Answers Module
+- [@jamesleakos](https://github.com/jamesleakos) - Ratings & Reviews Module
 
 ## Primary Features
- ###Questions & Answers
-   - 
+ ### Product Overview
+ ### Questions & Answers
+ ### Ratings & Reviews
 ## Primary Technologies
  - React
    - A Javascript library used for building an interactive UI
