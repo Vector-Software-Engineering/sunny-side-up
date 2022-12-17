@@ -21,8 +21,9 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 - [@jaketalexander](https://github.com/jaketalexander) - Questions & Answers Module
 
 ## Primary Features
- ###Questions & Answers
-   - 
+ ### Overview
+ ### Questions & Answers
+ ### Ratings & Reviews
 ## Primary Technologies
  - React
    - A Javascript library used for building an interactive UI
