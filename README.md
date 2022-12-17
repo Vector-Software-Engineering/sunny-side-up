@@ -28,8 +28,9 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
  - The Questions & Answers module allows asking and answering of questions for the product selected.
  - This component extends the ability to view and search questions, ask questions, answer questions and provide feedback on questions about the current product.
  ### Ratings & Reviews
- - The Ratings & Reviews module will allow viewing and submission of reviews for the product selected.
- - This component extends the ability to write, read, and browse through reviews for the current product.
+ - Users can submit reviews of the product currently selected on the product detail page
+ - These reviews are summarized and this summary info is displayed in the ratings section
+ - The reviews themselves can be browsed, sorted, filtered, marked as helpful, and reported in the review list
 ## Primary Technologies
  - React
    - A Javascript library used for building an interactive UI
