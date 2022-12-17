@@ -21,7 +21,7 @@ Our team of three Hack Reactor enrollees had to follow a strict Business Requirm
 - [@jaketalexander](https://github.com/jaketalexander) - Questions & Answers Module
 
 ## Primary Features
- - Questions & Answers
+ ###Questions & Answers
    - 
 ## Primary Technologies
  - React
