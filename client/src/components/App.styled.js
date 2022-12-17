@@ -28,17 +28,18 @@ const AppDiv = styled.div`
 
   .page {
     display: grid;
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .side-bar {
-    grid-column: 1;
-    overflow-y: auto;
-    max-height: 80vh;
-  }
+  // .side-bar {
+  //   grid-column: 1;
+  //   overflow-y: auto;
+  //   max-height: 80vh;
+  // }
 
   .main {
-    grid-column: 2;
+    // grid-column: 2;
+    grid-column: 1;
   }
 
   h1 {
