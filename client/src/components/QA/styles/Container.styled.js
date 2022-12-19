@@ -4,8 +4,6 @@ const Container = styled.div`
   // @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
   text-align: center;
   max-width: 100%;
-  margin-right: 160px;
-  margin-left: 20px;
 
   * {
     box-sizing: border-box;
