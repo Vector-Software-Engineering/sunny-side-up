@@ -5,6 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from '../themes.js';
 import Overview from './productdetails/overview.jsx';
 import { AppDiv, Button } from './App.styled.js';
+import HomePage from './homepage/HomePage.jsx';
 
 const QA = React.lazy(() => import('./QA/QA.jsx'));
 const RatingsAndReviews = React.lazy(() => import('./reviews/RatingsAndReviews.jsx'));
@@ -17,7 +18,8 @@ export default function App() {
   const [allStyles, setAllStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState('');
   const [reviews, setReviews] = useState([]);
-  const [tab, setTab] = useState('detail');
+  const [tab, setTab] = useState('home');
+  const [tempStyle, setTempStyle] = useState('');
 
   const productId = currentProduct.id || 40344;
 
@@ -40,6 +42,17 @@ export default function App() {
       localStorage.setItem('theme', 'light');
       setTheme('light');
     }
+  };
+
+  const returnProductImage = () => {
+    axios.get(`/api/products/${40355}/styles`, {}) // jacket is 40344, shoes are 40348
+      .then((response) => {
+        console.log(response.data.results[0]);
+        // return response.data.results[0].photos[0];
+        // setTempStyle(response.data.results[0]);
+      }).catch((error) => {
+        console.log(error);
+      });
   };
 
   const getProducts = (count) => {
@@ -100,12 +113,24 @@ export default function App() {
     getReviews();
   }, [currentProduct]);
 
+  // code for a list of all the products sidebar
+  // <span style={{ fontWeight: 'bold', paddingBottom: '5px', marginLeft: '23px' }}>SHOP ALL</span>
+  //         <div className="side-bar"></div>
+  // </div>
+  // <div>
+  //   {
+  //   productList.map((product) => <p key={`${product.name}`} className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }}>{product.name}</p>)
+  //   }
+  // </div>
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
       <AppDiv>
         <h1>Sunny Side Up</h1>
         <div className="center-bar">
+          <span className="pointer" style={{ fontWeight: (tab === 'home' ? 'bold' : '') }} onClick={() => { setTab('home'); }}>choose product</span>
+          <span> - </span>
           <span className="pointer" style={{ fontWeight: (tab === 'detail' ? 'bold' : '') }} onClick={() => { setTab('detail'); }}>detail</span>
           <span> - </span>
           <span className="pointer" style={{ fontWeight: (tab === 'qa' ? 'bold' : '') }} onClick={() => { setTab('qa'); }}>qa</span>
@@ -116,15 +141,6 @@ export default function App() {
           <Button onClick={themeToggler}>THEME</Button>
         </div>
         <div className="page">
-          <span style={{ fontWeight: 'bold', paddingBottom: '5px', marginLeft: '23px' }}>SHOP ALL</span>
-          <div className="side-bar">
-            <div>
-              {
-              productList.map((product) => <p key={`${product.name}`} className="pointer" onClick={() => { setCurrentProduct(product); setTab('detail'); }}>{product.name}</p>)
-              }
-            </div>
-          </div>
-
           <div className="main">
             {
               tab === 'detail' ? (
@@ -152,6 +168,12 @@ export default function App() {
               <Suspense fallback={<div>Loading</div>}>
                 <RatingsAndReviews currentProduct={currentProduct} />
               </Suspense>
+            )}
+
+            {tab === 'home' && (
+              <div>
+                <HomePage products={productList} setCurrentProduct={setCurrentProduct} setTab={setTab} />
+              </div>
             )}
 
           </div>

@@ -1,0 +1,52 @@
+.selector-img {
+  /* display: block; */
+  width: 49px;
+  height: 360px;
+  border: 0;
+  overflow: clip;
+  object-fit: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.selector-img:hover {
+  -webkit-transform: scale(1.2);
+}
+
+.products {
+  display: inline-block;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-width: 650px;
+  width: auto;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  height: 360px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 10px;
+  width: auto;
+}
+
+/* .arrow {
+  top: 0;
+  width: 75px;
+  height: 360px;
+  display: block;
+  position: absolute;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.arrow.left {
+  left: 70px;
+  background: url(//d17ol771963kd3.cloudfront.net/assets/bk_left-81a60f8….png) no-repeat 75% 50%;
+}
+
+.arrow.right {
+  right: 70px;
+  background: url(//d17ol771963kd3.cloudfront.net/assets/bk_right-66e22a915354ff31e5f95f25ba0275d2.png) no-repeat 25% 50%;
+} */
